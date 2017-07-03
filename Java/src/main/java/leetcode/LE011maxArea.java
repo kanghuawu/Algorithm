@@ -1,20 +1,22 @@
 package leetcode;
 
 public class LE011maxArea {
-	public int maxArea(int[] height) {
-        int maxarea = 0, l = 0, r = height.length - 1;
-        while (l < r) {
-            maxarea = Math.max(maxarea, Math.min(height[l], height[r]) * (r - l));
-            if (height[l] < height[r])
-                l++;
+    public int maxArea(int[] height) {
+    	// MY
+        int len = height.length;
+        int i = 0;
+        int j = len - 1;
+        int max = 0;
+        while(i < j){
+            // System.out.println(i + ": " + height[i] + "/" + j + ": " + height[j]);
+            int temp = (j - i) * Math.min(height[i], height[j]);
+            if(temp > max)
+                max = temp;
+            if(height[i] > height[j])
+                j--;
             else
-                r--;
+                i++;
         }
-        return maxarea;
+        return max;
     }
-	public static void main(String[] args){
-		int[] arr = {1, 2, 3, 4, 5};
-		LE011maxArea test = new LE011maxArea();
-		System.out.println(test.maxArea(arr));
-	}
 }
