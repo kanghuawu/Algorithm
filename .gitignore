@@ -1,3 +1,4 @@
+*.numbers
 *.pyc
 .env
 *.DS_Store
