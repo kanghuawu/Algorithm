@@ -22,7 +22,7 @@ public class LE138copyRandomListTest {
 		a3.random = a4;
 		a4.random = a2;
 		a5.random = a4;
-		LE138copyRandomList test = new LE138copyRandomList();
+		LE138CopyRandomList test = new LE138CopyRandomList();
 		RandomListNode result = test.copyRandomList(a1);
 		assertEquals("original head", "1+3->2+5->3+4->4+2->5+4", new RandomLinkedList(a1).toString());
 		assertEquals("copy head", "1+3->2+5->3+4->4+2->5+4", result.toString());
