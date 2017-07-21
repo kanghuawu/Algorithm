@@ -1,0 +1,1502 @@
+See the Assessment Guide for information on how to interpret this report.
+
+ASSESSMENT SUMMARY
+
+Compilation:  PASSED (0 errors, 3 warnings)
+API:          PASSED
+
+Findbugs:     FAILED (1 warning)
+PMD:          FAILED (2 warnings)
+Checkstyle:   FAILED (0 errors, 13 warnings)
+
+Correctness:  35/43 tests passed
+Memory:       34/53 tests passed
+Timing:       103/131 tests passed
+
+Aggregate score: 80.98%
+[Compilation: 5%, API: 5%, Findbugs: 0%, PMD: 0%, Checkstyle: 0%, Correctness: 60%, Memory: 10%, Timing: 20%]
+
+ASSESSMENT DETAILS
+
+The following files were submitted:
+----------------------------------
+3.9K Jul 21 07:58 Deque.java
+ 423 Jul 21 07:58 Permutation.java
+3.9K Jul 21 07:58 RandomizedQueue.java
+
+
+********************************************************************************
+*  COMPILING                                                                    
+********************************************************************************
+
+
+% javac Deque.java
+*-----------------------------------------------------------
+
+% javac RandomizedQueue.java
+*-----------------------------------------------------------
+RandomizedQueue.java:15: warning: [unchecked] unchecked cast
+        queue = (Item[]) new Object[1];
+                         ^
+  required: Item[]
+  found:    Object[]
+  where Item is a type-variable:
+    Item extends Object declared in class RandomizedQueue
+RandomizedQueue.java:58: warning: [unchecked] unchecked cast
+        Item[] copy = (Item[]) new Object[capacity];
+                               ^
+  required: Item[]
+  found:    Object[]
+  where Item is a type-variable:
+    Item extends Object declared in class RandomizedQueue
+RandomizedQueue.java:80: warning: [unchecked] unchecked cast
+            cpQue = (Item[]) new Object[currentIndex];
+                             ^
+  required: Item[]
+  found:    Object[]
+  where Item is a type-variable:
+    Item extends Object declared in class RandomizedQueue
+3 warnings
+
+% javac Permutation.java
+*-----------------------------------------------------------
+
+
+================================================================
+
+
+Checking the APIs of your programs.
+*-----------------------------------------------------------
+Deque:
+
+RandomizedQueue:
+
+Permutation:
+
+================================================================
+
+
+********************************************************************************
+*  CHECKING STYLE AND COMMON BUG PATTERNS                                       
+********************************************************************************
+
+
+% findbugs *.class
+*-----------------------------------------------------------
+M B IT_NO_SUCH_ELEMENT It: The 'next()' method must throw a 'java.util.NoSuchElementException' if it is called when there are no more elements to return.  At RandomizedQueue.java:[line 96]
+Warnings generated: 1
+
+================================================================
+
+
+% pmd *.java
+*-----------------------------------------------------------
+Deque.java:14: The private instance (or static) variable 'item' can be made 'final'; it is initialized only in the declaration or constructor. [ImmutableField]
+RandomizedQueue.java:77: The private instance (or static) variable 'cpQue' can be made 'final'; it is initialized only in the declaration or constructor. [ImmutableField]
+PMD ends with 2 warnings.
+
+
+================================================================
+
+
+% checkstyle *.java
+*-----------------------------------------------------------
+[WARN] Deque.java:2:1: Unnecessary import statement for 'java.lang.IllegalArgumentException' because it is from the package 'java.lang'. [RedundantImport]
+[WARN] Deque.java:2:8: Unused import statement for 'java.lang.IllegalArgumentException'. [UnusedImports]
+[WARN] Deque.java:3:1: Unnecessary import statement for 'java.lang.UnsupportedOperationException' because it is from the package 'java.lang'. [RedundantImport]
+[WARN] Deque.java:3:8: Unused import statement for 'java.lang.UnsupportedOperationException'. [UnusedImports]
+[WARN] Permutation.java:7:14: 'while' is not followed by whitespace. [WhitespaceAround]
+[WARN] Permutation.java:11:19: '=' is not preceded with whitespace. [WhitespaceAround]
+[WARN] Permutation.java:11:20: '=' is not followed by whitespace. [WhitespaceAround]
+[WARN] Permutation.java:11:24: '<' is not preceded with whitespace. [WhitespaceAround]
+[WARN] Permutation.java:11:25: '<' is not followed by whitespace. [WhitespaceAround]
+[WARN] RandomizedQueue.java:2:1: Unnecessary import statement for 'java.lang.IllegalArgumentException' because it is from the package 'java.lang'. [RedundantImport]
+[WARN] RandomizedQueue.java:2:8: Unused import statement for 'java.lang.IllegalArgumentException'. [UnusedImports]
+[WARN] RandomizedQueue.java:3:1: Unnecessary import statement for 'java.lang.UnsupportedOperationException' because it is from the package 'java.lang'. [RedundantImport]
+[WARN] RandomizedQueue.java:3:8: Unused import statement for 'java.lang.UnsupportedOperationException'. [UnusedImports]
+Checkstyle ends with 0 errors and 13 warnings.
+
+% custom checkstyle checks for Deque.java
+*-----------------------------------------------------------
+
+% custom checkstyle checks for RandomizedQueue.java
+*-----------------------------------------------------------
+
+% custom checkstyle checks for Permutation.java
+*-----------------------------------------------------------
+
+
+================================================================
+
+
+********************************************************************************
+*  TESTING CORRECTNESS
+********************************************************************************
+
+Testing correctness of Deque
+*-----------------------------------------------------------
+Running 16 total tests.
+
+Tests 1-6 make random calls to addFirst(), addLast(), removeFirst(),
+removeLast(), isEmpty(), and size(). The probabilities of each
+operation are (p1, p2, p3, p4, p5, p6), respectively.
+
+Test 1: Check random calls to addFirst(), addLast(), and size()
+  *    5 random calls (0.4, 0.4, 0.0, 0.0, 0.0, 0.2)
+  *   50 random calls (0.4, 0.4, 0.0, 0.0, 0.0, 0.2)
+    java.lang.NullPointerException
+
+    Deque$Node.access$102(Deque.java:13)
+    Deque.addLast(Deque.java:59)
+    TestDeque.random(TestDeque.java:59)
+    TestDeque.test1(TestDeque.java:153)
+    TestDeque.main(TestDeque.java:758)
+
+    - sequence of dequeue operations was:
+         deque.size()
+         deque.addLast(1)
+  *  500 random calls (0.4, 0.4, 0.0, 0.0, 0.0, 0.2)
+  * 1000 random calls (0.4, 0.4, 0.0, 0.0, 0.0, 0.2)
+    java.lang.NullPointerException
+
+    Deque$Node.access$102(Deque.java:13)
+    Deque.addLast(Deque.java:59)
+    TestDeque.random(TestDeque.java:59)
+    TestDeque.test1(TestDeque.java:155)
+    TestDeque.main(TestDeque.java:758)
+
+    - sequence of dequeue operations was:
+         deque.addLast(0)
+==> FAILED
+
+Test 2: Check random calls to addFirst(), removeFirst(), and isEmpty()
+  *    5 random calls (0.8, 0.0, 0.1, 0.0, 0.1, 0.0)
+  *   50 random calls (0.8, 0.0, 0.1, 0.0, 0.1, 0.0)
+  *  500 random calls (0.8, 0.0, 0.1, 0.0, 0.1, 0.0)
+  * 1000 random calls (0.8, 0.0, 0.1, 0.0, 0.1, 0.0)
+  *    5 random calls (0.1, 0.0, 0.8, 0.0, 0.1, 0.0)
+  *   50 random calls (0.1, 0.0, 0.8, 0.0, 0.1, 0.0)
+  *  500 random calls (0.1, 0.0, 0.8, 0.0, 0.1, 0.0)
+  * 1000 random calls (0.1, 0.0, 0.8, 0.0, 0.1, 0.0)
+==> passed
+
+Test 3: Check random calls to addFirst(), removeLast(), and isEmpty()
+  *    5 random calls (0.8, 0.0, 0.0, 0.1, 0.1, 0.0)
+  *   50 random calls (0.8, 0.0, 0.0, 0.1, 0.1, 0.0)
+  *  500 random calls (0.8, 0.0, 0.0, 0.1, 0.1, 0.0)
+  * 1000 random calls (0.8, 0.0, 0.0, 0.1, 0.1, 0.0)
+  *    5 random calls (0.1, 0.0, 0.0, 0.8, 0.1, 0.0)
+  *   50 random calls (0.1, 0.0, 0.0, 0.8, 0.1, 0.0)
+  *  500 random calls (0.1, 0.0, 0.0, 0.8, 0.1, 0.0)
+  * 1000 random calls (0.1, 0.0, 0.0, 0.8, 0.1, 0.0)
+==> passed
+
+Test 4: Check random calls to addLast(), removeLast(), and isEmpty()
+  *    5 random calls (0.0, 0.8, 0.0, 0.1, 0.1, 0.0)
+    java.lang.NullPointerException
+
+    Deque$Node.access$102(Deque.java:13)
+    Deque.addLast(Deque.java:59)
+    TestDeque.random(TestDeque.java:59)
+    TestDeque.test4(TestDeque.java:196)
+    TestDeque.main(TestDeque.java:761)
+
+    - sequence of dequeue operations was:
+         deque.addLast(0)
+  *   50 random calls (0.0, 0.8, 0.0, 0.1, 0.1, 0.0)
+    java.lang.NullPointerException
+
+    Deque$Node.access$102(Deque.java:13)
+    Deque.addLast(Deque.java:59)
+    TestDeque.random(TestDeque.java:59)
+    TestDeque.test4(TestDeque.java:197)
+    TestDeque.main(TestDeque.java:761)
+
+    - sequence of dequeue operations was:
+         deque.isEmpty()
+         deque.addLast(1)
+  *  500 random calls (0.0, 0.8, 0.0, 0.1, 0.1, 0.0)
+    java.lang.NullPointerException
+
+    Deque$Node.access$102(Deque.java:13)
+    Deque.addLast(Deque.java:59)
+    TestDeque.random(TestDeque.java:59)
+    TestDeque.test4(TestDeque.java:198)
+    TestDeque.main(TestDeque.java:761)
+
+    - sequence of dequeue operations was:
+         deque.addLast(0)
+  * 1000 random calls (0.0, 0.8, 0.0, 0.1, 0.1, 0.0)
+    java.lang.NullPointerException
+
+    Deque$Node.access$102(Deque.java:13)
+    Deque.addLast(Deque.java:59)
+    TestDeque.random(TestDeque.java:59)
+    TestDeque.test4(TestDeque.java:199)
+    TestDeque.main(TestDeque.java:761)
+
+    - sequence of dequeue operations was:
+         deque.addLast(0)
+  *    5 random calls (0.0, 0.1, 0.0, 0.8, 0.1, 0.0)
+    java.lang.NullPointerException
+
+    Deque$Node.access$102(Deque.java:13)
+    Deque.addLast(Deque.java:59)
+    TestDeque.random(TestDeque.java:59)
+    TestDeque.test4(TestDeque.java:200)
+    TestDeque.main(TestDeque.java:761)
+
+    - sequence of dequeue operations was:
+         deque.isEmpty()
+         deque.addLast(1)
+  *   50 random calls (0.0, 0.1, 0.0, 0.8, 0.1, 0.0)
+    java.lang.NullPointerException
+
+    Deque$Node.access$102(Deque.java:13)
+    Deque.addLast(Deque.java:59)
+    TestDeque.random(TestDeque.java:59)
+    TestDeque.test4(TestDeque.java:201)
+    TestDeque.main(TestDeque.java:761)
+
+    - sequence of dequeue operations was:
+         deque.isEmpty()
+         deque.addLast(1)
+  *  500 random calls (0.0, 0.1, 0.0, 0.8, 0.1, 0.0)
+    java.lang.NullPointerException
+
+    Deque$Node.access$102(Deque.java:13)
+    Deque.addLast(Deque.java:59)
+    TestDeque.random(TestDeque.java:59)
+    TestDeque.test4(TestDeque.java:202)
+    TestDeque.main(TestDeque.java:761)
+
+    - sequence of dequeue operations was:
+         deque.addLast(0)
+  * 1000 random calls (0.0, 0.1, 0.0, 0.8, 0.1, 0.0)
+    java.lang.NullPointerException
+
+    Deque$Node.access$102(Deque.java:13)
+    Deque.addLast(Deque.java:59)
+    TestDeque.random(TestDeque.java:59)
+    TestDeque.test4(TestDeque.java:203)
+    TestDeque.main(TestDeque.java:761)
+
+    - sequence of dequeue operations was:
+         deque.isEmpty()
+         deque.addLast(1)
+==> FAILED
+
+Test 5: Check random calls to addLast(), removeFirst(), and isEmpty()
+  *    5 random calls (0.0, 0.8, 0.1, 0.0, 0.1, 0.0)
+    java.lang.NullPointerException
+
+    Deque$Node.access$102(Deque.java:13)
+    Deque.addLast(Deque.java:59)
+    TestDeque.random(TestDeque.java:59)
+    TestDeque.test5(TestDeque.java:212)
+    TestDeque.main(TestDeque.java:762)
+
+    - sequence of dequeue operations was:
+         deque.addLast(0)
+  *   50 random calls (0.0, 0.8, 0.1, 0.0, 0.1, 0.0)
+    java.lang.NullPointerException
+
+    Deque$Node.access$102(Deque.java:13)
+    Deque.addLast(Deque.java:59)
+    TestDeque.random(TestDeque.java:59)
+    TestDeque.test5(TestDeque.java:213)
+    TestDeque.main(TestDeque.java:762)
+
+    - sequence of dequeue operations was:
+         deque.isEmpty()
+         deque.addLast(1)
+  *  500 random calls (0.0, 0.8, 0.1, 0.0, 0.1, 0.0)
+    java.lang.NullPointerException
+
+    Deque$Node.access$102(Deque.java:13)
+    Deque.addLast(Deque.java:59)
+    TestDeque.random(TestDeque.java:59)
+    TestDeque.test5(TestDeque.java:214)
+    TestDeque.main(TestDeque.java:762)
+
+    - sequence of dequeue operations was:
+         deque.addLast(0)
+  * 1000 random calls (0.0, 0.8, 0.1, 0.0, 0.1, 0.0)
+    java.lang.NullPointerException
+
+    Deque$Node.access$102(Deque.java:13)
+    Deque.addLast(Deque.java:59)
+    TestDeque.random(TestDeque.java:59)
+    TestDeque.test5(TestDeque.java:215)
+    TestDeque.main(TestDeque.java:762)
+
+    - sequence of dequeue operations was:
+         deque.addLast(0)
+  *    5 random calls (0.0, 0.1, 0.8, 0.0, 0.1, 0.0)
+    java.lang.NullPointerException
+
+    Deque$Node.access$102(Deque.java:13)
+    Deque.addLast(Deque.java:59)
+    TestDeque.random(TestDeque.java:59)
+    TestDeque.test5(TestDeque.java:216)
+    TestDeque.main(TestDeque.java:762)
+
+    - sequence of dequeue operations was:
+         deque.isEmpty()
+         deque.addLast(1)
+  *   50 random calls (0.0, 0.1, 0.8, 0.0, 0.1, 0.0)
+    java.lang.NullPointerException
+
+    Deque$Node.access$102(Deque.java:13)
+    Deque.addLast(Deque.java:59)
+    TestDeque.random(TestDeque.java:59)
+    TestDeque.test5(TestDeque.java:217)
+    TestDeque.main(TestDeque.java:762)
+
+    - sequence of dequeue operations was:
+         deque.addLast(0)
+  *  500 random calls (0.0, 0.1, 0.8, 0.0, 0.1, 0.0)
+    java.lang.NullPointerException
+
+    Deque$Node.access$102(Deque.java:13)
+    Deque.addLast(Deque.java:59)
+    TestDeque.random(TestDeque.java:59)
+    TestDeque.test5(TestDeque.java:218)
+    TestDeque.main(TestDeque.java:762)
+
+    - sequence of dequeue operations was:
+         deque.isEmpty()
+         deque.isEmpty()
+         deque.addLast(2)
+  * 1000 random calls (0.0, 0.1, 0.8, 0.0, 0.1, 0.0)
+    java.lang.NullPointerException
+
+    Deque$Node.access$102(Deque.java:13)
+    Deque.addLast(Deque.java:59)
+    TestDeque.random(TestDeque.java:59)
+    TestDeque.test5(TestDeque.java:219)
+    TestDeque.main(TestDeque.java:762)
+
+    - sequence of dequeue operations was:
+         deque.isEmpty()
+         deque.isEmpty()
+         deque.addLast(2)
+==> FAILED
+
+Test 6: Check random calls to addFirst(), addLast(), removeFirst(),
+        removeLast(), isEmpty(), and size()
+  *    5 random calls (0.3, 0.3, 0.1, 0.1, 0.1, 0.1)
+  *   50 random calls (0.3, 0.3, 0.1, 0.1, 0.1, 0.1)
+  *  500 random calls (0.3, 0.3, 0.1, 0.1, 0.1, 0.1)
+    java.lang.NullPointerException
+
+    Deque$Node.access$102(Deque.java:13)
+    Deque.addLast(Deque.java:59)
+    TestDeque.random(TestDeque.java:59)
+    TestDeque.test6(TestDeque.java:232)
+    TestDeque.main(TestDeque.java:763)
+
+    - sequence of dequeue operations was:
+         deque.addLast(0)
+  * 1000 random calls (0.3, 0.3, 0.1, 0.1, 0.1, 0.1)
+    java.lang.NullPointerException
+
+    Deque$Node.access$102(Deque.java:13)
+    Deque.addLast(Deque.java:59)
+    TestDeque.random(TestDeque.java:59)
+    TestDeque.test6(TestDeque.java:233)
+    TestDeque.main(TestDeque.java:763)
+
+    - sequence of dequeue operations was:
+         deque.size()
+         deque.size()
+         deque.addLast(2)
+  *    5 random calls (0.1, 0.1, 0.3, 0.3, 0.1, 0.1)
+  *   50 random calls (0.1, 0.1, 0.3, 0.3, 0.1, 0.1)
+    java.lang.NullPointerException
+
+    Deque$Node.access$102(Deque.java:13)
+    Deque.addLast(Deque.java:59)
+    TestDeque.random(TestDeque.java:59)
+    TestDeque.test6(TestDeque.java:235)
+    TestDeque.main(TestDeque.java:763)
+
+    - sequence of dequeue operations was:
+         deque.addFirst(0)
+         deque.removeFirst()     ==> 0
+         deque.size()
+         deque.size()
+         deque.addLast(4)
+  *  500 random calls (0.1, 0.1, 0.3, 0.3, 0.1, 0.1)
+    java.lang.NullPointerException
+
+    Deque$Node.access$102(Deque.java:13)
+    Deque.addLast(Deque.java:59)
+    TestDeque.random(TestDeque.java:59)
+    TestDeque.test6(TestDeque.java:236)
+    TestDeque.main(TestDeque.java:763)
+
+    - sequence of dequeue operations was:
+         deque.addLast(0)
+  * 1000 random calls (0.1, 0.1, 0.3, 0.3, 0.1, 0.1)
+    java.lang.NullPointerException
+
+    Deque$Node.access$102(Deque.java:13)
+    Deque.addLast(Deque.java:59)
+    TestDeque.random(TestDeque.java:59)
+    TestDeque.test6(TestDeque.java:237)
+    TestDeque.main(TestDeque.java:763)
+
+    - sequence of dequeue operations was:
+         deque.addFirst(0)
+         deque.removeFirst()     ==> 0
+         deque.isEmpty()
+         deque.size()
+         deque.isEmpty()
+         deque.addLast(5)
+==> FAILED
+
+Test 7: Check removeFirst() and removeLast() from an empty deque
+  * removeFirst()
+  * removeLast()
+==> passed
+
+Test 8: Check where two Deque objects can be created at the same time
+==> passed
+
+Test 9: Check iterator() after calls only to addFirst()
+==> passed
+
+Test 10: Check iterator() after intermixed calls to addFirst(), addLast(),
+         removeFirst(), and removeLast()
+    java.lang.NullPointerException
+
+    Deque$Node.access$102(Deque.java:13)
+    Deque.addLast(Deque.java:59)
+    TestDeque.test10(TestDeque.java:385)
+    TestDeque.main(TestDeque.java:767)
+
+    - sequence of dequeue operations was:
+          deque.addLast(1)
+==> FAILED
+
+Test 11: Create two nested iterators to same deque
+  * n = 10
+    java.lang.NullPointerException
+
+    Deque$Node.access$102(Deque.java:13)
+    Deque.addLast(Deque.java:59)
+    TestDeque.twoNestedIterators(TestDeque.java:458)
+    TestDeque.test11(TestDeque.java:516)
+    TestDeque.main(TestDeque.java:768)
+
+==> FAILED
+
+  * n = 1000
+    java.lang.NullPointerException
+
+    Deque$Node.access$102(Deque.java:13)
+    Deque.addLast(Deque.java:59)
+    TestDeque.twoNestedIterators(TestDeque.java:458)
+    TestDeque.test11(TestDeque.java:517)
+    TestDeque.main(TestDeque.java:768)
+
+==> FAILED
+
+==> FAILED
+
+Test 12: Create two parallel iterators to same deque
+  * n = 10
+    java.lang.NullPointerException
+
+    Deque$Node.access$102(Deque.java:13)
+    Deque.addLast(Deque.java:59)
+    TestDeque.twoParallelIterators(TestDeque.java:529)
+    TestDeque.test12(TestDeque.java:596)
+    TestDeque.main(TestDeque.java:769)
+
+==> FAILED
+
+  * n = 1000
+    java.lang.NullPointerException
+
+    Deque$Node.access$102(Deque.java:13)
+    Deque.addLast(Deque.java:59)
+    TestDeque.twoParallelIterators(TestDeque.java:529)
+    TestDeque.test12(TestDeque.java:597)
+    TestDeque.main(TestDeque.java:769)
+
+==> FAILED
+
+==> FAILED
+
+Test 13: Create Deque objects of different parameterized types
+==> passed
+
+Test 14: Check that addFirst() and addLast() each throw specified exception
+         when passed a null argument
+==> passed
+
+Test 15: Check that remove() and next() throw the specified exceptions in iterator()
+==> passed
+
+Test 16: Check iterator() when Deque is empty
+==> passed
+
+
+Total: 9/16 tests passed!
+
+
+================================================================
+Testing correctness of RandomizedQueue
+*-----------------------------------------------------------
+Running 18 total tests.
+
+Tests 1-4 make random calls to enqueue(), dequeue(), sample(),
+isEmpty(), and size(). The probabilities of each operation are
+(p1, p2, p3, p4, p5), respectively.
+
+Test 1: Check random calls to enqueue() and size()
+  *    5 random calls (0.8, 0.0, 0.0, 0.0, 0.2)
+  *   50 random calls (0.8, 0.0, 0.0, 0.0, 0.2)
+  *  500 random calls (0.8, 0.0, 0.0, 0.0, 0.2)
+  * 1000 random calls (0.8, 0.0, 0.0, 0.0, 0.2)
+==> passed
+
+Test 2: Check random calls to enqueue() and dequeue()
+  *    5 random calls (0.7, 0.1, 0.0, 0.1, 0.1)
+  *   50 random calls (0.7, 0.1, 0.0, 0.1, 0.1)
+  *  500 random calls (0.7, 0.1, 0.0, 0.1, 0.1)
+  * 1000 random calls (0.7, 0.1, 0.0, 0.1, 0.1)
+  *    5 random calls (0.1, 0.7, 0.0, 0.1, 0.1)
+  *   50 random calls (0.1, 0.7, 0.0, 0.1, 0.1)
+  *  500 random calls (0.1, 0.7, 0.0, 0.1, 0.1)
+  * 1000 random calls (0.1, 0.7, 0.0, 0.1, 0.1)
+==> passed
+
+Test 3: Check random calls to enqueue(), sample(), and size()
+  *    5 random calls (0.8, 0.0, 0.1, 0.0, 0.1)
+  *   50 random calls (0.8, 0.0, 0.1, 0.0, 0.1)
+  *  500 random calls (0.8, 0.0, 0.1, 0.0, 0.1)
+  * 1000 random calls (0.8, 0.0, 0.1, 0.0, 0.1)
+  *    5 random calls (0.1, 0.0, 0.8, 0.0, 0.1)
+  *   50 random calls (0.1, 0.0, 0.8, 0.0, 0.1)
+  *  500 random calls (0.1, 0.0, 0.8, 0.0, 0.1)
+  * 1000 random calls (0.1, 0.0, 0.8, 0.0, 0.1)
+==> passed
+
+Test 4: Check random calls to enqueue(), dequeue(), sample(), isEmpty(), and size()
+  *    5 random calls (0.6, 0.1, 0.1, 0.1, 0.1)
+  *   50 random calls (0.6, 0.1, 0.1, 0.1, 0.1)
+  *  500 random calls (0.6, 0.1, 0.1, 0.1, 0.1)
+  * 1000 random calls (0.6, 0.1, 0.1, 0.1, 0.1)
+  *    5 random calls (0.1, 0.1, 0.6, 0.1, 0.1)
+  *   50 random calls (0.1, 0.1, 0.6, 0.1, 0.1)
+  *  500 random calls (0.1, 0.1, 0.6, 0.1, 0.1)
+  * 1000 random calls (0.1, 0.1, 0.6, 0.1, 0.1)
+==> passed
+
+Test 5: Call dequeue() and sample() from an empty randomized queue
+  * dequeue()
+  * sample()
+==> passed
+
+Test 6: Create multiple randomized queue objects at the same time
+==> passed
+
+Test 7: Check that iterator() returns correct items after a sequence of
+        enqueue() operations
+==> passed
+
+Test 8: Check that iterator() returns correct items after sequence of enqueue()
+        and dequeue() operations
+==> passed
+
+Test 9: Create two nested iterators over the same randomized queue
+  * n = 10
+  * n = 1000
+==> passed
+
+Test 10: Create two parallel iterators over the same randomized queue
+  * n = 10
+  * n = 1000
+==> passed
+
+Test 11: Create two iterators over different randomized queues
+==> passed
+
+Test 12: Create RandomizedQueue objects of different parameterized types
+==> passed
+
+Test 13: Check randomness of sample() by enqueueing n items, repeatedly calling
+         sample(), and counting the frequency of each item
+  * n = 3, trials = 12000
+  * n = 5, trials = 12000
+  * n = 8, trials = 12000
+  * n = 10, trials = 12000
+==> passed
+
+Test 14: Check randomness of dequeue() by enqueueing n items, dequeueing n items,
+         and seeing whether each of the n! permutations is equally likely
+  * n = 2, trials = 12000
+  * n = 3, trials = 12000
+  * n = 4, trials = 12000
+  * n = 5, trials = 12000
+==> passed
+
+Test 15: Check randomness of iterator() by enqueueing n items, iterating over those
+         n items, and seeing whether each of the n! permutations is equally likely
+  * n = 2, trials = 12000
+  * n = 3, trials = 12000
+  * n = 4, trials = 12000
+  * n = 5, trials = 12000
+==> passed
+
+Test 16: Check that specified exception is thrown when calling enqueue()
+         with a null argument
+==> passed
+
+Test 17: Check that remove() and next() throw the specified exceptions in iterator()
+    - java.util.NoSuchElementException not thrown for next()
+==> FAILED
+
+Test 18: Check iterator() when RandomizedQueue is empty
+==> passed
+
+
+Total: 17/18 tests passed!
+
+
+================================================================
+********************************************************************************
+*  TESTING CORRECTNESS (substituting reference RandomizedQueue and Deque)
+********************************************************************************
+
+Testing correctness of Permutation
+*-----------------------------------------------------------
+Tests 1-5 call the main() function directly, resetting standard input
+before each call.
+
+Running 9 total tests.
+
+Test 1a: Check formatting for sample inputs from assignment specification
+  % java Permutation 3 < distinct.txt
+  G
+  I
+  H
+
+  % java Permutation 3 < distinct.txt
+  G
+  D
+  H
+
+  % java Permutation 8 < duplicates.txt
+  BB
+  CC
+  BB
+  CC
+  BB
+  BB
+  BB
+  AA
+
+==> passed
+
+Test 1b: Check formatting for other inputs
+  % java Permutation 8 < mediumTale.txt
+  age
+  of
+  of
+  it
+  was
+  it
+  times
+  times
+
+  % java Permutation 0 < distinct.txt
+  [no output]
+
+==> passed
+
+Test 2: Check that main() reads all data from standard input
+  * filename = distinct.txt, k = 3
+  * filename = distinct.txt, k = 3
+  * filename = duplicates.txt, k = 8
+  * filename = mediumTale.txt, k = 8
+==> passed
+
+Test 3a: Check that main() prints each item from the sequence at most once
+         (for inputs with no duplicate strings)
+  * filename = distinct.txt, k = 3
+  * filename = distinct.txt, k = 1
+  * filename = distinct.txt, k = 9
+  * filename = permutation6.txt, k = 6
+  * filename = permutation10.txt, k = 10
+==> passed
+
+Test 3b: Check that main() prints each item from the sequence at most once
+         (for inputs with duplicate strings)
+  * filename = duplicates.txt, k = 8
+  * filename = duplicates.txt, k = 3
+  * filename = permutation8.txt, k = 6
+  * filename = permutation8.txt, k = 2
+  * filename = tinyTale.txt, k = 10
+==> passed
+
+Test 3c: Check that main() prints each item from the sequence at most once
+         (for inputs with newlines)
+  * filename = mediumTale.txt, k = 10
+  * filename = mediumTale.txt, k = 20
+  * filename = tale.txt, k = 10
+  * filename = tale.txt, k = 50
+==> passed
+
+Test 4: Check main() when k = 0
+  * filename = distinct.txt, k = 0
+  * filename = distinct.txt, k = 0
+==> passed
+
+Test 5a: Check that permutations are uniformly random
+         (for inputs with no duplicate strings)
+  * filename = permutation4.txt, k = 1
+  * filename = permutation4.txt, k = 2
+  * filename = permutation4.txt, k = 3
+  * filename = permutation4.txt, k = 4
+  * filename = permutation6.txt, k = 2
+==> passed
+
+Test 5b: Check that permutations are uniformly random
+         (for inputs with duplicate strings)
+  * filename = permutation5.txt, k = 1
+  * filename = permutation5.txt, k = 2
+  * filename = permutation5.txt, k = 3
+  * filename = duplicates.txt, k = 3
+  * filename = permutation8.txt, k = 2
+==> passed
+
+Total: 9/9 tests passed!
+
+
+================================================================
+********************************************************************************
+*  MEMORY
+********************************************************************************
+
+Computing memory of Permutation
+*-----------------------------------------------------------
+Running 2 total tests.
+
+Test 1: Check that only one Deque or RandomizedQueue object is created
+  * filename = distinct.txt, n = 9, k = 1
+  * filename = distinct.txt, n = 9, k = 2
+  * filename = distinct.txt, n = 9, k = 4
+  * filename = tinyTale.txt, n = 12, k = 10
+  * filename = tale.txt, n = 138653, k = 50
+==> passed
+
+Test 2: Check that the maximum size of any Deque or RandomizedQueue object
+        created is >=k and <= n
+  * filename = distinct.txt, n = 9, k = 1
+  * filename = distinct.txt, n = 9, k = 2
+  * filename = distinct.txt, n = 9, k = 4
+  * filename = tinyTale.txt, n = 12, k = 10
+  * filename = tale.txt, n = 138653, k = 5
+  * filename = tale.txt, n = 138653, k = 50
+  * filename = tale.txt, n = 138653, k = 500
+  * filename = tale.txt, n = 138653, k = 5000
+  * filename = tale.txt, n = 138653, k = 50000
+==> passed
+
+Test 3 (bonus): Check that maximum size of any or Deque or RandomizedQueue object
+                created is equal to k
+  * filename = tale.txt, n = 138653, k = 5
+    - max size of RandomizedQueue object = 138653
+  * filename = tale.txt, n = 138653, k = 50
+    - max size of RandomizedQueue object = 138653
+  * filename = tale.txt, n = 138653, k = 500
+    - max size of RandomizedQueue object = 138653
+  * filename = tale.txt, n = 138653, k = 5000
+    - max size of RandomizedQueue object = 138653
+  * filename = tale.txt, n = 138653, k = 50000
+    - max size of RandomizedQueue object = 138653
+==> FAILED
+
+Total: 2/2 tests passed!
+
+================================================================
+
+
+
+********************************************************************************
+*  TESTING CORRECTNESS (substituting reference RandomizedQueue and Deque)                                                                  
+********************************************************************************
+
+Timing Permutation
+*-----------------------------------------------------------
+Running 21 total tests.
+
+Test 1: Check number of calls to methods in Deque and RandomizedQueue
+  * java Permutation 5 < distinct.txt
+  * java Permutation 10 < permutation10.txt
+  * java Permutation 1 < mediumTale.txt
+  * java Permutation 20 < tale.txt
+  * java Permutation 100 < tale.txt
+  * java Permutation 16412 < tale.txt
+==> passed
+
+Test 2: Time main() with k = 5, for inputs containing n random strings
+
+                    n  seconds
+------------------------------
+=> passed        1000     0.00
+=> passed        2000     0.00
+=> passed        4000     0.00
+=> passed        8000     0.00
+=> passed       16000     0.01
+=> passed       32000     0.01
+=> passed       64000     0.02
+=> passed      128000     0.05
+=> passed      256000     0.09
+=> passed      512000     0.18
+==> 10/10 tests passed
+
+
+Test 3: Time main() with k = 1000, for inputs containing n random strings
+
+                    n  seconds
+------------------------------
+=> passed        1000     0.00
+=> passed        2000     0.00
+=> passed        4000     0.00
+=> passed        8000     0.00
+=> passed       16000     0.01
+=> passed       32000     0.01
+=> passed       64000     0.02
+=> passed      128000     0.05
+=> passed      256000     0.16
+=> passed      512000     0.30
+==> 10/10 tests passed
+
+
+Total: 21/21 tests passed!
+
+
+================================================================
+
+
+
+********************************************************************************
+*  MEMORY
+********************************************************************************
+
+Computing memory of Deque
+*-----------------------------------------------------------
+For tests 1-4, the maximum amount of memory allowed for a Deque
+containing n items is 48n + 192.
+
+Running 28 total tests.
+
+Test 1a-1e: Total memory usage after inserting n items,
+            where n is a power of 2.
+
+                 n        bytes
+----------------------------------------------------------
+=> passed        8          424         
+=> passed       64         3112         
+=> passed      256        12328         
+=> passed     1024        49192         
+=> passed     4096       196648         
+==> 5/5 tests passed
+
+Memory: 48.00 n + 40.00   (R^2 = 1.000)
+
+
+
+Test 2a-2e: Total memory usage after inserting n+1 items,
+            where n is a power of 2.
+
+                 n        bytes
+----------------------------------------------------------
+=> passed        8          472         
+=> passed       64         3160         
+=> passed      256        12376         
+=> passed     1024        49240         
+=> passed     4096       196696         
+==> 5/5 tests passed
+
+Memory after adding n = 2^i + 1 items: 48.00 n + 40.00   (R^2 = 1.000)
+
+
+
+Test 3a-3e: Total memory usage after inserting 2n+1 items
+            and deleting n items, where n is a power of 2.
+
+                 n        bytes
+----------------------------------------------------------
+=> FAILED        8          856   (1.4x)
+=> FAILED       64         6232   (1.9x)
+=> FAILED      256        24664   (2.0x)
+=> FAILED     1024        98392   (2.0x)
+=> FAILED     4096       393304   (2.0x)
+==> 0/5 tests passed
+
+Memory: 96.00 n - 8.00   (R^2 = 1.000)
+
+
+
+Test 4a-4e: Total memory usage after inserting n items and then
+            deleting all but one item, where n is a power of 2.
+            (should not grow with n or be too large of a constant)
+
+                 n        bytes
+----------------------------------------------------------
+=> FAILED        8          424   (1.8x)
+=> FAILED       64         3112  (13.0x)
+=> FAILED      256        12328  (51.4x)
+=> FAILED     1024        49192 (205.0x)
+=> FAILED     4096       196648 (819.4x)
+==> 0/5 tests passed
+
+Memory after adding n = 2^i items: 71498.91   (R^2 = 0.000)
+
+
+
+Test 5a-5e: Total memory usage of iterator after inserting n items.
+            (should not grow with n or be too large of a constant)
+
+                 n        bytes
+----------------------------------------------------------
+=> passed        8           32         
+=> passed       64           32         
+=> passed      256           32         
+=> passed     1024           32         
+=> passed     4096           32         
+==> 5/5 tests passed
+
+Memory of iterator after adding n = 2^i items: 32.00   (R^2 = 1.000)
+
+
+
+Test 6a: Insert n strings; delete them one at a time, checking for
+         loitering after each deletion. The probabilities of addFirst()
+         and addLast() are (p1, p2), respectively. The probabilities of
+         removeFirst() and removeLast() are (q1, q2), respectively
+  * 100 random insertions (1.0, 0.0) and 100 random deletions (1.0, 0.0)
+    - loitering observed during 99 of 100 deletions
+    - maximum number of loitered objects at one time = 99
+  * 100 random insertions (1.0, 0.0) and 100 random deletions (0.0, 1.0)
+    - loitering observed during 99 of 100 deletions
+    - maximum number of loitered objects at one time = 99
+  * 100 random insertions (0.0, 1.0) and 100 random deletions (1.0, 0.0)
+    java.lang.NullPointerException
+
+    Deque$Node.access$102(Deque.java:13)
+    Deque.addLast(Deque.java:59)
+    MemoryOfDeque.loiterInsertionsBeforeDeletions(MemoryOfDeque.java:439)
+    MemoryOfDeque.test6a(MemoryOfDeque.java:500)
+    MemoryOfDeque.main(MemoryOfDeque.java:744)
+
+  * 100 random insertions (0.0, 1.0) and 100 random deletions (0.0, 1.0)
+    java.lang.NullPointerException
+
+    Deque$Node.access$102(Deque.java:13)
+    Deque.addLast(Deque.java:59)
+    MemoryOfDeque.loiterInsertionsBeforeDeletions(MemoryOfDeque.java:439)
+    MemoryOfDeque.test6a(MemoryOfDeque.java:501)
+    MemoryOfDeque.main(MemoryOfDeque.java:744)
+
+  * 100 random insertions (0.5, 0.5) and 100 random deletions (0.5, 0.5)
+    java.lang.NullPointerException
+
+    Deque$Node.access$102(Deque.java:13)
+    Deque.addLast(Deque.java:59)
+    MemoryOfDeque.loiterInsertionsBeforeDeletions(MemoryOfDeque.java:439)
+    MemoryOfDeque.test6a(MemoryOfDeque.java:502)
+    MemoryOfDeque.main(MemoryOfDeque.java:744)
+
+==> FAILED
+
+Test 6b: Perform random operations, checking for loitering after
+         each operation. The probabilities of addFirst(), addLast(),
+         removeFirst(), and removeLast() are (p1, p2, p3, p4),
+         respectively.
+  * 100 random operations (0.8, 0.0, 0.2, 0.0)
+    - loitering detected after operation 3 of 100
+    - sequence of operations:
+         deque.addFirst("QQKTVMOETW")
+         deque.addFirst("XBPCLBWEDY")
+         deque.removeFirst()     ==> XBPCLBWEDY
+    - loitered object(s):
+      XBPCLBWEDY
+
+  * 100 random operations (0.8, 0.0, 0.0, 0.2)
+    - loitering detected after operation 7 of 100
+    - sequence of operations:
+         deque.addFirst("AHWEMYPVYV")
+         deque.removeLast()      ==> AHWEMYPVYV
+         deque.addFirst("DCOZKCHDTG")
+         deque.addFirst("MCVUDQVQWY")
+         deque.addFirst("OFVGSPSSKW")
+         deque.addFirst("YQGONNAQVT")
+         deque.removeLast()      ==> DCOZKCHDTG
+    - loitered object(s):
+      DCOZKCHDTG
+
+  * 100 random operations (0.0, 0.8, 0.2, 0.0)
+    java.lang.NullPointerException
+
+    Deque$Node.access$102(Deque.java:13)
+    Deque.addLast(Deque.java:59)
+    MemoryOfDeque.loiter(MemoryOfDeque.java:534)
+    MemoryOfDeque.test6b(MemoryOfDeque.java:626)
+    MemoryOfDeque.main(MemoryOfDeque.java:745)
+
+    - sequence of dequeue operations was:
+         deque.addLast("IXMYWWJKKM")
+
+  * 100 random operations (0.0, 0.8, 0.0, 0.2)
+    java.lang.NullPointerException
+
+    Deque$Node.access$102(Deque.java:13)
+    Deque.addLast(Deque.java:59)
+    MemoryOfDeque.loiter(MemoryOfDeque.java:534)
+    MemoryOfDeque.test6b(MemoryOfDeque.java:627)
+    MemoryOfDeque.main(MemoryOfDeque.java:745)
+
+    - sequence of dequeue operations was:
+         deque.addLast("BESEGXVAJO")
+
+  * 100 random operations (0.4, 0.4, 0.1, 0.1)
+    - loitering detected after operation 3 of 100
+    - sequence of operations:
+         deque.addFirst("XPNRSWYMWU")
+         deque.addFirst("MIGNQXBDUZ")
+         deque.removeLast()      ==> XPNRSWYMWU
+    - loitered object(s):
+      XPNRSWYMWU
+
+  * 100 random operations (0.2, 0.2, 0.3, 0.3)
+    java.lang.NullPointerException
+
+    Deque$Node.access$102(Deque.java:13)
+    Deque.addLast(Deque.java:59)
+    MemoryOfDeque.loiter(MemoryOfDeque.java:534)
+    MemoryOfDeque.test6b(MemoryOfDeque.java:629)
+    MemoryOfDeque.main(MemoryOfDeque.java:745)
+
+    - sequence of dequeue operations was:
+         deque.addFirst("LPMBTQGSSL")
+         deque.removeLast()      ==> LPMBTQGSSL
+         deque.addLast("OTGCBUZPYW")
+
+==> FAILED
+
+Test 7: Worst-case constant memory allocated or deallocated
+        per deque operation?
+  * 128 random operations
+  * 256 random operations
+    java.lang.NullPointerException
+
+    Deque$Node.access$102(Deque.java:13)
+    Deque.addLast(Deque.java:59)
+    MemoryOfDeque.constant(MemoryOfDeque.java:659)
+    MemoryOfDeque.test7(MemoryOfDeque.java:710)
+    MemoryOfDeque.main(MemoryOfDeque.java:746)
+
+  * 512 random operations
+    - failed on trial 276 of 512
+    - when current size of Deque was 180 objects;
+    - the call to addFirst()
+    - caused a change in memory of -288 bytes
+    - any change of more than 96 bytes fails the test
+==> FAILED
+
+Total: 15/28 tests passed!
+
+================================================================
+
+
+
+Computing memory of RandomizedQueue
+*-----------------------------------------------------------
+For tests 1-4, the maximum amount of memory allowed for
+a RandomizedQueue containing n items is 48n + 192.
+
+Running 23 total tests.
+
+Test 1a-1d: Total memory usage after inserting n integers.
+
+                 n        bytes
+----------------------------------------------------------
+=> passed       64          568         
+=> passed      256         2104         
+=> passed     1024         8248         
+=> passed     4096        32824         
+==> 4/4 tests passed
+
+
+Memory: 8.00 n + 56.00   (R^2 = 1.000)
+
+
+
+Test 2a-2d: Total memory usage after inserting n+1 items.
+
+                 n        bytes
+----------------------------------------------------------
+=> passed       64         1080         
+=> passed      256         4152         
+=> passed     1024        16440         
+=> passed     4096        65592         
+==> 4/4 tests passed
+
+
+Memory: 16.00 n + 40.00   (R^2 = 1.000)
+
+
+
+Test 3a-3d: Total memory usage after inserting 2n+1 items, and
+            then deleting n items.
+
+                 n        bytes
+----------------------------------------------------------
+=> passed       64         2104         
+=> passed      256         8248         
+=> passed     1024        32824         
+=> passed     4096       131128         
+==> 4/4 tests passed
+
+
+Memory: 32.00 n + 24.00   (R^2 = 1.000)
+
+
+
+Test 4a-4d: Total memory usage after inserting n items, and
+            then deleting all but one item.
+
+                 n        bytes
+----------------------------------------------------------
+=> FAILED       64         1080   (4.5x)
+=> FAILED      256         4152  (17.3x)
+=> FAILED     1024        16440  (68.5x)
+=> FAILED     4096        65592 (273.3x)
+==> 0/4 tests passed
+
+
+Memory: 23875.64   (R^2 = 0.000)
+
+
+
+Test 5a-5d: Total memory usage of iterator after inserting n items.
+
+                 n        bytes
+----------------------------------------------------------
+=> passed       64          576         
+=> passed      256         2112         
+=> passed     1024         8256         
+=> passed     4096        32832         
+==> 4/4 tests passed
+
+
+Memory: 8.00 n + 64.00   (R^2 = 1.000)
+
+
+
+Test 6a: Insert 100 strings; delete them one at a time, checking
+         for loitering after each deletion.
+    - loitering observed during 99 of 100 deletions
+    - maximum number of loitered objects at one time = 67
+==> FAILED
+
+Test 6b: Perform random operations, checking for loitering after
+         each operation. The probabilities of enqueue(), dequeue(),
+         and sample() are (p1, p2, p3), respectively.
+  * 200 random operations (0.8, 0.2, 0.0)
+    - loitering detected after operation 3 of 200
+    - sequence of operations:
+         rq.enqueue("TJQNNLDBNH")
+         rq.enqueue("ETSWPSLEGA")
+         rq.dequeue()     ==> "TJQNNLDBNH"
+    - loitered object(s):
+      TJQNNLDBNH
+
+  * 200 random operations (0.2, 0.8, 0.0)
+    - loitering detected after operation 2 of 200
+    - sequence of operations:
+         rq.enqueue("DBIIWVXVPI")
+         rq.dequeue()     ==> "DBIIWVXVPI"
+    - loitered object(s):
+      DBIIWVXVPI
+
+  * 200 random operations (0.6, 0.2, 0.2)
+    - loitering detected after operation 3 of 200
+    - sequence of operations:
+         rq.enqueue("JYVGZBTXYE")
+         rq.enqueue("RMXUYDCFEU")
+         rq.dequeue()     ==> "JYVGZBTXYE"
+    - loitered object(s):
+      JYVGZBTXYE
+
+  * 200 random operations (0.2, 0.4, 0.4)
+    - loitering detected after operation 2 of 200
+    - sequence of operations:
+         rq.enqueue("LQQPCCFWVG")
+         rq.dequeue()     ==> "LQQPCCFWVG"
+    - loitered object(s):
+      LQQPCCFWVG
+
+==> FAILED
+
+Test 7: Insert T items into queue; then iterate over queue and check
+        that worst-case constant memory is allocated or deallocated
+        per iterator operation.
+  * T = 64
+  * T = 128
+  * T = 256
+==> passed
+
+Total: 17/23 tests passed!
+
+================================================================
+
+
+
+********************************************************************************
+*  TIMING                                                                  
+********************************************************************************
+
+Timing Deque
+*-----------------------------------------------------------
+Running 55 total tests.
+
+Test 1a-1g: Make n random calls to addFirst(), removeFirst(), isEmpty(), and size()
+            with probabilities (0.7, 0.1, 0.1, 0.1)
+
+                    n  seconds
+------------------------------
+=> passed        1024     0.00
+=> passed        2048     0.00
+=> passed        4096     0.00
+=> passed        8192     0.00
+=> passed       16384     0.00
+=> passed       32768     0.00
+=> passed       65536     0.01
+=> passed      128000     0.01
+=> passed      256000     0.02
+=> passed      512000     0.04
+=> passed     1024000     0.07
+=> passed     2048000     0.11
+==> 12/12 tests passed
+
+
+Test 2a-2g: Make n random calls to addFirst(), removeFirst(), isEmpty(), and size(),
+            with probabilities (0.7, 0.1, 0.1, 0.1)
+
+                    n  seconds
+------------------------------
+    java.lang.NullPointerException
+
+    Deque$Node.access$102(Deque.java:13)
+    Deque.addLast(Deque.java:59)
+    TimeDeque.timeRandomOperations(TimeDeque.java:26)
+    TimeDeque.timeRandomOperations(TimeDeque.java:126)
+    TimeDeque.test2(TimeDeque.java:167)
+    TimeDeque.main(TimeDeque.java:258)
+
+    java.lang.NullPointerException
+
+    Deque$Node.access$102(Deque.java:13)
+    Deque.addLast(Deque.java:59)
+    TimeDeque.timeRandomOperations(TimeDeque.java:26)
+    TimeDeque.timeRandomOperations(TimeDeque.java:127)
+    TimeDeque.test2(TimeDeque.java:167)
+    TimeDeque.main(TimeDeque.java:258)
+
+=> FAILED        1024 Infinity
+   [ Most likely one of your operations is not constant time. ]
+==> 0/12 tests passed
+
+
+Test 3a-3g: Make n random calls to addFirst(), addLast(), removeFirst(), removeLast(),
+            isEmpty(), and size() with probabilities (0.3, 0.3, 0.1, 0.1, 0.1, 0.1)
+
+                    n  seconds
+------------------------------
+=> passed        1024     0.00
+=> passed        2048     0.00
+    java.lang.NullPointerException
+
+    Deque$Node.access$102(Deque.java:13)
+    Deque.addLast(Deque.java:59)
+    TimeDeque.timeRandomOperations(TimeDeque.java:26)
+    TimeDeque.timeRandomOperations(TimeDeque.java:127)
+    TimeDeque.test3(TimeDeque.java:180)
+    TimeDeque.main(TimeDeque.java:259)
+
+=> FAILED        4096 Infinity
+   [ Most likely one of your operations is not constant time. ]
+==> 2/12 tests passed
+
+
+Test 4a-4g: Create a deque of n objects, then iterate over the n objects
+            by calling next() and hasNext().
+
+                    n  seconds
+------------------------------
+=> passed        1024     0.00
+=> passed        2048     0.00
+=> passed        4096     0.00
+=> passed        8192     0.00
+=> passed       16384     0.00
+=> passed       32768     0.00
+=> passed       65536     0.00
+=> passed      128000     0.00
+=> passed      256000     0.00
+=> passed      512000     0.01
+=> passed     1024000     0.02
+=> passed     2048000     0.03
+==> 12/12 tests passed
+
+
+Test 5a-5g: Create a deque of n objects, then interleave n calls each to
+            removeFirst()/removeLast() and addFirst()/addLast().
+
+                    n  seconds
+----------------------------------
+    java.lang.NullPointerException
+
+    Deque$Node.access$102(Deque.java:13)
+    Deque.addLast(Deque.java:59)
+    TimeDeque.runThrash(TimeDeque.java:96)
+    TimeDeque.test5(TimeDeque.java:230)
+    TimeDeque.main(TimeDeque.java:261)
+
+=> passed        1025     0.00
+    java.lang.NullPointerException
+
+    Deque$Node.access$102(Deque.java:13)
+    Deque.addLast(Deque.java:59)
+    TimeDeque.runThrash(TimeDeque.java:96)
+    TimeDeque.test5(TimeDeque.java:230)
+    TimeDeque.main(TimeDeque.java:261)
+
+    java.lang.NullPointerException
+
+    Deque$Node.access$102(Deque.java:13)
+    Deque.addLast(Deque.java:59)
+    TimeDeque.runThrash(TimeDeque.java:96)
+    TimeDeque.test5(TimeDeque.java:231)
+    TimeDeque.main(TimeDeque.java:261)
+
+=> FAILED        2049     Test did not complete due to an exception.
+==> 1/7 tests passed
+
+Total: 27/55 tests passed!
+
+
+================================================================
+
+
+
+Timing RandomizedQueue
+*-----------------------------------------------------------
+Running 55 total tests.
+
+Test 1a-1g: Make n random calls to enqueue(), sample(), dequeue(), isEmpty(),
+            and size() with probabilities (0.2, 0.2, 0.2, 0.2, 0.2)
+
+                    n  seconds
+----------------------------------
+=> passed        1024     0.00
+=> passed        2048     0.00
+=> passed        4096     0.00
+=> passed        8192     0.00
+=> passed       16384     0.00
+=> passed       32768     0.00
+=> passed       65536     0.00
+=> passed      128000     0.01
+=> passed      256000     0.01
+=> passed      512000     0.02
+=> passed     1024000     0.04
+=> passed     2048000     0.09
+==> 12/12 tests passed
+
+
+Test 2a-2g: Make n random calls to enqueue(), sample(), dequeue(), isEmpty(),
+            and size() with probabilities (0.6, 0.1, 0.1, 0.1, 0.1)
+
+                    n  seconds
+----------------------------------
+=> passed        1024     0.00
+=> passed        2048     0.00
+=> passed        4096     0.00
+=> passed        8192     0.00
+=> passed       16384     0.00
+=> passed       32768     0.00
+=> passed       65536     0.00
+=> passed      128000     0.01
+=> passed      256000     0.01
+=> passed      512000     0.03
+=> passed     1024000     0.06
+=> passed     2048000     0.12
+==> 12/12 tests passed
+
+
+Test 3a-3g: Make n random calls to enqueue(), sample(), dequeue(), isEmpty(),
+            and size() with probabilities (0.1, 0.1, 0.6, 0.1, 0.1)
+
+                    n  seconds
+----------------------------------
+=> passed        1024     0.00
+=> passed        2048     0.00
+=> passed        4096     0.00
+=> passed        8192     0.00
+=> passed       16384     0.00
+=> passed       32768     0.00
+=> passed       65536     0.00
+=> passed      128000     0.01
+=> passed      256000     0.01
+=> passed      512000     0.02
+=> passed     1024000     0.04
+=> passed     2048000     0.09
+==> 12/12 tests passed
+
+
+Test 4a-4g: Create randomized queue of n objects, then iterate
+            over the n objects by calling next() and hasNext().
+
+                    n  seconds
+----------------------------------
+=> passed        1024     0.00
+=> passed        2048     0.00
+=> passed        4096     0.00
+=> passed        8192     0.00
+=> passed       16384     0.00
+=> passed       32768     0.01
+=> passed       65536     0.00
+=> passed      128000     0.01
+=> passed      256000     0.02
+=> passed      512000     0.03
+=> passed     1024000     0.04
+=> passed     2048000     0.09
+==> 12/12 tests passed
+
+
+Test 5a-5g: Create randomized queue of n objects, then interleave
+            n calls each to dequeue() and enqueue().
+
+                    n  seconds
+----------------------------------
+=> passed        1025     0.00
+=> passed        2049     0.00
+=> passed        4097     0.00
+=> passed       16385     0.00
+=> passed       32767     0.00
+=> passed       32768     0.00
+=> passed       32769     0.00
+==> 7/7 tests passed
+
+Total: 55/55 tests passed!
+
+
+================================================================
+
