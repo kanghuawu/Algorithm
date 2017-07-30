@@ -9,6 +9,7 @@
  ******************************************************************************/
 
 import java.util.Comparator;
+import java.lang.NullPointerException;
 import edu.princeton.cs.algs4.StdDraw;
 
 public class Point implements Comparable<Point> {
@@ -64,9 +65,9 @@ public class Point implements Comparable<Point> {
         if (deltaY == 0 && deltaX == 0)
             return Double.NEGATIVE_INFINITY;
         if (deltaX == 0)
-            return +0.0;
-        if (deltaY == 0)
             return Double.POSITIVE_INFINITY;
+        if (deltaY == 0)
+            return +0.0;
         return deltaY / (double) deltaX;
     }
 
@@ -84,6 +85,9 @@ public class Point implements Comparable<Point> {
      */
     @Override
     public int compareTo(Point that) {
+        if (that == null)
+            throw new NullPointerException();
+
         int deltaY = that.y - this.y;
         int deltaX = that.x - this.x;
 

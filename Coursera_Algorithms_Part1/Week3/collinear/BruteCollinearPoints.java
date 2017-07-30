@@ -10,21 +10,18 @@ public class BruteCollinearPoints {
     private int numberOfSegments;
     // finds all line segments containing 4 points
     public BruteCollinearPoints(Point[] points) {
-        if (points == null || points.length < 4)
+        if (points == null)
             throw new java.lang.IllegalArgumentException("Invalid input");
         this.points = points;
         segments = new LineSegment[points.length];
         numberOfSegments = 0;
         Arrays.sort(points);
-
+        if (hasDuplicatesOrNull(points))
+            throw new IllegalArgumentException("Found repeating points or null");
         for (int i = 0; i < points.length - 3; i++) {
-            if (points[i] == null)
-                throw new IllegalArgumentException("Input contains null point");
             for (int j = i + 1; j < points.length - 2; j++) {
                 for (int k = j + 1; k < points.length - 1; k++) {
                     for (int l = k + 1; l < points.length; l++) {
-                        if (points[i].compareTo(points[j]) == 0 || points[i].compareTo(points[k]) == 0 || points[i].compareTo(points[l]) == 0 )
-                            throw new IllegalArgumentException("Found repeating input");
 
                         if (points[i].slopeTo(points[j]) == points[i].slopeTo(points[k]) && points[i].slopeTo(points[k]) == points[i].slopeTo(points[l])) {
                             segments[numberOfSegments] = new LineSegment(points[i], points[l]);
@@ -48,6 +45,16 @@ public class BruteCollinearPoints {
             res[i] = segments[i];
         }
         return res;
+    }
+
+    private boolean hasDuplicatesOrNull(Point[] points) {
+        for (int i = 0; i < points.length - 1; i++) {
+            if (points[i] == null || points[i].compareTo(points[i+1]) == 0)
+                return true;
+        }
+        if (points[points.length - 1] == null)
+            return true;
+        return false;
     }
 
     public static void main(String[] args) {

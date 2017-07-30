@@ -17,8 +17,8 @@ public class FastCollinearPoints {
 
         Arrays.sort(points);
 
-        if (hasDuplicates(points))
-            throw new IllegalArgumentException("Found repeating points");
+        if (hasDuplicatesOrNull(points))
+            throw new IllegalArgumentException("Found repeating points or null");
         
         segments = new LineSegment[points.length];
         numberOfSegments = 0;
@@ -55,11 +55,13 @@ public class FastCollinearPoints {
         return res;
     }
 
-    public boolean hasDuplicates(Point[] points) {
+    private boolean hasDuplicatesOrNull(Point[] points) {
         for (int i = 0; i < points.length - 1; i++) {
-            if (points[i].compareTo(points[i+1]) == 0)
+            if (points[i] == null || points[i].compareTo(points[i+1]) == 0)
                 return true;
         }
+        if (points[points.length - 1] == null)
+            return true;
         return false;
     }
 
