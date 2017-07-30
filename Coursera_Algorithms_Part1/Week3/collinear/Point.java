@@ -59,7 +59,15 @@ public class Point implements Comparable<Point> {
      * @return the slope between this point and the specified point
      */
     public double slopeTo(Point that) {
-        /* YOUR CODE HERE */
+        int deltaY = that.y - this.y;
+        int deltaX = that.x - this.x;
+        if (deltaY == 0 && deltaX == 0)
+            return Double.NEGATIVE_INFINITY;
+        if (deltaX == 0)
+            return +0.0;
+        if (deltaY == 0)
+            return Double.POSITIVE_INFINITY;
+        return deltaY / (double) deltaX;
     }
 
     /**
@@ -74,8 +82,21 @@ public class Point implements Comparable<Point> {
      *         point; and a positive integer if this point is greater than the
      *         argument point
      */
+    @Override
     public int compareTo(Point that) {
-        /* YOUR CODE HERE */
+        int deltaY = that.y - this.y;
+        int deltaX = that.x - this.x;
+
+        // this = that
+        if (deltaY == 0 && deltaX == 0)
+            return 0;
+        
+        // this < that
+        if (deltaY > 0 || (deltaY == 0 && deltaX > 0)) {
+            return -1;
+        }
+        // this > that
+        return 1;
     }
 
     /**
@@ -85,9 +106,19 @@ public class Point implements Comparable<Point> {
      * @return the Comparator that defines this ordering on points
      */
     public Comparator<Point> slopeOrder() {
-        /* YOUR CODE HERE */
+        return new Comparator<Point>() {
+            @Override
+            public int compare(Point a, Point b) {
+                double slopeA = slopeTo(a);
+                double slopeB = slopeTo(b);
+                if (slopeA == slopeB)
+                    return 0;
+                if (slopeA > slopeB)
+                    return 1;
+                return -1;
+            }
+        };
     }
-
 
     /**
      * Returns a string representation of this point.
@@ -97,7 +128,7 @@ public class Point implements Comparable<Point> {
      * @return a string representation of this point
      */
     public String toString() {
-        /* DO NOT MODIFY */
+        
         return "(" + x + ", " + y + ")";
     }
 
@@ -105,6 +136,6 @@ public class Point implements Comparable<Point> {
      * Unit tests the Point data type.
      */
     public static void main(String[] args) {
-        /* YOUR CODE HERE */
+        
     }
 }
