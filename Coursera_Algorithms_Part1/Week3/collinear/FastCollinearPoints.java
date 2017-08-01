@@ -15,29 +15,30 @@ public class FastCollinearPoints {
         if (points == null)
             throw new IllegalArgumentException("Invalid input");
 
-        Arrays.sort(points);
+        Point[] pointsCp = points.clone();
+        Arrays.sort(pointsCp);
 
-        if (hasDuplicatesOrNull(points))
+        if (hasDuplicatesOrNull(pointsCp))
             throw new IllegalArgumentException("Found repeating points or null");
         
-        segments = new LineSegment[points.length];
+        segments = new LineSegment[pointsCp.length];
         numberOfSegments = 0;
 
-        for (int i = 0; i < points.length - 3; i++) {
-            Arrays.sort(points, points[i].slopeOrder());
-            for (int first = 1, last = 2; last < points.length; last++) {
+        for (int i = 0; i < pointsCp.length - 3; i++) {
+            Arrays.sort(pointsCp, pointsCp[i].slopeOrder());
+            for (int first = 1, last = 2; last < pointsCp.length; last++) {
                 // ref: https://github.com/AlexJoz/Algorithms--Java-/blob/master/Week3-Collinear%20Points/FastCollinearPoints.java
-                while (last < points.length && points[0].slopeTo(points[first]) == points[0].slopeTo(points[last])) {
+                while (last < pointsCp.length && pointsCp[0].slopeTo(pointsCp[first]) == pointsCp[0].slopeTo(pointsCp[last])) {
                     last++;
                 }
-                if (last - first >= LINE_SEGEMENT_POINT && points[0].compareTo(points[first]) < 0) {
-                    segments[numberOfSegments] = new LineSegment(points[0], points[last - 1]);
+                if (last - first >= LINE_SEGEMENT_POINT && pointsCp[0].compareTo(pointsCp[first]) < 0) {
+                    segments[numberOfSegments] = new LineSegment(pointsCp[0], pointsCp[last - 1]);
                     numberOfSegments++;
                 }
                 first = last;
             }
-            if (i != points.length - 4)
-                Arrays.sort(points);
+            if (i != pointsCp.length - 4)
+                Arrays.sort(pointsCp);
         }
     }
 

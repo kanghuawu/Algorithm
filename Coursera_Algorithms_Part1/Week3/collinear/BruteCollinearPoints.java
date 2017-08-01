@@ -5,26 +5,25 @@ import edu.princeton.cs.algs4.StdDraw;
 import edu.princeton.cs.algs4.StdOut;
 
 public class BruteCollinearPoints {
-    private final Point[] points;
     private final LineSegment[] segments;
     private int numberOfSegments;
     // finds all line segments containing 4 points
     public BruteCollinearPoints(Point[] points) {
         if (points == null)
             throw new java.lang.IllegalArgumentException("Invalid input");
-        this.points = points;
-        segments = new LineSegment[points.length];
+        Point[] pointsCp = points.clone();
+        segments = new LineSegment[pointsCp.length];
         numberOfSegments = 0;
-        Arrays.sort(points);
-        if (hasDuplicatesOrNull(points))
+        Arrays.sort(pointsCp);
+        if (hasDuplicatesOrNull(pointsCp))
             throw new IllegalArgumentException("Found repeating points or null");
-        for (int i = 0; i < points.length - 3; i++) {
-            for (int j = i + 1; j < points.length - 2; j++) {
-                for (int k = j + 1; k < points.length - 1; k++) {
-                    for (int l = k + 1; l < points.length; l++) {
+        for (int i = 0; i < pointsCp.length - 3; i++) {
+            for (int j = i + 1; j < pointsCp.length - 2; j++) {
+                for (int k = j + 1; k < pointsCp.length - 1; k++) {
+                    for (int l = k + 1; l < pointsCp.length; l++) {
 
-                        if (points[i].slopeTo(points[j]) == points[i].slopeTo(points[k]) && points[i].slopeTo(points[k]) == points[i].slopeTo(points[l])) {
-                            segments[numberOfSegments] = new LineSegment(points[i], points[l]);
+                        if (pointsCp[i].slopeTo(pointsCp[j]) == pointsCp[i].slopeTo(pointsCp[k]) && pointsCp[i].slopeTo(pointsCp[k]) == pointsCp[i].slopeTo(pointsCp[l])) {
+                            segments[numberOfSegments] = new LineSegment(pointsCp[i], pointsCp[l]);
                             numberOfSegments++;
                         }
                     }
