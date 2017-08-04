@@ -1,0 +1,107 @@
+See the Assessment Guide for information on how to interpret this report.
+
+ASSESSMENT SUMMARY
+
+Compilation:  PASSED
+API:          PASSED
+
+Findbugs:     FAILED (2 warnings)
+PMD:          FAILED (9 warnings)
+Checkstyle:   FAILED (4 errors, 9 warnings)
+
+Correctness:  No tests available for autograding.
+Memory:       No tests available for autograding.
+Timing:       No tests available for autograding.
+
+Aggregate score: 10.00%
+[Compilation: 5%, API: 5%, Findbugs: 0%, PMD: 0%, Checkstyle: 0%, Correctness: 60%, Memory: 10%, Timing: 20%]
+
+ASSESSMENT DETAILS
+
+The following files were submitted:
+----------------------------------
+8.0K Aug  4 06:35 Board.java
+4.2K Aug  4 06:35 Solver.java
+
+
+********************************************************************************
+*  COMPILING                                                                    
+********************************************************************************
+
+
+% javac Board.java
+*-----------------------------------------------------------
+
+% javac Solver.java
+*-----------------------------------------------------------
+
+
+================================================================
+
+
+Checking the APIs of your programs.
+*-----------------------------------------------------------
+Board:
+
+Solver:
+
+================================================================
+
+
+********************************************************************************
+*  CHECKING STYLE AND COMMON BUG PATTERNS                                       
+********************************************************************************
+
+
+% findbugs *.class
+*-----------------------------------------------------------
+M B HE_EQUALS_USE_HASHCODE HE: The class overrides 'equals()' but not 'hashCode()'. As a result, 'Solver$Node' will not work with 'java.util.HashMap' or 'java.util.HashSet'.  At Solver.java:[lines 55-60]
+M P UUF_UNUSED_FIELD UuF: The instance (or static) variable 'isSolvable' is never used. Consider removing it from the class.  In Solver.java
+Warnings generated: 2
+
+================================================================
+
+
+% pmd *.java
+*-----------------------------------------------------------
+Board.java:9: The private instance (or static) variable 'hammingNum' can be made 'final'; it is initialized only in the declaration or constructor. [ImmutableField]
+Board.java:10: The private instance (or static) variable 'manhattanNum' can be made 'final'; it is initialized only in the declaration or constructor. [ImmutableField]
+Solver.java:10: The private instance (or static) variable 'curPQ' can be made 'final'; it is initialized only in the declaration or constructor. [ImmutableField]
+Solver.java:11: Can you replace the instance (or static) variable 'twinPQ' with a local variable? [SingularField]
+Solver.java:11: The private instance (or static) variable 'twinPQ' can be made 'final'; it is initialized only in the declaration or constructor. [ImmutableField]
+Solver.java:12: Avoid unused private instance (or static) variables, such as 'isSolvable'. [UnusedPrivateField]
+Solver.java:45: The private instance (or static) variable 'bd' can be made 'final'; it is initialized only in the declaration or constructor. [ImmutableField]
+Solver.java:47: The private instance (or static) variable 'moves' can be made 'final'; it is initialized only in the declaration or constructor. [ImmutableField]
+Solver.java:66: Do not throw a 'NullPointerException' in this program. [AvoidThrowingNullPointerException]
+PMD ends with 9 warnings.
+
+
+================================================================
+
+
+% checkstyle *.java
+*-----------------------------------------------------------
+[WARN] Board.java:1:1: Unnecessary import statement for 'java.lang.IllegalArgumentException' because it is from the package 'java.lang'. [RedundantImport]
+[WARN] Board.java:1:8: Unused import statement for 'java.lang.IllegalArgumentException'. [UnusedImports]
+[WARN] Board.java:123:48: ')' is preceded with whitespace. [ParenPad]
+[WARN] Board.java:125:48: ')' is preceded with whitespace. [ParenPad]
+[WARN] Solver.java:2:1: Unnecessary import statement for 'java.lang.NullPointerException' because it is from the package 'java.lang'. [RedundantImport]
+[WARN] Solver.java:2:8: Unused import statement for 'java.lang.NullPointerException'. [UnusedImports]
+[WARN] Solver.java:6:8: Unused import statement for 'edu.princeton.cs.algs4.StdDraw'. [UnusedImports]
+Checkstyle ends with 0 errors and 7 warnings.
+
+% custom checkstyle checks for Board.java
+*-----------------------------------------------------------
+
+% custom checkstyle checks for Solver.java
+*-----------------------------------------------------------
+[ERROR] Solver.java:77:29: Do not call 'hamming()' in this program. The version you submit must call 'manhattan()' instead.. [IllegalMethodCall]
+[ERROR] Solver.java:77:56: Do not call 'hamming()' in this program. The version you submit must call 'manhattan()' instead.. [IllegalMethodCall]
+[ERROR] Solver.java:79:29: Do not call 'hamming()' in this program. The version you submit must call 'manhattan()' instead.. [IllegalMethodCall]
+[ERROR] Solver.java:79:57: Do not call 'hamming()' in this program. The version you submit must call 'manhattan()' instead.. [IllegalMethodCall]
+[WARN] Solver.java:10:13: Can you make the variable of type 'MinPQ' a local variable instead of an instance (or static) variable? [MyIllegalType]
+[WARN] Solver.java:11:13: Can you make the variable of type 'MinPQ' a local variable instead of an instance (or static) variable? [MyIllegalType]
+Checkstyle ends with 4 errors and 2 warnings.
+
+
+================================================================
