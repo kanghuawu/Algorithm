@@ -56,8 +56,10 @@ public class KdTree {
     }
 
     private Node put(Node node, Point2D p, double xmin, double ymin, double xmax, double ymax, boolean isVertical) {
-        if (node == null) 
+        if (node == null) {
+            this.size++;
             return new Node(p, new RectHV(xmin, ymin, xmax, ymax));
+        }
         
         int cmp = compare(node.p, p, isVertical);
         if (cmp < 0) {
@@ -80,7 +82,7 @@ public class KdTree {
             throw new IllegalArgumentException();
 
         this.root = put(this.root, p, 0.0, 0.0, 1.0, 1.0, VERTICAL);
-        this.size++;
+        
     }
 
     private Node get(Node node, Point2D p, boolean isVertical) {
