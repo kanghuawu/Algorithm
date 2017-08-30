@@ -2,7 +2,7 @@ package leetcode;
 
 import utility.TreeNode;
 
-public class LE111minDepth {
+public class LE111MinDepth {
 	public int minDepth(TreeNode root) {
         if(root == null){
         	return 0;
@@ -28,7 +28,7 @@ public class LE111minDepth {
 //    	t2.right = t5;
 //    	t3.left = t6;
 //    	t3.right = t7;
-    	LE111minDepth test = new LE111minDepth();
+    	LE111MinDepth test = new LE111MinDepth();
     	System.out.println(test.minDepth(t1));
     	
     }

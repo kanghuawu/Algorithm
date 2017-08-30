@@ -2,7 +2,7 @@ package leetcode;
 
 import utility.TreeNode;
 
-public class LE104maxDepth {
+public class LE104MaxDepth {
 	public int maxDepth(TreeNode root) {
         if(root == null){
         	return 0;
@@ -26,7 +26,7 @@ public class LE104maxDepth {
 //    	t2.right = t5;
 //    	t3.left = t6;
 //    	t3.right = t7;
-    	LE104maxDepth test = new LE104maxDepth();
+    	LE104MaxDepth test = new LE104MaxDepth();
     	System.out.println(test.maxDepth(t1));
     	
     }

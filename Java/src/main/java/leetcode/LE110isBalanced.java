@@ -1,10 +1,8 @@
 package leetcode;
-import java.util.LinkedList;
-import java.util.Queue;
 
 import utility.TreeNode;
 
-public class LE110isBalanced {
+public class LE110IsBalanced {
 	public boolean isBalanced(TreeNode root) {
 	    if(root==null){
 	        return true;
@@ -44,7 +42,7 @@ public class LE110isBalanced {
     	t2.right = t3;
 //    	t3.left = t6;
 //    	t3.right = t7;
-    	LE110isBalanced test = new LE110isBalanced();
+    	LE110IsBalanced test = new LE110IsBalanced();
     	System.out.println(test.isBalanced(t1));
     	
     }

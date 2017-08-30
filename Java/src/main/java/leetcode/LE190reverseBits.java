@@ -3,7 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LE190reverseBits {
+public class LE190ReverseBits {
 	// MY
 //	public int reverseBits(int n) {
 //		int result = 0;
@@ -45,7 +45,7 @@ public class LE190reverseBits {
 	    return value;
 	}
     public static void main(String[] args){
-    	LE190reverseBits test = new LE190reverseBits();
+    	LE190ReverseBits test = new LE190ReverseBits();
     	System.out.println(test.reverseBits(1));
     }
 }

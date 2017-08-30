@@ -1,6 +1,6 @@
 package leetcode;
 
-public class LE292canWinNim {
+public class LE292CanWinNim {
 //    public boolean canWinNim(int n) {
 //    	if(n % 4 == 0) return false;
 //    	return true;
@@ -10,7 +10,7 @@ public class LE292canWinNim {
     }
     public static void main(String[] arg){
     	int n = 8;
-    	LE292canWinNim test = new LE292canWinNim();
+    	LE292CanWinNim test = new LE292CanWinNim();
     	System.out.println(test.canWinNim(n));
     }
 }

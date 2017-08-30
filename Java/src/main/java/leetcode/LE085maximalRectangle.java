@@ -2,7 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-public class LE085maximalRectangle {
+public class LE085MaximalRectangle {
 //    public int maximalRectangle(char[][] matrix) {
 //        int rows = matrix.length, cols = rows > 0 ? matrix[0].length : 0;
 //        int[][] dp_v = new int[rows + 1][cols + 1];
@@ -96,7 +96,7 @@ public class LE085maximalRectangle {
 		char[][] num = {{'1', '1', '1', '1'}, {'1', '1', '1', '1'}, {'1', '1', '1', '1'}};
 		char[][] num1 = {{'1', '0', '1', '0', '0'}, {'1', '0', '1', '1', '1'}, {'1', '1', '1', '1', '1'}, {'1', '0', '0', '1', '0'}};
 		char[][] num2 = {{'1', '1'}};
-		LE085maximalRectangle test = new LE085maximalRectangle();
+		LE085MaximalRectangle test = new LE085MaximalRectangle();
 		System.out.println(test.maximalRectangle(num2));
 	}
 }

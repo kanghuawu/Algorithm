@@ -1,6 +1,6 @@
 package leetcode;
 
-public class LE074searchMatrix {
+public class LE074SearchMatrix {
 //    public boolean searchMatrix(int[][] matrix, int target) {
 //    	int rows = matrix.length;
 //    	int cols = matrix[0].length;
@@ -49,7 +49,7 @@ public class LE074searchMatrix {
 //    	int[][] m = {{}};
     	int t = 1;
 //    	System.out.print(3/2);
-    	LE074searchMatrix test = new LE074searchMatrix();
+    	LE074SearchMatrix test = new LE074SearchMatrix();
     	System.out.print(test.searchMatrix(m, t));
     }
 }

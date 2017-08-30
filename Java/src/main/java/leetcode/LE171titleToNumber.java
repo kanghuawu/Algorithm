@@ -1,6 +1,6 @@
 package leetcode;
 
-public class LE171titleToNumber {
+public class LE171TitleToNumber {
 	public int titleToNumber(String s) {
         int result = 0;
 		for(char ch : s.toCharArray()){
@@ -11,7 +11,7 @@ public class LE171titleToNumber {
     }
 	public static void main(String[] args){
 		String str = "AZ";
-		LE171titleToNumber test = new LE171titleToNumber();
+		LE171TitleToNumber test = new LE171TitleToNumber();
     	System.out.println(test.titleToNumber(str));
     }
 }

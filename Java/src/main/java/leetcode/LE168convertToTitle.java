@@ -1,6 +1,6 @@
 package leetcode;
 
-public class LE168convertToTitle {
+public class LE168ConvertToTitle {
 	public String convertToTitle(int n) {
 		int i;
 		char ch;
@@ -20,7 +20,7 @@ public class LE168convertToTitle {
 	public static void main(String[] args){
 		int num = 53;
 //		System.out.print(ch);
-		LE168convertToTitle test = new LE168convertToTitle();
+		LE168ConvertToTitle test = new LE168ConvertToTitle();
     	System.out.println(test.convertToTitle(num));
     }
 }

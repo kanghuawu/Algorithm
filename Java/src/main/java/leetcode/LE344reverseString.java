@@ -1,6 +1,6 @@
 package leetcode;
 
-public class LE344reverseString {
+public class LE344ReverseString {
 	//MY
 //	public String reverseString(String s) {
 //        int i = 0;
@@ -56,7 +56,7 @@ public class LE344reverseString {
 
     public static void main(String[] arg){
     	String s = "acbde";
-    	LE344reverseString test = new LE344reverseString();
+    	LE344ReverseString test = new LE344ReverseString();
     	String toprint = test.reverseString(s);
     	System.out.println(toprint);
     }

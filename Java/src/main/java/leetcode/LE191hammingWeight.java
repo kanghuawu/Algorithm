@@ -1,6 +1,6 @@
 package leetcode;
 
-public class LE191hammingWeight {
+public class LE191HammingWeight {
 	  // MY = ANS1
 //    public int hammingWeight(int n) {
 //        int result = 0;
@@ -25,7 +25,7 @@ public class LE191hammingWeight {
     }
     
     public static void main(String[] args){
-    	LE191hammingWeight test = new LE191hammingWeight();
+    	LE191HammingWeight test = new LE191HammingWeight();
     	System.out.println(test.hammingWeight(11));
     }
 }

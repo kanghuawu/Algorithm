@@ -1,6 +1,6 @@
 package leetcode;
 
-public class LE014longestCommonPrefix {
+public class LE014LongestCommonPrefix {
 	//horizontal
 	public static String longestCommonPrefix(String[] strs) {
 	    if (strs.length == 0) return "";
@@ -147,7 +147,7 @@ public class LE014longestCommonPrefix {
 	
 	public static void main(String[] args){
 		String[] test = {"bdeccc","bdec","bdecc"};
-		LE014longestCommonPrefix ss = new LE014longestCommonPrefix();
+		LE014LongestCommonPrefix ss = new LE014LongestCommonPrefix();
 		String str = ss.longestCommonPrefix(test);
 //		System.out.println(str.startsWith("abc"));
 		System.out.println(str);

@@ -1,8 +1,6 @@
 package leetcode;
 
-import java.util.Arrays;
-
-public class LE169majorityElement {
+public class LE169MajorityElement {
 	public int majorityElement(int[] num) {
 
         int major=num[0], count = 1;
@@ -23,7 +21,7 @@ public class LE169majorityElement {
 //    }
     public static void main(String[] arg){
     	int[] nums = {2, 1, 1, 1, 2};
-    	LE169majorityElement test = new LE169majorityElement();
+    	LE169MajorityElement test = new LE169MajorityElement();
     	System.out.println(test.majorityElement(nums));
     }
 }

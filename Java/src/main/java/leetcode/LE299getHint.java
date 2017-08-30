@@ -1,8 +1,6 @@
 package leetcode;
 
-import java.util.HashMap;
-
-public class LE299getHint {
+public class LE299GetHint {
 //	public String getHint(String secret, String guess) {
 //        int len = secret.length();
 //		int[] secretarr = new int[10];
@@ -72,7 +70,7 @@ public class LE299getHint {
 //    }
 	
 	public static void main(String arg[]){
-		LE299getHint test = new LE299getHint();
+		LE299GetHint test = new LE299GetHint();
 		String secret = "1123";
 		String guess = "0111";
 		System.out.println(test.getHint(secret, guess));

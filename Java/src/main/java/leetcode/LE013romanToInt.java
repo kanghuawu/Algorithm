@@ -2,7 +2,7 @@ package leetcode;
 
 import java.util.HashMap;
 
-public class LE013romanToInt {
+public class LE013RomanToInt {
 	//MYMY
 	private static HashMap<Character, Integer> RomIntMap = new HashMap<Character, Integer>();
 	static{

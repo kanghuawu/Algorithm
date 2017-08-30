@@ -1,6 +1,6 @@
 package leetcode;
 
-public class LE221maximalSquare {
+public class LE221MaximalSquare {
 //    public int maximalSquare(char[][] matrix) {
 //        int rows = matrix.length, cols = rows > 0 ? matrix[0].length : 0;
 //        int[][] dp = new int[rows + 1][cols + 1];
@@ -52,7 +52,7 @@ public class LE221maximalSquare {
 	
     public static void main(String[] args){
 //		char[][] num1 = {{'1', '0', '1', '0', '0'}, {'1', '0', '1', '1', '1'}, {'1', '1', '1', '1', '1'}, {'1', '0', '0', '1', '0'}};
-//		LE221maximalSquare test = new LE221maximalSquare();
+//		LE221MaximalSquare test = new LE221MaximalSquare();
 //		System.out.println(test.maximalSquare(num1));
     	int[] tt = new int[9];
     	System.out.println(tt[8]);

@@ -1,6 +1,6 @@
 package leetcode;
 
-public class LE006convert {
+public class LE006Convert {
 //	MY
 	public String convert(String s, int numRows) {
 		if(numRows == 1 || numRows >= s.length()) return s;
@@ -66,50 +66,51 @@ public class LE006convert {
 //	        sb[0].append(sb[idx]);
 //	    return sb[0].toString();
 //	}
-	public String convert(String s, int numRows) {
-        if(numRows<=1)return s;
-        StringBuilder[] sb=new StringBuilder[numRows];
-        for(int i=0;i<sb.length;i++){
-            sb[i]=new StringBuilder();   //init every sb element **important step!!!!
-        }
-        int incre=1;
-        int index=0;
-        for(int i=0;i<s.length();i++){
-            sb[index].append(s.charAt(i));
-            if(index==0){incre=1;}
-            if(index==numRows-1){incre=-1;}
-            index+=incre;
-        }
-    
-        for(int i=1;i<sb.length;i++){
-            sb[0].append(sb[i]);
-        }
-        return sb[0].toString();
-    }
-//	fast
-	public String convert(String s, int numRows) {
-	    if(numRows==1) return s;
-	    int x = 2 * (numRows-1); // distance between pipes |/|/|...
-	    int len = s.length();
-	    char[] c = new char[len];
-	    int k =0;
-	    for(int i=0; i < numRows; i++)
-	    {
-	        for(int j=i;j<len;j=j+x)
-	        {
-	            c[k++] = s.charAt(j);
-	            if(i>0 && i<numRows-1 && j+x-2*i < len)
-	            {
-	                   c[k++] = s.charAt(j+x-2*i); // extra character between pipes
-	            }
-	        }
-	    }
-	    return new String(c);
-	}
+//	public String convert(String s, int numRows) {
+//        if(numRows<=1)return s;
+//        StringBuilder[] sb=new StringBuilder[numRows];
+//        for(int i=0;i<sb.length;i++){
+//            sb[i]=new StringBuilder();   //init every sb element **important step!!!!
+//        }
+//        int incre=1;
+//        int index=0;
+//        for(int i=0;i<s.length();i++){
+//            sb[index].append(s.charAt(i));
+//            if(index==0){incre=1;}
+//            if(index==numRows-1){incre=-1;}
+//            index+=incre;
+//        }
+//
+//        for(int i=1;i<sb.length;i++){
+//            sb[0].append(sb[i]);
+//        }
+//        return sb[0].toString();
+//    }
+	//	fast
+//	public String convert(String s, int numRows) {
+//	    if(numRows==1) return s;
+//	    int x = 2 * (numRows-1); // distance between pipes |/|/|...
+//	    int len = s.length();
+//	    char[] c = new char[len];
+//	    int k =0;
+//	    for(int i=0; i < numRows; i++)
+//	    {
+//	        for(int j=i;j<len;j=j+x)
+//	        {
+//	            c[k++] = s.charAt(j);
+//	            if(i>0 && i<numRows-1 && j+x-2*i < len)
+//	            {
+//	                   c[k++] = s.charAt(j+x-2*i); // extra character between pipes
+//	            }
+//	        }
+//	    }
+//	    return new String(c);
+//	}
+
     public static void main(String[] arg){
     	String s = "ABC";
     	int numRows = 2;
-    	LE006convert test = new LE006convert();
+    	LE006Convert test = new LE006Convert();
     	System.out.println(test.convert(s, numRows));
     }
 }

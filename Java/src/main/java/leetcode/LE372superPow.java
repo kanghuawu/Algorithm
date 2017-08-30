@@ -1,21 +1,16 @@
 package leetcode;
 
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class LE372superPow {
+public class LE372SuperPow {
 	// MYMY
-	public int superPow(int a, int[] b) {
-		a %= 1337;
-//		System.out.println(a);
-		int result = 1;
-		for(int i = 0; i < b.length; i++){
-			result = (int) (Math.pow(result, 3) % 1337 * Math.pow(result, 3) % 1337 * Math.pow(result, 4) % 1337 * Math.pow(a, b[i]/2) % 1337 * Math.pow(a, b[i]/2) % 1337 * Math.pow(a, b[i] - b[i]/2 -b[i]/2) % 1337);
-//			System.out.println(i + " : " + result);
-		}
-		return result;
-    }
+//	public int superPow(int a, int[] b) {
+//		a %= 1337;
+//		int result = 1;
+//		for(int i = 0; i < b.length; i++){
+//			result = (int) (Math.pow(result, 3) % 1337 * Math.pow(result, 3) % 1337 * Math.pow(result, 4) % 1337 * Math.pow(a, b[i]/2) % 1337 * Math.pow(a, b[i]/2) % 1337 * Math.pow(a, b[i] - b[i]/2 -b[i]/2) % 1337);
+//		}
+//		return result;
+//    }
 	
 	// eurler
 //	public int superPow(int a, int[] b) {
@@ -99,7 +94,7 @@ public class LE372superPow {
     }
     
 	public static void main(String[] arg){
-		LE372superPow test = new LE372superPow();
+		LE372SuperPow test = new LE372SuperPow();
 		int a = 2;
 //		double t = MAX_VALUE;
 		int[] b = {1,2,3,4,5};

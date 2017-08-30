@@ -1,6 +1,6 @@
 package leetcode;
 
-public class LE278firstBadVersion {
+public class LE278FirstBadVersion {
     public int firstBadVersion(int n) {
         int le = 0;
         int ri = n;
@@ -20,7 +20,7 @@ public class LE278firstBadVersion {
     	return true;
     }
     public static void main(String[] args){
-    	LE278firstBadVersion test = new LE278firstBadVersion();
+    	LE278FirstBadVersion test = new LE278FirstBadVersion();
     	System.out.print(test.firstBadVersion(1));
     }
 }

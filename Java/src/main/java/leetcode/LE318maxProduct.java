@@ -1,6 +1,6 @@
 package leetcode;
 
-public class LE318maxProduct {
+public class LE318MaxProduct {
     public int maxProduct(String[] words) {
     	if(words == null || words.length == 0) return 0;
         int len = words.length;
@@ -29,7 +29,7 @@ public class LE318maxProduct {
 //    	String[] s = {};
 //    	String[] s = {"a", "ab", "abc", "d", "cd", "bcd", "abcd"};
     	String[] s = {"a", "aa", "aaa", "aaaa"};
-		LE318maxProduct test = new LE318maxProduct();
+		LE318MaxProduct test = new LE318MaxProduct();
 		System.out.println(test.maxProduct(s));
     }
 }

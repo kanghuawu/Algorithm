@@ -1,6 +1,6 @@
 package leetcode;
 
-public class LE456find132pattern {
+public class LE456Find132Pattern {
 	public boolean find132pattern(int[] nums) {
         if(nums.length < 3) return false;
         int first = 0;

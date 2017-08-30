@@ -3,7 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LE022generateParenthesis {
+public class LE022GenerateParenthesis {
 	public List<String> generateParenthesis(int n) {
         List<String> re = generateParenthesisHelper(n, n, new ArrayList<String>(), new StringBuilder());
         return re;

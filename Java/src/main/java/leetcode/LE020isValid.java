@@ -1,8 +1,6 @@
 package leetcode;
 
-import java.util.Stack;
-
-public class LE020isValid {
+public class LE020IsValid {
 //    public boolean isValid(String s) {
 //    	if(s.length()%2 != 0) return false;
 //        char[] charr = s.toCharArray();
@@ -46,7 +44,7 @@ public class LE020isValid {
 	}
 	public static void main(String[] args){
 		String s = "([])";
-		LE020isValid test = new LE020isValid();
+		LE020IsValid test = new LE020IsValid();
 		System.out.println(test.isValid(s));
 	}
 }

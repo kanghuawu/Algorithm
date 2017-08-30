@@ -1,8 +1,6 @@
 package leetcode;
 
-import java.util.Stack;
-
-public class LE032longestValidParentheses {
+public class LE032LongestValidParentheses {
 	//MY
     public int longestValidParentheses(String s) {
       int[] dp = new int[s.length()];
@@ -25,51 +23,51 @@ public class LE032longestValidParentheses {
       return maxlen;
     }
     //DP Time: O(n); Space: O(n)
-	public int longestValidParentheses(String s) {
-	    char[] S = s.toCharArray();
-	    int[] V = new int[S.length];
-	    int open = 0;
-	    int max = 0;
-	    for (int i=0; i<S.length; i++) {
-	        if (S[i] == '(') open++;
-	        if (S[i] == ')' && open > 0) {
-	            // matches found
-	            V[i] = 2+ V[i-1];
-	            // add matches from previous
-	            System.out.println(i + " / " + V[i] + " / " + V[i - 1]);
-	            System.out.println("open: " + open);
-	            System.out.println("i - V[i]: " + (i - V[i]));
-	            if(i-V[i]>0)
-	                V[i] += V[i-V[i]];
-	            System.out.println("V[i]: " + V[i]);
-	            open--;
-	        }
-	        if (V[i] > max) max = V[i];
-	    }
-	    return max;
-	}
-	public static void printarr(int[] arr){
-		for(int i = 0; i < arr.length; i++){
-			if(i < arr.length - 1) System.out.print(arr[i] + ", ");
-			else System.out.println(arr[i]);
-		}
-	}
+//	public int longestValidParentheses(String s) {
+//	    char[] S = s.toCharArray();
+//	    int[] V = new int[S.length];
+//	    int open = 0;
+//	    int max = 0;
+//	    for (int i=0; i<S.length; i++) {
+//	        if (S[i] == '(') open++;
+//	        if (S[i] == ')' && open > 0) {
+//	            // matches found
+//	            V[i] = 2+ V[i-1];
+//	            // add matches from previous
+//	            System.out.println(i + " / " + V[i] + " / " + V[i - 1]);
+//	            System.out.println("open: " + open);
+//	            System.out.println("i - V[i]: " + (i - V[i]));
+//	            if(i-V[i]>0)
+//	                V[i] += V[i-V[i]];
+//	            System.out.println("V[i]: " + V[i]);
+//	            open--;
+//	        }
+//	        if (V[i] > max) max = V[i];
+//	    }
+//	    return max;
+//	}
+//	public static void printarr(int[] arr){
+//		for(int i = 0; i < arr.length; i++){
+//			if(i < arr.length - 1) System.out.print(arr[i] + ", ");
+//			else System.out.println(arr[i]);
+//		}
+//	}
 	
     // stack
-	public int longestValidParentheses(String s) {
-        LinkedList<Integer> stack = new LinkedList<>();
-        int result = 0;
-        stack.push(-1);
-        for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) == ')' && stack.size() > 1 && s.charAt(stack.peek()) == '(') {
-                stack.pop();
-                result = Math.max(result, i - stack.peek());
-            } else {
-                stack.push(i);
-            }
-        }
-        return result;
-    }
+//	public int longestValidParentheses(String s) {
+//        LinkedList<Integer> stack = new LinkedList<Integer>();
+//        int result = 0;
+//        stack.push(-1);
+//        for (int i = 0; i < s.length(); i++) {
+//            if (s.charAt(i) == ')' && stack.size() > 1 && s.charAt(stack.peek()) == '(') {
+//                stack.pop();
+//                result = Math.max(result, i - stack.peek());
+//            } else {
+//                stack.push(i);
+//            }
+//        }
+//        return result;
+//    }
 	
 	// Time: O(2n); Space: O(1)
 //	public int longestValidParentheses(String s) {
@@ -134,7 +132,7 @@ public class LE032longestValidParentheses {
 //    }
 	public static void main(String[] args){
 		String s = "()((()()";
-		LE032longestValidParentheses test = new LE032longestValidParentheses();
+		LE032LongestValidParentheses test = new LE032LongestValidParentheses();
 		System.out.println(test.longestValidParentheses(s));
 	}
 }

@@ -1,9 +1,8 @@
 package leetcode;
 
 import java.util.HashMap;
-import java.util.Vector;
 
-public class LE290wordPattern {
+public class LE290WordPattern {
 private Object previousValue;
 
 //	public boolean wordPattern(String pattern, String str) {
@@ -37,7 +36,7 @@ private Object previousValue;
     }
 	
 	public static void main(String arg[]){
-		LE290wordPattern test = new LE290wordPattern();
+		LE290WordPattern test = new LE290WordPattern();
 		String pattern = "abba";
 		String str = "dog cat cat fish";
 		System.out.println(test.wordPattern(pattern, str));

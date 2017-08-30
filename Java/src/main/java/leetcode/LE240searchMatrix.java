@@ -1,6 +1,6 @@
 package leetcode;
 
-public class LE240searchMatrix {
+public class LE240SearchMatrix {
 //    public boolean searchMatrix(int[][] matrix, int target) {
 //        int i = 0;
 //        int j = matrix[0].length - 1;
@@ -50,7 +50,7 @@ public class LE240searchMatrix {
 //		int[][] m = {{1}};
 //		int[][] m = {{}};
 		int t = 7;
-		LE240searchMatrix test = new LE240searchMatrix();
+		LE240SearchMatrix test = new LE240SearchMatrix();
 		System.out.print(test.searchMatrix(m, t));
 	}
 }

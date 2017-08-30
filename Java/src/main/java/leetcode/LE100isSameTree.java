@@ -1,7 +1,7 @@
 package leetcode;
 import utility.TreeNode;
 
-public class LE100isSameTree {
+public class LE100IsSameTree {
 	public boolean isSameTree(TreeNode p, TreeNode q) {
 	    // base case
 	    if(p==null || q==null) return p==null && q==null;
@@ -34,7 +34,7 @@ public class LE100isSameTree {
     	tr2_2.right = tr2_4;
     	tr2_3.left = tr2_5;
     	tr2_3.right = tr2_6;
-    	LE100isSameTree tree = new LE100isSameTree();
+    	LE100IsSameTree tree = new LE100IsSameTree();
     	System.out.println(tree.isSameTree(tr1_1, tr2_1));
     }
 }

@@ -2,7 +2,7 @@ package leetcode;
 
 import utility.TreeNode;
 
-public class LE226invertTree {
+public class LE226InvertTree {
     public TreeNode invertTree(TreeNode root) {
     	if(root == null) return null;
     	else{
@@ -14,7 +14,7 @@ public class LE226invertTree {
     	return root;
     }
     public static void main(String[] args){
-    	LE226invertTree test = new LE226invertTree();
+    	LE226InvertTree test = new LE226InvertTree();
     	TreeNode tree = TreeNode.TreeNode1();
     	TreeNode intree = test.invertTree(tree);
     	System.out.println(intree.right.right.left.val);

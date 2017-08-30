@@ -5,20 +5,20 @@ import java.util.Queue;
 import utility.TreeNode;
 
 public class LE101isSymmetric {
+//	public boolean isSymmetric(TreeNode root) {
+//		if(root.left == null || root.left == null ) return root.left == null && root.left == null;
+//		TreeNode le = root.left;
+//		TreeNode ri = root.right;
+//		return le.val == ri.val && LE101isSymmetric.isSameTree(le, ri);
+//    }
+//	public static boolean isSameTree(TreeNode p, TreeNode q) {
+//	    // base case
+//	    if(p==null || q==null) return p==null && q==null;
+//	    // recursion
+//	    return p.val==q.val && isSameTree(p.left, q.right) && isSameTree(p.right, q.left);
+//	}
 	public boolean isSymmetric(TreeNode root) {
-		if(root.left == null || root.left == null ) return root.left == null && root.left == null;
-		TreeNode le = root.left;
-		TreeNode ri = root.right;
-		return le.val == ri.val && LE101isSymmetric.isSameTree(le, ri);
-    }
-	public static boolean isSameTree(TreeNode p, TreeNode q) {
-	    // base case
-	    if(p==null || q==null) return p==null && q==null;
-	    // recursion
-	    return p.val==q.val && isSameTree(p.left, q.right) && isSameTree(p.right, q.left);
-	}
-	public boolean isSymmetric(TreeNode root) {
-	    Queue<TreeNode> q = new LinkedList<>();
+	    Queue<TreeNode> q = new LinkedList<TreeNode>();
 	    q.add(root);
 	    q.add(root);
 	    while (!q.isEmpty()) {

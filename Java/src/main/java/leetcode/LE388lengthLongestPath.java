@@ -1,6 +1,6 @@
 package leetcode;
 
-public class LE388lengthLongestPath {
+public class LE388LengthLongestPath {
 	// MY
     // idea: accumulation sum, tab's length = 1
     public int lengthLongestPath(String input) {

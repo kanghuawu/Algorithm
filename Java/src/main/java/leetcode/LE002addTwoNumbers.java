@@ -1,7 +1,7 @@
 package leetcode;
 import utility.ListNode;
 
-public class LE002addTwoNumbers {
+public class LE002AddTwoNumbers {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
     	ListNode head = new ListNode(0);
     	ListNode re = head;
@@ -55,7 +55,7 @@ public class LE002addTwoNumbers {
 		L2.next = L3;
 		L4.next = L5;
 		L5.next = L6;
-		LE002addTwoNumbers test = new LE002addTwoNumbers();
+		LE002AddTwoNumbers test = new LE002AddTwoNumbers();
 		ListNode tt = test.addTwoNumbers(L1, L4);
 		while(tt != null){
 			System.out.print(tt.val + " ");

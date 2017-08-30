@@ -1,6 +1,6 @@
 package leetcode;
 
-public class LE165compareVersion {
+public class LE165CompareVersion {
 //	public static int compareVersion(String version1, String version2) {
 	//6%
 //		String[] s1 = version1.split("\\.");

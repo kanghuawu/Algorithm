@@ -2,7 +2,7 @@ package leetcode;
 
 import utility.ListNode;
 
-public class LE148sortList {
+public class LE148SortList {
     public ListNode sortList(ListNode head) {
         
     	return head;
@@ -27,7 +27,7 @@ public class LE148sortList {
 		L5.next = L6;
 		printNode(L1);
 		System.out.println();
-		LE148sortList test = new LE148sortList();
+		LE148SortList test = new LE148SortList();
 		printNode(test.sortList(L1));
 	}
 }

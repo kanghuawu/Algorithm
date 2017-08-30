@@ -1,6 +1,6 @@
 package leetcode;
 
-public class LE151reverseWords {
+public class LE151ReverseWords {
     public String reverseWords(String s) {
         StringBuilder sb = new StringBuilder();
         String store;

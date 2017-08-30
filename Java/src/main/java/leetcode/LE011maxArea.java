@@ -1,6 +1,6 @@
 package leetcode;
 
-public class LE011maxArea {
+public class LE011MaxArea {
     public int maxArea(int[] height) {
     	// MY
         int len = height.length;
