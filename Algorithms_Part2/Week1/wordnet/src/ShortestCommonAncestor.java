@@ -22,9 +22,11 @@ public class ShortestCommonAncestor {
 
    // a shortest common ancestor of vertex subsets A and B
    public int ancestor(Iterable<Integer> subsetA, Iterable<Integer> subsetB) {
-      
+
    }
 
    // do unit testing of this class
-   public static void main(String[] args)
+   public static void main(String[] args) {
+      
+   }
 }
