@@ -65,7 +65,9 @@ public class LE015ThreeSum {
 
     public static void main(String[] args) {
         int[] nums = {-1, 0, 1, 2, -1, -4};
-        LE015ThreeSum test = new LE015ThreeSum();
-        System.out.println(test.threeSum(nums));
+//        LE015ThreeSum test = new LE015ThreeSum();
+//        System.out.println(test.threeSum(nums));
+        int i = 0;
+        System.out.println(nums[++i] == 0);
     }
 }
