@@ -4,6 +4,7 @@
 *.DS_Store
 __pycache__
 *.class
+largeDG.txt
 
 target/
 pom.xml.tag
