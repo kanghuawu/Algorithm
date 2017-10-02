@@ -32,7 +32,7 @@ public class LE015ThreeSum {
 
     // ref: https://discuss.leetcode.com/topic/45491/share-my-simple-java-solution
     public List<List<Integer>> threeSum(int[] nums) {
-        List<List<Integer>> res = new ArrayList<>();
+        List<List<Integer>> res = new ArrayList();
         Arrays.sort(nums);
         for (int i = 0; i < nums.length - 2; i++) {
             if (nums[i] > 0) break;
