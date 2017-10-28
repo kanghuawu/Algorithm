@@ -1,0 +1,753 @@
+Findbugs:     PASSED
+PMD:          PASSED
+Checkstyle:   FAILED (0 errors, 5 warnings)
+
+Correctness:  33/35 tests passed
+Memory:       4/4 tests passed
+Timing:       16/16 tests passed
+
+Aggregate score: 96.57%
+[Compilation: 5%, API: 5%, Findbugs: 0%, PMD: 0%, Checkstyle: 0%, Correctness: 60%, Memory: 10%, Timing: 20%]
+
+ASSESSMENT DETAILS
+
+The following files were submitted:
+----------------------------------
+1.2K Oct 28 05:03 Outcast.java
+3.4K Oct 28 05:03 SAP.java
+3.0K Oct 28 05:03 WordNet.java
+
+
+********************************************************************************
+*  COMPILING                                                                    
+********************************************************************************
+
+
+% javac SAP.java
+*-----------------------------------------------------------
+
+% javac WordNet.java
+*-----------------------------------------------------------
+
+% javac Outcast.java
+*-----------------------------------------------------------
+
+
+================================================================
+
+
+Checking the APIs of your programs.
+*-----------------------------------------------------------
+SAP:
+
+WordNet:
+
+Outcast:
+
+================================================================
+
+
+********************************************************************************
+*  CHECKING STYLE AND COMMON BUG PATTERNS                                       
+********************************************************************************
+
+
+% findbugs *.class
+*-----------------------------------------------------------
+
+
+================================================================
+
+
+% pmd .
+*-----------------------------------------------------------
+WordNet.java:13: Can you replace the instance (or static) variable 'graph' with a local variable? [SingularField]
+WordNet.java:85: The method body is empty. If this is your intent, document it with a comment. [UncommentedEmptyMethodBody]
+PMD ends with 2 warnings.
+
+
+================================================================
+
+
+% checkstyle *.java
+*-----------------------------------------------------------
+[WARN] Outcast.java:2:8: Unused import statement for 'edu.princeton.cs.algs4.StdIn'. [UnusedImports]
+[WARN] SAP.java:3:8: Unused import statement for 'java.util.Deque'. [UnusedImports]
+[WARN] SAP.java:4:8: Unused import statement for 'java.util.LinkedList'. [UnusedImports]
+[WARN] WordNet.java:5:8: Unused import statement for 'edu.princeton.cs.algs4.StdIn'. [UnusedImports]
+[WARN] WordNet.java:6:8: Unused import statement for 'edu.princeton.cs.algs4.StdOut'. [UnusedImports]
+Checkstyle ends with 0 errors and 5 warnings.
+
+
+================================================================
+
+
+********************************************************************************
+*  TESTING CORRECTNESS
+********************************************************************************
+
+Testing correctness of SAP
+*-----------------------------------------------------------
+Running 19 total tests.
+
+Test 1: test length() and ancestor() on fixed digraphs
+  * digraph1.txt
+  * digraph2.txt
+  * digraph3.txt
+  * digraph4.txt
+  * digraph5.txt
+  * digraph6.txt
+  * digraph9.txt
+==> passed
+
+Test 2: check length() and ancestor() on WordNet digraph
+  * 100 random vertex pairs in digraph-wordnet.txt
+==> passed
+
+Test 3: check length() and ancestor() on directed paths
+  * 5
+  * 10
+  * 20
+  * 50
+  * 100
+==> passed
+
+Test 4: check length() and ancestor() on directed cycles
+  * 5
+  * 10
+  * 20
+  * 50
+  * 100
+==> passed
+
+Test 5: check length() and ancestor() on complete graphs
+  * 5
+  * 10
+  * 20
+  * 50
+==> passed
+
+Test 6: check length() and ancestor() on tournament digraphs
+  * 5
+  * 10
+  * 20
+  * 50
+==> passed
+
+Test 7: check length() and ancestor() on complete binary trees
+  * 5
+  * 10
+  * 20
+  * 50
+  * 100
+==> passed
+
+Test 8: check length() and ancestor() on random DAGs
+  * 5 vertices, 8 edges
+  * 10 vertices, 40 edges
+  * 20 vertices, 100 edges
+==> passed
+
+Test 9: check length() and ancestor() on random rooted-in DAGs
+  * 5 vertices, 8 edges
+  * 10 vertices, 40 edges
+  * 20 vertices, 100 edges
+==> passed
+
+Test 10: check length() and ancestor() on random rooted-out DAGs
+  * 5 vertices, 8 edges
+  * 10 vertices, 40 edges
+  * 20 vertices, 100 edges
+==> passed
+
+Test 11: check length() and ancestor() on random rooted-in trees
+  * 5 vertices
+  * 10 vertices
+  * 20 vertices
+==> passed
+
+Test 12: check length() and ancestor() on random rooted-out trees
+  * 5 vertices
+  * 10 vertices
+  * 20 vertices
+==> passed
+
+Test 13: check length() and ancestor() on random simple digraphs
+  * 5 vertices, 8 edges
+  * 10 vertices, 40 edges
+  * 20 vertices, 100 edges
+==> passed
+
+Test 14: check whether two SAP objects can be created at the same time
+  * digraph1.txt and digraph2.txt
+  * digraph3.txt and digraph4.txt
+  * digraph5.txt and digraph6.txt
+  * digraph2.txt and digraph1.txt
+==> passed
+
+Test 15: check whether SAP is immutable
+  * digraph1.txt
+  * digraph2.txt
+  * digraph3.txt
+  * digraph4.txt
+  * digraph5.txt
+  * digraph6.txt
+  * digraph-ambiguous-ancestor.txt
+==> passed
+
+Test 16: test invalid arguments to length() and ancestor() in digraph1.txt
+  * v = -1, w = 0
+    java.lang.IllegalArgumentException
+
+    SAP.length(SAP.java:63)
+    SAP.length(SAP.java:48)
+    TestSAP.testOutOfBounds(TestSAP.java:764)
+    TestSAP.test16(TestSAP.java:818)
+    TestSAP.main(TestSAP.java:1221)
+
+    - invalid index
+    - but java.lang.IndexOutOfBoundsException not thrown
+    java.lang.IllegalArgumentException
+
+    SAP.ancestor(SAP.java:71)
+    SAP.ancestor(SAP.java:57)
+    TestSAP.testOutOfBounds(TestSAP.java:773)
+    TestSAP.test16(TestSAP.java:818)
+    TestSAP.main(TestSAP.java:1221)
+
+    - invalid index
+    - but java.lang.IndexOutOfBoundsException not thrown
+  * v = 0, w = -1
+    java.lang.IllegalArgumentException
+
+    SAP.length(SAP.java:63)
+    SAP.length(SAP.java:48)
+    TestSAP.testOutOfBounds(TestSAP.java:764)
+    TestSAP.test16(TestSAP.java:819)
+    TestSAP.main(TestSAP.java:1221)
+
+    - invalid index
+    - but java.lang.IndexOutOfBoundsException not thrown
+    java.lang.IllegalArgumentException
+
+    SAP.ancestor(SAP.java:71)
+    SAP.ancestor(SAP.java:57)
+    TestSAP.testOutOfBounds(TestSAP.java:773)
+    TestSAP.test16(TestSAP.java:819)
+    TestSAP.main(TestSAP.java:1221)
+
+    - invalid index
+    - but java.lang.IndexOutOfBoundsException not thrown
+  * v = 13, w = 0
+    java.lang.IllegalArgumentException
+
+    SAP.length(SAP.java:63)
+    SAP.length(SAP.java:48)
+    TestSAP.testOutOfBounds(TestSAP.java:764)
+    TestSAP.test16(TestSAP.java:820)
+    TestSAP.main(TestSAP.java:1221)
+
+    - invalid index
+    - but java.lang.IndexOutOfBoundsException not thrown
+    java.lang.IllegalArgumentException
+
+    SAP.ancestor(SAP.java:71)
+    SAP.ancestor(SAP.java:57)
+    TestSAP.testOutOfBounds(TestSAP.java:773)
+    TestSAP.test16(TestSAP.java:820)
+    TestSAP.main(TestSAP.java:1221)
+
+    - invalid index
+    - but java.lang.IndexOutOfBoundsException not thrown
+  * v = 0, w = 13
+    java.lang.IllegalArgumentException
+
+    SAP.length(SAP.java:63)
+    SAP.length(SAP.java:48)
+    TestSAP.testOutOfBounds(TestSAP.java:764)
+    TestSAP.test16(TestSAP.java:821)
+    TestSAP.main(TestSAP.java:1221)
+
+    - invalid index
+    - but java.lang.IndexOutOfBoundsException not thrown
+    java.lang.IllegalArgumentException
+
+    SAP.ancestor(SAP.java:71)
+    SAP.ancestor(SAP.java:57)
+    TestSAP.testOutOfBounds(TestSAP.java:773)
+    TestSAP.test16(TestSAP.java:821)
+    TestSAP.main(TestSAP.java:1221)
+
+    - invalid index
+    - but java.lang.IndexOutOfBoundsException not thrown
+  * v = -1 2 7 , w = 1 4 6 10 11 
+    java.lang.IllegalArgumentException
+
+    SAP.length(SAP.java:63)
+    TestSAP.testOutOfBounds(TestSAP.java:789)
+    TestSAP.test16(TestSAP.java:837)
+    TestSAP.main(TestSAP.java:1221)
+
+    - invalid index
+    - but java.lang.IndexOutOfBoundsException not thrown
+    java.lang.IllegalArgumentException
+
+    SAP.ancestor(SAP.java:71)
+    TestSAP.testOutOfBounds(TestSAP.java:798)
+    TestSAP.test16(TestSAP.java:837)
+    TestSAP.main(TestSAP.java:1221)
+
+    - invalid index
+    - but java.lang.IndexOutOfBoundsException not thrown
+  * v = 2 7 , w = -1 1 4 6 10 11 
+    java.lang.IllegalArgumentException
+
+    SAP.length(SAP.java:63)
+    TestSAP.testOutOfBounds(TestSAP.java:789)
+    TestSAP.test16(TestSAP.java:839)
+    TestSAP.main(TestSAP.java:1221)
+
+    - invalid index
+    - but java.lang.IndexOutOfBoundsException not thrown
+    java.lang.IllegalArgumentException
+
+    SAP.ancestor(SAP.java:71)
+    TestSAP.testOutOfBounds(TestSAP.java:798)
+    TestSAP.test16(TestSAP.java:839)
+    TestSAP.main(TestSAP.java:1221)
+
+    - invalid index
+    - but java.lang.IndexOutOfBoundsException not thrown
+  * v = 13 2 7 , w = 1 4 6 10 11 
+    java.lang.IllegalArgumentException
+
+    SAP.length(SAP.java:63)
+    TestSAP.testOutOfBounds(TestSAP.java:789)
+    TestSAP.test16(TestSAP.java:841)
+    TestSAP.main(TestSAP.java:1221)
+
+    - invalid index
+    - but java.lang.IndexOutOfBoundsException not thrown
+    java.lang.IllegalArgumentException
+
+    SAP.ancestor(SAP.java:71)
+    TestSAP.testOutOfBounds(TestSAP.java:798)
+    TestSAP.test16(TestSAP.java:841)
+    TestSAP.main(TestSAP.java:1221)
+
+    - invalid index
+    - but java.lang.IndexOutOfBoundsException not thrown
+  * v = 2 7 , w = 13 1 4 6 10 11 
+    java.lang.IllegalArgumentException
+
+    SAP.length(SAP.java:63)
+    TestSAP.testOutOfBounds(TestSAP.java:789)
+    TestSAP.test16(TestSAP.java:843)
+    TestSAP.main(TestSAP.java:1221)
+
+    - invalid index
+    - but java.lang.IndexOutOfBoundsException not thrown
+    java.lang.IllegalArgumentException
+
+    SAP.ancestor(SAP.java:71)
+    TestSAP.testOutOfBounds(TestSAP.java:798)
+    TestSAP.test16(TestSAP.java:843)
+    TestSAP.main(TestSAP.java:1221)
+
+    - invalid index
+    - but java.lang.IndexOutOfBoundsException not thrown
+==> FAILED
+
+Test 17: test length() and ancestor() with Iterable arguments
+  * 100 random subsets of 1 and 1 vertices in digraph-wordnet.txt
+  * 100 random subsets of 1 and 2 vertices in digraph-wordnet.txt
+  * 100 random subsets of 2 and 1 vertices in digraph-wordnet.txt
+  * 100 random subsets of 2 and 2 vertices in digraph-wordnet.txt
+  * 100 random subsets of 3 and 11 vertices in digraph-wordnet.txt
+  * 100 random subsets of 11 and 3 vertices in digraph-wordnet.txt
+  * 100 random subsets of 0 and 5 vertices in digraph-wordnet.txt
+  * 100 random subsets of 5 and 0 vertices in digraph-wordnet.txt
+  * 100 random subsets of 0 and 0 vertices in digraph-wordnet.txt
+==> passed
+
+Test 18: Check Iterable version of length() and ancestor() with null arguments
+==> passed
+
+Test 19: random calls to length() and ancestor(), with probabilities
+         p1 and p2, respectively
+  * random calls in a random rooted DAG (20 vertices, 100 edges)
+    (p1 = 0.5, p2 = 0.5)
+  * random calls in a random digraph (20 vertices, 100 edges)
+    (p1 = 0.5, p2 = 0.5)
+==> passed
+
+
+Total: 18/19 tests passed!
+
+
+================================================================
+********************************************************************************
+*  TESTING CORRECTNESS (substituting reference SAP)
+********************************************************************************
+
+Testing correctness of WordNet
+*-----------------------------------------------------------
+Running 14 total tests.
+
+Test 1: test distance() of random noun pairs
+  * 1000 pairs using synsets = synsets.txt; hypernyms = hypernyms.txt
+==> passed
+
+Test 2: test distance() of all noun pairs
+  * synsets = synsets15.txt; hypernyms = hypernyms15Path.txt
+  * synsets = synsets15.txt; hypernyms = hypernyms15Tree.txt
+  * synsets = synsets6.txt; hypernyms = hypernyms6TwoAncestors.txt
+  * synsets = synsets11.txt; hypernyms = hypernyms11AmbiguousAncestor.txt
+  * synsets = synsets8.txt; hypernyms = hypernyms8ModTree.txt
+  * synsets = synsets8.txt; hypernyms = hypernyms8WrongBFS.txt
+  * synsets = synsets11.txt; hypernyms = hypernyms11ManyPathsOneAncestor.txt
+  * synsets = synsets8.txt; hypernyms = hypernyms8ManyAncestors.txt
+==> passed
+
+Test 3: test distance() of random noun pairs
+  * 1000 pairs using synsets = synsets100-subgraph.txt; hypernyms = hypernyms100-subgraph.txt
+  * 1000 pairs using synsets = synsets500-subgraph.txt; hypernyms = hypernyms500-subgraph.txt
+  * 1000 pairs using synsets = synsets1000-subgraph.txt; hypernyms = hypernyms1000-subgraph.txt
+==> passed
+
+Test 4: test sap() of random noun pairs
+  * 1000 pairs using synsets = synsets.txt; hypernyms = hypernyms.txt
+==> passed
+
+Test 5: test sap() of all noun pairs
+  * synsets = synsets15.txt; hypernyms = hypernyms15Path.txt
+  * synsets = synsets15.txt; hypernyms = hypernyms15Tree.txt
+  * synsets = synsets6.txt; hypernyms = hypernyms6TwoAncestors.txt
+  * synsets = synsets11.txt; hypernyms = hypernyms11AmbiguousAncestor.txt
+  * synsets = synsets8.txt; hypernyms = hypernyms8ModTree.txt
+  * synsets = synsets8.txt; hypernyms = hypernyms8WrongBFS.txt
+  * synsets = synsets11.txt; hypernyms = hypernyms11ManyPathsOneAncestor.txt
+  * synsets = synsets8.txt; hypernyms = hypernyms8ManyAncestors.txt
+==> passed
+
+Test 6: test sap() of random noun pairs
+  * 1000 pairs using synsets = synsets100-subgraph.txt; hypernyms = hypernyms100-subgraph.txt
+  * 1000 pairs using synsets = synsets500-subgraph.txt; hypernyms = hypernyms500-subgraph.txt
+  * 1000 pairs using synsets = synsets1000-subgraph.txt; hypernyms = hypernyms1000-subgraph.txt
+==> passed
+
+Test 7: check whether WordNet is immutable
+  * synsets = synsets.txt; hypernyms = hypernyms.txt
+==> passed
+
+Test 8: check that constructor throws specified exception when the input is not a rooted DAG
+  * synsets3.txt, hypernyms3InvalidTwoRoots.txt
+    - constructor fails to throw an exception
+    - it should throw a java.lang.IllegalArgumentException
+
+  * synsets3.txt, hypernyms3InvalidCycle.txt
+  * synsets6.txt, hypernyms6InvalidTwoRoots.txt
+    - constructor fails to throw an exception
+    - it should throw a java.lang.IllegalArgumentException
+
+  * synsets6.txt, hypernyms6InvalidCycle.txt
+  * synsets6.txt, hypernyms6InvalidCycle+Path.txt
+    - constructor fails to throw an exception
+    - it should throw a java.lang.IllegalArgumentException
+
+==> FAILED
+
+Test 9: check isNoun()
+  * synsets = synsets.txt; hypernyms = hypernyms.txt
+  * synsets = synsets15.txt; hypernyms = hypernyms15Path.txt
+  * synsets = synsets8.txt; hypernyms = hypernyms8ModTree.txt
+==> passed
+
+Test 10: check nouns()
+  * synsets = synsets.txt; hypernyms = hypernyms.txt
+  * synsets = synsets15.txt; hypernyms = hypernyms15Path.txt
+  * synsets = synsets8.txt; hypernyms = hypernyms8ModTree.txt
+==> passed
+
+Test 11: check whether two WordNet objects can be created at the same time
+  * synsets1 = synsets15.txt; hypernyms1 = hypernyms15Tree.txt
+    synsets2 = synsets15.txt; hypernyms2 = hypernyms15Path.txt
+  * synsets1 = synsets.txt; hypernyms1 = hypernyms.txt
+    synsets2 = synsets15.txt; hypernyms2 = hypernyms15Path.txt
+==> passed
+
+Test 12: call distance() and sca() with invalid arguments
+  * synsets15.txt, hypernyms15Tree.txt, nounA = "x", nounB = "b"
+  * synsets15.txt, hypernyms15Tree.txt, nounA = "b", nounB = "x"
+  * synsets15.txt, hypernyms15Tree.txt, nounA = "x", nounB = "a"
+  * synsets15.txt, hypernyms15Tree.txt, nounA = "x", nounB = "x"
+  * synsets15.txt, hypernyms15Tree.txt, nounA = "a", nounB = null
+  * synsets15.txt, hypernyms15Tree.txt, nounA = null, nounB = "a"
+  * synsets15.txt, hypernyms15Tree.txt, nounA = null, nounB = null
+  * synsets15.txt, hypernyms15Tree.txt, nounA = "x", nounB = null
+  * synsets15.txt, hypernyms15Tree.txt, nounA = null, nounB = "x"
+==> passed
+
+Test 13: call isNoun() with a null argument
+  * synsets15.txt, hypernyms15Path.txt
+==> passed
+
+Test 14: random calls to isNoun(), distance(), and sap(), with
+         probabilities p1, p2, and p3, respectively
+  * 100 random calls (p1 = 0.5, p2 = 0.5, p3 = 0.0)
+  * 100 random calls (p1 = 0.5, p2 = 0.0, p3 = 0.5)
+  * 100 random calls (p1 = 0.0, p2 = 0.5, p3 = 0.5)
+  * 100 random calls (p1 = 0.2, p2 = 0.4, p3 = 0.4)
+==> passed
+
+
+Total: 13/14 tests passed!
+
+
+================================================================
+********************************************************************************
+*  TESTING CORRECTNESS (substituting reference SAP and WordNet)
+********************************************************************************
+
+Testing correctness of Outcast
+*-----------------------------------------------------------
+Running 2 total tests.
+
+Test 1: test outcast() on WordNet digraph
+        (synsets.txt and hypernyms.txt)
+  * outcast2.txt
+  * outcast3.txt
+  * outcast4.txt
+  * outcast5.txt
+  * outcast5a.txt
+  * outcast7.txt
+  * outcast8.txt
+  * outcast8a.txt
+  * outcast8b.txt
+  * outcast8c.txt
+  * outcast9.txt
+  * outcast9a.txt
+  * outcast10.txt
+  * outcast10a.txt
+  * outcast11.txt
+  * outcast12.txt
+  * outcast12a.txt
+  * outcast17.txt
+  * outcast20.txt
+  * outcast29.txt
+==> passed
+
+Test 2: test outcast() on WordNet subgraph
+        (synsets50000-subgraph.txt and hypernyms50000-subgraph.txt)
+  * outcast2.txt
+  * outcast3.txt
+  * outcast5.txt
+  * outcast5a.txt
+  * outcast7.txt
+  * outcast8.txt
+  * outcast8b.txt
+  * outcast8c.txt
+  * outcast9.txt
+  * outcast10.txt
+  * outcast11.txt
+==> passed
+
+
+Total: 2/2 tests passed!
+
+
+================================================================
+********************************************************************************
+*  MEMORY
+********************************************************************************
+
+Analyzing memory of SAP
+*-----------------------------------------------------------
+Running 1 total tests.
+
+student     memory    = 8348008 bytes
+reference   memory    = 10320496 bytes
+ratio                 = 0.81
+maximum allowed ratio = 2.50
+
+vertices = 82192
+edges    = 84505
+
+Total: 1/1 tests passed!
+
+================================================================
+
+
+
+Analyzing memory of WordNet
+*-----------------------------------------------------------
+Running 3 total tests.
+
+Test 1a: test memory of WordNet object
+  * synsets = synsets1000-subgraph.txt; hypernyms = hypernyms1000-subgraph.txt
+    - student   memory = 780496 bytes
+    - reference memory = 1494080 bytes
+    - number vertices  = 1000
+    - number of edges  = 1008
+    - student / reference ratio  =  0.5
+    - maximum allowed rato       =  2.0
+
+==> passed
+
+Test 1b: test memory of WordNet object
+  * synsets = synsets5000-subgraph.txt; hypernyms = hypernyms5000-subgraph.txt
+    - student   memory = 3880472 bytes
+    - reference memory = 7296592 bytes
+    - number vertices  = 5000
+    - number of edges  = 5059
+    - student / reference ratio  =  0.5
+    - maximum allowed rato       =  2.0
+
+==> passed
+
+Test 1c: test memory of WordNet object
+  * synsets = synsets10000-subgraph.txt; hypernyms = hypernyms10000-subgraph.txt
+    - student   memory = 9307824 bytes
+    - reference memory = 16931360 bytes
+    - number vertices  = 10000
+    - number of edges  = 10087
+    - student / reference ratio  =  0.5
+    - maximum allowed rato       =  2.0
+
+==> passed
+
+Total: 3/3 tests passed!
+
+================================================================
+
+
+
+********************************************************************************
+*  TIMING
+********************************************************************************
+
+Timing SAP
+*-----------------------------------------------------------
+Running 7 total tests.
+
+Test 1: time SAP constructor
+   *  digraph-wordnet.txt
+    - student solution time =  0.03 seconds
+    - maximum allowed  time =  1.00 seconds
+==> passed
+
+Test 2a-c: time length() and ancestor() with random pairs of vertices
+  *  digraph-wordnet.txt
+    - reference solution calls per second:  630657.33
+    - student   solution calls per second:    1466.00
+    - reference / student ratio:               430.19
+
+=> passed    student <= 50000x reference
+=> passed    student <=  5000x reference
+=> passed    student <=   500x reference
+
+Test 3a-c: time length() and ancestor() with random sets of 5 vertices
+  *  digraph-wordnet.txt
+    - reference solution calls per second:  210590.00
+    - student   solution calls per second:    1475.33
+    - reference / student ratio:               142.74
+
+=> passed    student <= 20000x reference
+=> passed    student <=  2000x reference
+=> passed    student <=   200x reference
+
+
+Total: 7/7 tests passed!
+
+
+================================================================
+
+
+
+********************************************************************************
+*  TIMING (substituting reference SAP)
+********************************************************************************
+
+Timing WordNet
+*-----------------------------------------------------------
+Running 8 total tests.
+
+Test 1: timing WordNet constructor
+  * synsets = synsets.txt; hypernyms = hypernyms.txt
+    - student constructor time =  0.78 seconds
+    - maximum allowed     time = 10.00 seconds
+==> passed
+
+Test 2: check that exactly one SAP object created per WordNet object
+==> passed
+
+Test 3a-c: timing sap() and distance() with random nouns
+  * synsets = synsets.txt; hypernyms = hypernyms.txt
+    - reference solution calls per second:  215561.40
+    - student   solution calls per second:  131414.80
+    - reference / student ratio:                 1.64
+
+=> passed    student <= 10000x reference
+=> passed    student <=  1000x reference
+=> passed    student <=   100x reference
+=> passed    student <=    10x reference
+=> passed    student <=     5x reference
+
+Test 4: timing isNoun() with random nouns
+  * synsets = synsets.txt; hypernyms = hypernyms.txt
+    - reference solution calls per second:  607548.00
+    - student   solution calls per second:  478180.00
+    - reference / student ratio:                 1.27
+    - allowed ratio:                             4.00
+==> passed
+
+Total: 8/8 tests passed!
+
+
+================================================================
+
+
+
+********************************************************************************
+*  TIMING (substituting reference SAP and WordNet)
+********************************************************************************
+
+Timing Outcast
+*-----------------------------------------------------------
+Running 1 total tests.
+
+1.11 seconds to build WordNet
+
+Computing time to find outcasts of various outcast files.
+Total time must not exceed 1 seconds.
+
+    filename       n     time
+-----------------------------
+   outcast4.txt    4     0.00
+   outcast5.txt    5     0.00
+  outcast5a.txt    5     0.00
+   outcast5.txt    5     0.00
+   outcast7.txt    7     0.00
+   outcast8.txt    8     0.00
+  outcast8a.txt    8     0.00
+  outcast8b.txt    8     0.00
+  outcast8c.txt    8     0.00
+   outcast9.txt    9     0.00
+  outcast9a.txt    9     0.00
+  outcast10.txt   10     0.00
+ outcast10a.txt   10     0.00
+  outcast11.txt   11     0.00
+  outcast12.txt   12     0.00
+ outcast12a.txt   12     0.00
+  outcast20.txt   20     0.00
+  outcast29.txt   29     0.00
+=> passed, total elapsed time: 0.02
+
+Total: 1/1 tests passed!
+
+
+================================================================
+
+
+
+
