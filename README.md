@@ -13,7 +13,7 @@ Algorithm
 Design and Analysis of Algorithms
 
 * [website](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-046j-design-and-analysis-of-algorithms-spring-2015/index.htm)
-* [youtube](https://www.youtube.com/watch?v=iTMn0Kt18tg)
+* [youtube](https://www.youtube.com/playlist?list=PLUl4u3cNGP6317WaSNfmCvGym2ucw3oGp)
 
 
 Algorithms for Big Data
