@@ -1,0 +1,2071 @@
+Findbugs:     FAILED (2 warnings)
+PMD:          FAILED (9 warnings)
+Checkstyle:   FAILED (0 errors, 3 warnings)
+
+Correctness:  33/45 tests passed
+Memory:       0/3 tests passed
+Timing:       20/125 tests passed
+
+Aggregate score: 57.20%
+[Compilation: 5%, API: 5%, Findbugs: 0%, PMD: 0%, Checkstyle: 0%, Correctness: 60%, Memory: 10%, Timing: 20%]
+
+ASSESSMENT DETAILS
+
+The following files were submitted:
+----------------------------------
+8.0K Aug  4 06:45 Board.java
+4.2K Aug  4 06:45 Solver.java
+
+
+********************************************************************************
+*  COMPILING                                                                    
+********************************************************************************
+
+
+% javac Board.java
+*-----------------------------------------------------------
+
+% javac Solver.java
+*-----------------------------------------------------------
+
+
+================================================================
+
+
+Checking the APIs of your programs.
+*-----------------------------------------------------------
+Board:
+
+Solver:
+
+================================================================
+
+
+********************************************************************************
+*  CHECKING STYLE AND COMMON BUG PATTERNS                                       
+********************************************************************************
+
+
+% findbugs *.class
+*-----------------------------------------------------------
+M B HE_EQUALS_USE_HASHCODE HE: The class overrides 'equals()' but not 'hashCode()'. As a result, 'Solver$Node' will not work with 'java.util.HashMap' or 'java.util.HashSet'.  At Solver.java:[lines 53-58]
+M P UUF_UNUSED_FIELD UuF: The instance (or static) variable 'isSolvable' is never used. Consider removing it from the class.  In Solver.java
+Warnings generated: 2
+
+================================================================
+
+
+% pmd *.java
+*-----------------------------------------------------------
+Board.java:8: The private instance (or static) variable 'hammingNum' can be made 'final'; it is initialized only in the declaration or constructor. [ImmutableField]
+Board.java:9: The private instance (or static) variable 'manhattanNum' can be made 'final'; it is initialized only in the declaration or constructor. [ImmutableField]
+Solver.java:8: The private instance (or static) variable 'curPQ' can be made 'final'; it is initialized only in the declaration or constructor. [ImmutableField]
+Solver.java:9: Can you replace the instance (or static) variable 'twinPQ' with a local variable? [SingularField]
+Solver.java:9: The private instance (or static) variable 'twinPQ' can be made 'final'; it is initialized only in the declaration or constructor. [ImmutableField]
+Solver.java:10: Avoid unused private instance (or static) variables, such as 'isSolvable'. [UnusedPrivateField]
+Solver.java:43: The private instance (or static) variable 'bd' can be made 'final'; it is initialized only in the declaration or constructor. [ImmutableField]
+Solver.java:45: The private instance (or static) variable 'moves' can be made 'final'; it is initialized only in the declaration or constructor. [ImmutableField]
+Solver.java:64: Do not throw a 'NullPointerException' in this program. [AvoidThrowingNullPointerException]
+PMD ends with 9 warnings.
+
+
+================================================================
+
+
+% checkstyle *.java
+*-----------------------------------------------------------
+[WARN] Solver.java:3:8: Unused import statement for 'java.util.Comparator'. [UnusedImports]
+Checkstyle ends with 0 errors and 1 warnings.
+
+% custom checkstyle checks for Board.java
+*-----------------------------------------------------------
+
+% custom checkstyle checks for Solver.java
+*-----------------------------------------------------------
+[WARN] Solver.java:8:13: Can you make the variable of type 'MinPQ' a local variable instead of an instance (or static) variable? [MyIllegalType]
+[WARN] Solver.java:9:13: Can you make the variable of type 'MinPQ' a local variable instead of an instance (or static) variable? [MyIllegalType]
+Checkstyle ends with 0 errors and 2 warnings.
+
+
+================================================================
+
+
+********************************************************************************
+*  TESTING CORRECTNESS
+********************************************************************************
+
+Testing correctness of Board
+*-----------------------------------------------------------
+Running 22 total tests.
+
+Tests 5, 6, 13, and 14 rely upon toString() returning results in prescribed format.
+
+Test 1a: check hamming() with file inputs
+  * puzzle04.txt
+  * puzzle00.txt
+  * puzzle07.txt
+  * puzzle17.txt
+  * puzzle27.txt
+  * puzzle2x2-unsolvable1.txt
+==> passed
+
+Test 1b: check hamming() with random n-by-n boards
+  * 2-by-2
+  * 3-by-3
+  * 4-by-4
+  * 5-by-5
+  * 9-by-9
+  * 10-by-10
+  * 127-by-127
+==> passed
+
+Test 2a: check manhattan() with file inputs
+  * puzzle04.txt
+  * puzzle00.txt
+  * puzzle07.txt
+  * puzzle17.txt
+  * puzzle27.txt
+  * puzzle2x2-unsolvable1.txt
+==> passed
+
+Test 2b: check manhattan() with random n-by-n boards
+  * 2-by-2
+  * 3-by-3
+  * 4-by-4
+  * 5-by-5
+  * 9-by-9
+  * 10-by-10
+  * 127-by-127
+==> passed
+
+Test 3: check dimension() with random n-by-n boards
+  * 2-by-2
+  * 3-by-3
+  * 4-by-4
+  * 5-by-5
+  * 6-by-6
+==> passed
+
+Test 4a: check toString() with file inputs
+  * puzzle04.txt
+  * puzzle00.txt
+  * puzzle06.txt
+  * puzzle09.txt
+  * puzzle23.txt
+  * puzzle2x2-unsolvable1.txt
+==> passed
+
+Test 4b: check toString() with random n-by-n boards
+  * 2-by-2
+  * 3-by-3
+  * 4-by-4
+  * 5-by-5
+  * 9-by-9
+  * 10-by-10
+  * 127-by-127
+==> passed
+
+Test 5a: check neighbors() with file inputs
+  * puzzle04.txt
+  * puzzle00.txt
+  * puzzle06.txt
+  * puzzle09.txt
+  * puzzle23.txt
+  * puzzle2x2-unsolvable1.txt
+==> passed
+
+Test 5b: check neighbors() with random n-by-n boards
+  * 2-by-2
+  * 3-by-3
+  * 4-by-4
+  * 5-by-5
+  * 9-by-9
+  * 10-by-10
+  * 127-by-127
+==> passed
+
+Test 6a: check neighbors() of neigbors() with file inputs
+  * puzzle04.txt
+  * puzzle00.txt
+  * puzzle06.txt
+  * puzzle09.txt
+  * puzzle23.txt
+  * puzzle2x2-unsolvable1.txt
+==> passed
+
+Test 6b: check neighbors() of neighbors() with random n-by-n boards
+  * 2-by-2
+  * 3-by-3
+  * 4-by-4
+  * 5-by-5
+  * 9-by-9
+  * 10-by-10
+==> passed
+
+Test 7a: check twin() with file inputs
+  * puzzle04.txt
+  * puzzle00.txt
+  * puzzle06.txt
+  * puzzle09.txt
+  * puzzle23.txt
+  * puzzle2x2-unsolvable1.txt
+==> passed
+
+Test 7b: check twin() with random n-by-n boards
+  * 2-by-2
+  * 3-by-3
+  * 4-by-4
+  * 5-by-5
+  * 9-by-9
+  * 10-by-10
+==> passed
+
+Test 8a: check isGoal() on file inputs
+  * puzzle00.txt
+  * puzzle04.txt
+  * puzzle16.txt
+  * puzzle06.txt
+  * puzzle09.txt
+  * puzzle23.txt
+  * puzzle2x2-unsolvable1.txt
+  * puzzle3x3-unsolvable1.txt
+  * puzzle3x3-00.txt
+  * puzzle4x4-00.txt
+==> passed
+
+Test 8b: check isGoal() on n-by-n goal boards
+  * 2-by-2
+  * 3-by-3
+  * 4-by-4
+  * 5-by-5
+  * 6-by-6
+  * 100-by-100
+==> passed
+
+Test 9: check whether two Board objects can be created at the same time
+  * random 3-by-3 and 3-by-3 boards
+  * random 4-by-4 and 4-by-4 boards
+  * random 2-by-2 and 2-by-2 boards
+  * random 3-by-3 and 4-by-4 boards
+  * random 4-by-4 and 3-by-3 boards
+==> passed
+
+Test 10a: check equals()
+  * reflexive
+  * symmetric
+  * corresponding array elements are equal
+  * argument is object of type String
+  * argument is object of type Object
+  * argument is null
+  * argument is Board of different dimension
+    java.lang.ArrayIndexOutOfBoundsException: 9
+
+    Board.equals(Board.java:106)
+    TestBoard.test10a(TestBoard.java:1021)
+    TestBoard.main(TestBoard.java:1378)
+
+    - cannot check for equality with a Board of different dimension
+==> FAILED
+
+Test 10b: check equals() on m-by-m vs. n-by-n goal boards
+  * m = 2, n = 2
+  * m = 3, n = 3
+  * m = 4, n = 4
+  * m = 2, n = 5
+  * m = 5, n = 2
+==> passed
+
+Test 11: check that Board is immutable by changing argument array after
+         construction and making sure Board does not mutate
+==> passed
+
+Test 12: check that Board is immutable by testing whether methods
+         return the same value, regardless of order in which called
+  * puzzle10.txt
+  * puzzle20.txt
+  * puzzle30.txt
+  * 2-by-2
+  * 3-by-3
+  * 4-by-4
+==> passed
+
+Test 13: check hamming() on a board that is kth-neighbor of a board
+  * 0th neighbor of puzzle27.txt
+  * 1th neighbor of puzzle27.txt
+  * 2th neighbor of puzzle27.txt
+  * 13th neighbor of puzzle27.txt
+  * 13th neighbor of puzzle00.txt
+  * 13th neighbor of puzzle2x2-unsolvable1.txt
+==> passed
+
+Test 14: check manhattan() on a board that is a kth-neighbor of a board
+  * 0th neighbor of puzzle27.txt
+  * 1th neighbor of puzzle27.txt
+  * 2th neighbor of puzzle27.txt
+  * 13th neighbor of puzzle27.txt
+  * 13th neighbor of puzzle00.txt
+  * 13th neighbor of puzzle2x2-unsolvable1.txt
+==> passed
+
+
+Total: 21/22 tests passed!
+
+
+================================================================
+********************************************************************************
+*  TESTING CORRECTNESS (substituting reference Board)
+********************************************************************************
+
+Testing correctness of Solver
+*-----------------------------------------------------------
+Running 23 total tests.
+
+Test 1a: call moves() with file inputs
+  * puzzle00.txt
+  * puzzle01.txt
+  * puzzle02.txt
+  * puzzle03.txt
+  * puzzle04.txt
+  * puzzle05.txt
+  * puzzle06.txt
+  * puzzle07.txt
+  * puzzle08.txt
+  * puzzle09.txt
+  * puzzle10.txt
+  * puzzle11.txt
+  * puzzle12.txt
+  * puzzle13.txt
+==> passed
+
+Test 1b: call solution() with file inputs
+  * puzzle00.txt
+  * puzzle01.txt
+    - wrong initial board
+    - student   solution() initial board =
+        2
+         1  2 
+         3  0 
+
+    - reference solution() initial board =
+        2
+         1  0 
+         3  2 
+
+  * puzzle02.txt
+    - wrong initial board
+    - student   solution() initial board =
+        9
+         1  2  3  4  5  6  7  8  9 
+        10 11 12 13 14 15 16 17 18 
+        19 20 21 22 23 24 25 26 27 
+        28 29 30 31 32 33 34 35 36 
+        37 38 39 40 41 42 43 44 45 
+        46 47 48 49 50 51 52 53 54 
+        55 56 57 58 59 60 61 62 63 
+        64 65 66 67 68 69 70 71 72 
+        73 74 75 76 77 78 79 80  0 
+
+    - reference solution() initial board =
+        9
+         1  2  3  4  5  6  7  8  9 
+        10 11 12 13 14 15 16 17 18 
+        19 20 21 22 23 24 25 26 27 
+        28 29 30 31 32 33 34 35 36 
+        37 38 39 40 41 42 43 44 45 
+        46 47 48 49 50 51 52 53 54 
+        55 56 57 58 59 60 61 62 63 
+        64 65 66 67 68 69 70  0 71 
+        73 74 75 76 77 78 79 80 72 
+
+  * puzzle03.txt
+    - wrong initial board
+    - student   solution() initial board =
+        2
+         1  2 
+         3  0 
+
+    - reference solution() initial board =
+        2
+         2  0 
+         1  3 
+
+  * puzzle04.txt
+    - wrong initial board
+    - student   solution() initial board =
+        3
+         1  2  3 
+         4  5  6 
+         7  8  0 
+
+    - reference solution() initial board =
+        3
+         0  1  3 
+         4  2  5 
+         7  8  6 
+
+  * puzzle05.txt
+    - wrong initial board
+    - student   solution() initial board =
+        3
+         1  2  3 
+         4  5  6 
+         7  8  0 
+
+    - reference solution() initial board =
+        3
+         4  1  3 
+         0  2  6 
+         7  5  8 
+
+  * puzzle06.txt
+    - wrong initial board
+    - student   solution() initial board =
+        4
+         1  2  3  4 
+         5  6  7  8 
+         9 10 11 12 
+        13 14 15  0 
+
+    - reference solution() initial board =
+        4
+         0  1  2  3 
+         5  6  7  4 
+         9 10 11  8 
+        13 14 15 12 
+
+  * puzzle07.txt
+    - wrong initial board
+    - student   solution() initial board =
+        3
+         1  2  3 
+         4  5  6 
+         7  8  0 
+
+    - reference solution() initial board =
+        3
+         1  2  3 
+         0  7  6 
+         5  4  8 
+
+  * puzzle08.txt
+    - wrong initial board
+    - student   solution() initial board =
+        3
+         1  2  3 
+         4  5  6 
+         7  8  0 
+
+    - reference solution() initial board =
+        3
+         2  3  5 
+         1  0  4 
+         7  8  6 
+
+  * puzzle09.txt
+    - wrong initial board
+    - student   solution() initial board =
+        4
+         1  2  3  4 
+         5  6  7  8 
+         9 10 11 12 
+        13 14 15  0 
+
+    - reference solution() initial board =
+        4
+         2  0  3  4 
+         1 10  6  8 
+         5  9  7 12 
+        13 14 11 15 
+
+  * puzzle10.txt
+    - wrong initial board
+    - student   solution() initial board =
+        9
+         1  2  3  4  5  6  7  8  9 
+        10 11 12 13 14 15 16 17 18 
+        19 20 21 22 23 24 25 26 27 
+        28 29 30 31 32 33 34 35 36 
+        37 38 39 40 41 42 43 44 45 
+        46 47 48 49 50 51 52 53 54 
+        55 56 57 58 59 60 61 62 63 
+        64 65 66 67 68 69 70 71 72 
+        73 74 75 76 77 78 79 80  0 
+
+    - reference solution() initial board =
+        9
+         1  2  3  4  5  6  7  8  9 
+        10 11 12 13 14 15 16 17 18 
+        19 20 21 22 23 24 25 26 27 
+        28 29 30 31 32 33 34 35 36 
+        37 38 39 40 41 42 43 44 45 
+        46 47 48 49 50 51 52 53 54 
+        55 56 57 58 59 60 61 62 63 
+        64  0 65 67 68 78 69 70 72 
+        73 74 66 75 76 77 79 71 80 
+
+  * puzzle11.txt
+    - wrong initial board
+    - student   solution() initial board =
+        3
+         1  2  3 
+         4  5  6 
+         7  8  0 
+
+    - reference solution() initial board =
+        3
+         1  0  2 
+         7  5  4 
+         8  6  3 
+
+  * puzzle12.txt
+    - wrong initial board
+    - student   solution() initial board =
+        5
+         1  2  3  4  5 
+         6  7  8  9 10 
+        11 12 13 14 15 
+        16 17 18 19 20 
+        21 22 23 24  0 
+
+    - reference solution() initial board =
+        5
+         1  2  3  4  5 
+        12  6  8  9 10 
+         0  7 13 19 14 
+        11 16 17 18 15 
+        21 22 23 24 20 
+
+  * puzzle13.txt
+    - wrong initial board
+    - student   solution() initial board =
+        4
+         1  2  3  4 
+         5  6  7  8 
+         9 10 11 12 
+        13 14 15  0 
+
+    - reference solution() initial board =
+        4
+         2  3  4  8 
+         1  6  0 12 
+         5 10  7 11 
+         9 13 14 15 
+
+==> FAILED
+
+Test 2a: call moves() with more file inputs
+  * puzzle14.txt
+  * puzzle15.txt
+  * puzzle16.txt
+  * puzzle17.txt
+  * puzzle18.txt
+  * puzzle19.txt
+  * puzzle20.txt
+  * puzzle21.txt
+  * puzzle22.txt
+  * puzzle23.txt
+    
+        ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+        OperationCountLimitExceededException
+        Number of calls to methods in Board exceeds limit: 100000000
+        ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+==> FAILED
+
+Test 2b: call solution() with more file inputs
+  * puzzle14.txt
+    - wrong initial board
+    - student   solution() initial board =
+        7
+         1  2  3  4  5  6  7 
+         8  9 10 11 12 13 14 
+        15 16 17 18 19 20 21 
+        22 23 24 25 26 27 28 
+        29 30 31 32 33 34 35 
+        36 37 38 39 40 41 42 
+        43 44 45 46 47 48  0 
+
+    - reference solution() initial board =
+        7
+         1  2  3  4  5  7 14 
+         8  9 10 11 12 13  6 
+        15 16 17 18 19 20 21 
+        22 23 24 25 26 27 28 
+        29 30 31 32  0 33 34 
+        36 37 38 39 40 41 35 
+        43 44 45 46 47 48 42 
+
+  * puzzle15.txt
+    - wrong initial board
+    - student   solution() initial board =
+        8
+         1  2  3  4  5  6  7  8 
+         9 10 11 12 13 14 15 16 
+        17 18 19 20 21 22 23 24 
+        25 26 27 28 29 30 31 32 
+        33 34 35 36 37 38 39 40 
+        41 42 43 44 45 46 47 48 
+        49 50 51 52 53 54 55 56 
+        57 58 59 60 61 62 63  0 
+
+    - reference solution() initial board =
+        8
+         1  2  3  4  5  6  7  8 
+         9 10 11 12 13 14 15 16 
+        17 18 19 20 21 22 23 24 
+         0 25 27 28 29 30 31 32 
+        34 26 35 36 37 38 39 40 
+        33 41 42 43 45 46 47 48 
+        49 50 51 44 61 53 54 56 
+        57 58 59 52 60 62 55 63 
+
+  * puzzle16.txt
+    - wrong initial board
+    - student   solution() initial board =
+        10
+         1  2  3  4  5  6  7  8  9 10 
+        11 12 13 14 15 16 17 18 19 20 
+        21 22 23 24 25 26 27 28 29 30 
+        31 32 33 34 35 36 37 38 39 40 
+        41 42 43 44 45 46 47 48 49 50 
+        51 52 53 54 55 56 57 58 59 60 
+        61 62 63 64 65 66 67 68 69 70 
+        71 72 73 74 75 76 77 78 79 80 
+        81 82 83 84 85 86 87 88 89 90 
+        91 92 93 94 95 96 97 98 99  0 
+
+    - reference solution() initial board =
+        10
+         1  2  3  4  5  6  7  8  9 10 
+        11 12 13 14 15 16 17 18 19 20 
+        21 22 23 24 25 26 27 28 29 30 
+        31 32 33 34 35 36 47 37 39 40 
+        41 42 43 44 45 46  0 38 49 50 
+        51 52 53 54 55 56 57 48 59 60 
+        61 62 63 64 65 66 67 58 69 80 
+        71 72 73 74 75 76 77 68 70 78 
+        81 82 83 84 85 86 87 88 79 89 
+        91 92 93 94 95 96 97 98 99 90 
+
+  * puzzle17.txt
+    - wrong initial board
+    - student   solution() initial board =
+        3
+         1  2  3 
+         4  5  6 
+         7  8  0 
+
+    - reference solution() initial board =
+        3
+         5  1  8 
+         2  7  3 
+         4  0  6 
+
+  * puzzle18.txt
+    - wrong initial board
+    - student   solution() initial board =
+        3
+         1  2  3 
+         4  5  6 
+         7  8  0 
+
+    - reference solution() initial board =
+        3
+         5  6  2 
+         1  8  4 
+         7  3  0 
+
+  * puzzle19.txt
+    - wrong initial board
+    - student   solution() initial board =
+        3
+         1  2  3 
+         4  5  6 
+         7  8  0 
+
+    - reference solution() initial board =
+        3
+         1  2  7 
+         0  4  3 
+         6  5  8 
+
+  * puzzle20.txt
+    - wrong initial board
+    - student   solution() initial board =
+        3
+         1  2  3 
+         4  5  6 
+         7  8  0 
+
+    - reference solution() initial board =
+        3
+         1  6  4 
+         7  0  8 
+         2  3  5 
+
+  * puzzle21.txt
+    - wrong initial board
+    - student   solution() initial board =
+        3
+         1  2  3 
+         4  5  6 
+         7  8  0 
+
+    - reference solution() initial board =
+        3
+         5  2  3 
+         4  7  0 
+         8  6  1 
+
+  * puzzle22.txt
+    - wrong initial board
+    - student   solution() initial board =
+        3
+         1  2  3 
+         4  5  6 
+         7  8  0 
+
+    - reference solution() initial board =
+        3
+         4  8  2 
+         3  6  5 
+         1  7  0 
+
+  * puzzle23.txt
+    
+        ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+        OperationCountLimitExceededException
+        Number of calls to methods in Board exceeds limit: 100000000
+        ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+==> FAILED
+
+Test 3a: call moves() with random solvable n-by-n boards
+  * 1000 random 3-by-3 boards that are exactly 1 move from goal
+  * 1000 random 3-by-3 boards that are exactly 2 moves from goal
+  * 1000 random 3-by-3 boards that are exactly 3 moves from goal
+  * 1000 random 3-by-3 boards that are exactly 4 moves from goal
+  * 1000 random 3-by-3 boards that are exactly 5 moves from goal
+  * 1000 random 3-by-3 boards that are exactly 6 moves from goal
+  * 1000 random 3-by-3 boards that are exactly 7 moves from goal
+  * 1000 random 3-by-3 boards that are exactly 8 moves from goal
+  * 1000 random 3-by-3 boards that are exactly 9 moves from goal
+  * 1000 random 3-by-3 boards that are exactly 10 moves from goal
+  * 1000 random 3-by-3 boards that are exactly 11 moves from goal
+  * 1000 random 3-by-3 boards that are exactly 12 moves from goal
+==> passed
+
+Test 3b: call solution() with random solvable n-by-n boards
+  * 1000 random 3-by-3 boards that are exactly 1 move from goal
+    - wrong initial board
+    - student   solution() initial board =
+        3
+         1  2  3 
+         4  5  6 
+         7  8  0 
+
+    - reference solution() initial board =
+        3
+         1  2  3 
+         4  5  6 
+         7  0  8 
+
+    - failed on trial 1 of 1000
+
+==> FAILED
+
+Test 4: create two Solver objects at the same time
+  * puzzle04.txt and puzzle04.txt
+  * puzzle00.txt and puzzle04.txt
+  * puzzle04.txt and puzzle00.txt
+==> passed
+
+Test 5a: call isSolvable() with file inputs
+  * puzzle01.txt
+  * puzzle03.txt
+  * puzzle04.txt
+  * puzzle17.txt
+  * puzzle3x3-unsolvable1.txt
+  * puzzle3x3-unsolvable2.txt
+  * puzzle4x4-unsolvable.txt
+==> passed
+
+Test 5b: call isSolvable() on random n-by-n boards
+  * 100 random 2-by-2 boards
+==> passed
+
+Test 6: call moves() on unsolvable puzzles
+  * puzzle2x2-unsolvable1.txt
+  * puzzle2x2-unsolvable2.txt
+  * puzzle3x3-unsolvable1.txt
+  * puzzle3x3-unsolvable2.txt
+  * puzzle4x4-unsolvable.txt
+==> passed
+
+Test 7: call solution() on unsolvable puzzles
+  * puzzle2x2-unsolvable1.txt
+  * puzzle2x2-unsolvable2.txt
+  * puzzle3x3-unsolvable1.txt
+  * puzzle3x3-unsolvable2.txt
+  * puzzle4x4-unsolvable.txt
+==> passed
+
+Test 8a: check that Solver is immutable by testing whether methods
+         return the same value, regardless of order in which called
+  * puzzle3x3-00.txt
+  * puzzle3x3-01.txt
+  * puzzle3x3-05.txt
+  * puzzle3x3-10.txt
+  * random 2-by-2 solvable boards
+==> passed
+
+Test 8b: check that Solver is immutable by testing whether methods
+         return the same value, regardless of order in which called
+  * puzzle3x3-unsolvable1.txt
+  * puzzle3x3-unsolvable2.txt
+  * puzzle4x4-unsolvable.txt
+  * random 2-by-2 unsolvable boards
+==> passed
+
+Test 9: check whether equals() method in Board is called
+        with an argument of the wrong type
+  * puzzle00.txt
+  * puzzle05.txt
+    - wrong initial board
+    - student   solution() initial board =
+        3
+         1  2  3 
+         4  5  6 
+         7  8  0 
+
+    - reference solution() initial board =
+        3
+         4  1  3 
+         0  2  6 
+         7  5  8 
+
+  * puzzle10.txt
+    - wrong initial board
+    - student   solution() initial board =
+        9
+         1  2  3  4  5  6  7  8  9 
+        10 11 12 13 14 15 16 17 18 
+        19 20 21 22 23 24 25 26 27 
+        28 29 30 31 32 33 34 35 36 
+        37 38 39 40 41 42 43 44 45 
+        46 47 48 49 50 51 52 53 54 
+        55 56 57 58 59 60 61 62 63 
+        64 65 66 67 68 69 70 71 72 
+        73 74 75 76 77 78 79 80  0 
+
+    - reference solution() initial board =
+        9
+         1  2  3  4  5  6  7  8  9 
+        10 11 12 13 14 15 16 17 18 
+        19 20 21 22 23 24 25 26 27 
+        28 29 30 31 32 33 34 35 36 
+        37 38 39 40 41 42 43 44 45 
+        46 47 48 49 50 51 52 53 54 
+        55 56 57 58 59 60 61 62 63 
+        64  0 65 67 68 78 69 70 72 
+        73 74 66 75 76 77 79 71 80 
+
+  * puzzle15.txt
+    - wrong initial board
+    - student   solution() initial board =
+        8
+         1  2  3  4  5  6  7  8 
+         9 10 11 12 13 14 15 16 
+        17 18 19 20 21 22 23 24 
+        25 26 27 28 29 30 31 32 
+        33 34 35 36 37 38 39 40 
+        41 42 43 44 45 46 47 48 
+        49 50 51 52 53 54 55 56 
+        57 58 59 60 61 62 63  0 
+
+    - reference solution() initial board =
+        8
+         1  2  3  4  5  6  7  8 
+         9 10 11 12 13 14 15 16 
+        17 18 19 20 21 22 23 24 
+         0 25 27 28 29 30 31 32 
+        34 26 35 36 37 38 39 40 
+        33 41 42 43 45 46 47 48 
+        49 50 51 44 61 53 54 56 
+        57 58 59 52 60 62 55 63 
+
+==> passed
+
+Test 10: check that constructor throws exception if board is null
+==> passed
+
+Test 11a: call moves() with 2-by-2 file inputs
+  * puzzle2x2-00.txt
+  * puzzle2x2-01.txt
+  * puzzle2x2-02.txt
+  * puzzle2x2-03.txt
+  * puzzle2x2-04.txt
+  * puzzle2x2-05.txt
+  * puzzle2x2-06.txt
+==> passed
+
+Test 11b: call solution() with 2-by-2 file inputs
+  * puzzle2x2-00.txt
+  * puzzle2x2-01.txt
+    - wrong initial board
+    - student   solution() initial board =
+        2
+         1  2 
+         3  0 
+
+    - reference solution() initial board =
+        2
+         1  2 
+         0  3 
+
+  * puzzle2x2-02.txt
+    - wrong initial board
+    - student   solution() initial board =
+        2
+         1  2 
+         3  0 
+
+    - reference solution() initial board =
+        2
+         0  1 
+         3  2 
+
+  * puzzle2x2-03.txt
+    - wrong initial board
+    - student   solution() initial board =
+        2
+         1  2 
+         3  0 
+
+    - reference solution() initial board =
+        2
+         3  1 
+         0  2 
+
+  * puzzle2x2-04.txt
+    - wrong initial board
+    - student   solution() initial board =
+        2
+         1  2 
+         3  0 
+
+    - reference solution() initial board =
+        2
+         2  3 
+         1  0 
+
+  * puzzle2x2-05.txt
+    - wrong initial board
+    - student   solution() initial board =
+        2
+         1  2 
+         3  0 
+
+    - reference solution() initial board =
+        2
+         2  3 
+         0  1 
+
+  * puzzle2x2-06.txt
+    - wrong initial board
+    - student   solution() initial board =
+        2
+         1  2 
+         3  0 
+
+    - reference solution() initial board =
+        2
+         0  3 
+         2  1 
+
+==> FAILED
+
+Test 12a: call moves() with 3-by-3 file inputs
+  * puzzle3x3-00.txt
+  * puzzle3x3-01.txt
+  * puzzle3x3-02.txt
+  * puzzle3x3-03.txt
+  * puzzle3x3-04.txt
+  * puzzle3x3-05.txt
+  * puzzle3x3-06.txt
+  * puzzle3x3-07.txt
+  * puzzle3x3-08.txt
+  * puzzle3x3-09.txt
+  * puzzle3x3-10.txt
+  * puzzle3x3-11.txt
+  * puzzle3x3-12.txt
+  * puzzle3x3-13.txt
+  * puzzle3x3-14.txt
+  * puzzle3x3-15.txt
+  * puzzle3x3-16.txt
+  * puzzle3x3-17.txt
+  * puzzle3x3-18.txt
+  * puzzle3x3-19.txt
+  * puzzle3x3-20.txt
+  * puzzle3x3-21.txt
+  * puzzle3x3-22.txt
+  * puzzle3x3-23.txt
+  * puzzle3x3-24.txt
+    
+        ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+        OperationCountLimitExceededException
+        Number of calls to methods in Board exceeds limit: 100000000
+        ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+==> FAILED
+
+Test 12b: call solution() with 3-by-3 file inputs
+  * puzzle3x3-00.txt
+  * puzzle3x3-01.txt
+    - wrong initial board
+    - student   solution() initial board =
+        3
+         1  2  3 
+         4  5  6 
+         7  8  0 
+
+    - reference solution() initial board =
+        3
+         1  2  3 
+         4  5  0 
+         7  8  6 
+
+  * puzzle3x3-02.txt
+    - wrong initial board
+    - student   solution() initial board =
+        3
+         1  2  3 
+         4  5  6 
+         7  8  0 
+
+    - reference solution() initial board =
+        3
+         1  2  3 
+         4  0  5 
+         7  8  6 
+
+  * puzzle3x3-03.txt
+    - wrong initial board
+    - student   solution() initial board =
+        3
+         1  2  3 
+         4  5  6 
+         7  8  0 
+
+    - reference solution() initial board =
+        3
+         1  2  3 
+         0  4  5 
+         7  8  6 
+
+  * puzzle3x3-04.txt
+    - wrong initial board
+    - student   solution() initial board =
+        3
+         1  2  3 
+         4  5  6 
+         7  8  0 
+
+    - reference solution() initial board =
+        3
+         0  1  2 
+         4  5  3 
+         7  8  6 
+
+  * puzzle3x3-05.txt
+    - wrong initial board
+    - student   solution() initial board =
+        3
+         1  2  3 
+         4  5  6 
+         7  8  0 
+
+    - reference solution() initial board =
+        3
+         1  0  2 
+         4  6  3 
+         7  5  8 
+
+  * puzzle3x3-06.txt
+    - wrong initial board
+    - student   solution() initial board =
+        3
+         1  2  3 
+         4  5  6 
+         7  8  0 
+
+    - reference solution() initial board =
+        3
+         1  2  0 
+         4  8  3 
+         7  6  5 
+
+  * puzzle3x3-07.txt
+    - wrong initial board
+    - student   solution() initial board =
+        3
+         1  2  3 
+         4  5  6 
+         7  8  0 
+
+    - reference solution() initial board =
+        3
+         1  2  3 
+         0  4  8 
+         7  6  5 
+
+  * puzzle3x3-08.txt
+    - wrong initial board
+    - student   solution() initial board =
+        3
+         1  2  3 
+         4  5  6 
+         7  8  0 
+
+    - reference solution() initial board =
+        3
+         0  4  3 
+         2  1  6 
+         7  5  8 
+
+  * puzzle3x3-09.txt
+    - wrong initial board
+    - student   solution() initial board =
+        3
+         1  2  3 
+         4  5  6 
+         7  8  0 
+
+    - reference solution() initial board =
+        3
+         1  3  6 
+         5  2  8 
+         4  0  7 
+
+  * puzzle3x3-10.txt
+    - wrong initial board
+    - student   solution() initial board =
+        3
+         1  2  3 
+         4  5  6 
+         7  8  0 
+
+    - reference solution() initial board =
+        3
+         0  4  1 
+         5  3  2 
+         7  8  6 
+
+  * puzzle3x3-11.txt
+    - wrong initial board
+    - student   solution() initial board =
+        3
+         1  2  3 
+         4  5  6 
+         7  8  0 
+
+    - reference solution() initial board =
+        3
+         1  3  5 
+         7  2  6 
+         8  0  4 
+
+  * puzzle3x3-12.txt
+    - wrong initial board
+    - student   solution() initial board =
+        3
+         1  2  3 
+         4  5  6 
+         7  8  0 
+
+    - reference solution() initial board =
+        3
+         4  1  2 
+         3  0  6 
+         5  7  8 
+
+  * puzzle3x3-13.txt
+    - wrong initial board
+    - student   solution() initial board =
+        3
+         1  2  3 
+         4  5  6 
+         7  8  0 
+
+    - reference solution() initial board =
+        3
+         4  3  1 
+         0  7  2 
+         8  5  6 
+
+  * puzzle3x3-14.txt
+    - wrong initial board
+    - student   solution() initial board =
+        3
+         1  2  3 
+         4  5  6 
+         7  8  0 
+
+    - reference solution() initial board =
+        3
+         3  4  6 
+         2  0  8 
+         1  7  5 
+
+  * puzzle3x3-15.txt
+    - wrong initial board
+    - student   solution() initial board =
+        3
+         1  2  3 
+         4  5  6 
+         7  8  0 
+
+    - reference solution() initial board =
+        3
+         2  0  8 
+         1  3  5 
+         4  6  7 
+
+  * puzzle3x3-16.txt
+    - wrong initial board
+    - student   solution() initial board =
+        3
+         1  2  3 
+         4  5  6 
+         7  8  0 
+
+    - reference solution() initial board =
+        3
+         5  2  1 
+         4  8  3 
+         7  6  0 
+
+  * puzzle3x3-17.txt
+    - wrong initial board
+    - student   solution() initial board =
+        3
+         1  2  3 
+         4  5  6 
+         7  8  0 
+
+    - reference solution() initial board =
+        3
+         4  3  1 
+         0  2  6 
+         7  8  5 
+
+  * puzzle3x3-18.txt
+    - wrong initial board
+    - student   solution() initial board =
+        3
+         1  2  3 
+         4  5  6 
+         7  8  0 
+
+    - reference solution() initial board =
+        3
+         1  4  3 
+         7  0  8 
+         6  5  2 
+
+  * puzzle3x3-19.txt
+    - wrong initial board
+    - student   solution() initial board =
+        3
+         1  2  3 
+         4  5  6 
+         7  8  0 
+
+    - reference solution() initial board =
+        3
+         7  0  4 
+         8  5  1 
+         6  3  2 
+
+  * puzzle3x3-20.txt
+    - wrong initial board
+    - student   solution() initial board =
+        3
+         1  2  3 
+         4  5  6 
+         7  8  0 
+
+    - reference solution() initial board =
+        3
+         7  4  3 
+         2  8  6 
+         0  5  1 
+
+  * puzzle3x3-21.txt
+    - wrong initial board
+    - student   solution() initial board =
+        3
+         1  2  3 
+         4  5  6 
+         7  8  0 
+
+    - reference solution() initial board =
+        3
+         8  7  2 
+         1  5  0 
+         4  6  3 
+
+  * puzzle3x3-22.txt
+    - wrong initial board
+    - student   solution() initial board =
+        3
+         1  2  3 
+         4  5  6 
+         7  8  0 
+
+    - reference solution() initial board =
+        3
+         5  3  6 
+         4  0  7 
+         1  8  2 
+
+  * puzzle3x3-23.txt
+    - wrong initial board
+    - student   solution() initial board =
+        3
+         1  2  3 
+         4  5  6 
+         7  8  0 
+
+    - reference solution() initial board =
+        3
+         6  0  8 
+         4  3  5 
+         1  2  7 
+
+  * puzzle3x3-24.txt
+    
+        ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+        OperationCountLimitExceededException
+        Number of calls to methods in Board exceeds limit: 100000000
+        ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+==> FAILED
+
+Test 13a: call moves() with 4-by-4 file inputs
+  * puzzle4x4-00.txt
+  * puzzle4x4-01.txt
+  * puzzle4x4-02.txt
+  * puzzle4x4-03.txt
+  * puzzle4x4-04.txt
+  * puzzle4x4-05.txt
+  * puzzle4x4-06.txt
+  * puzzle4x4-07.txt
+  * puzzle4x4-08.txt
+  * puzzle4x4-09.txt
+  * puzzle4x4-10.txt
+  * puzzle4x4-11.txt
+  * puzzle4x4-12.txt
+  * puzzle4x4-13.txt
+  * puzzle4x4-14.txt
+  * puzzle4x4-15.txt
+  * puzzle4x4-16.txt
+  * puzzle4x4-17.txt
+  * puzzle4x4-18.txt
+  * puzzle4x4-19.txt
+  * puzzle4x4-20.txt
+  * puzzle4x4-21.txt
+  * puzzle4x4-22.txt
+  * puzzle4x4-23.txt
+  * puzzle4x4-24.txt
+  * puzzle4x4-25.txt
+  * puzzle4x4-26.txt
+  * puzzle4x4-27.txt
+  * puzzle4x4-28.txt
+    
+        ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+        OperationCountLimitExceededException
+        Number of calls to methods in Board exceeds limit: 100000000
+        ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+==> FAILED
+
+Test 13b: call solution() with 4-by-4 file inputs
+  * puzzle4x4-00.txt
+  * puzzle4x4-01.txt
+    - wrong initial board
+    - student   solution() initial board =
+        4
+         1  2  3  4 
+         5  6  7  8 
+         9 10 11 12 
+        13 14 15  0 
+
+    - reference solution() initial board =
+        4
+         1  2  3  4 
+         5  6  7  8 
+         9 10 11  0 
+        13 14 15 12 
+
+  * puzzle4x4-02.txt
+    - wrong initial board
+    - student   solution() initial board =
+        4
+         1  2  3  4 
+         5  6  7  8 
+         9 10 11 12 
+        13 14 15  0 
+
+    - reference solution() initial board =
+        4
+         1  2  3  4 
+         5  6  7  0 
+         9 10 11  8 
+        13 14 15 12 
+
+  * puzzle4x4-03.txt
+    - wrong initial board
+    - student   solution() initial board =
+        4
+         1  2  3  4 
+         5  6  7  8 
+         9 10 11 12 
+        13 14 15  0 
+
+    - reference solution() initial board =
+        4
+         1  2  3  4 
+         5  6  0  8 
+         9 10  7 12 
+        13 14 11 15 
+
+  * puzzle4x4-04.txt
+    - wrong initial board
+    - student   solution() initial board =
+        4
+         1  2  3  4 
+         5  6  7  8 
+         9 10 11 12 
+        13 14 15  0 
+
+    - reference solution() initial board =
+        4
+         1  2  3  4 
+         5  0  7  8 
+         9  6 11 12 
+        13 10 14 15 
+
+  * puzzle4x4-05.txt
+    - wrong initial board
+    - student   solution() initial board =
+        4
+         1  2  3  4 
+         5  6  7  8 
+         9 10 11 12 
+        13 14 15  0 
+
+    - reference solution() initial board =
+        4
+         1  2  3  4 
+         5  6  7  8 
+        10  0 11 12 
+         9 13 14 15 
+
+  * puzzle4x4-06.txt
+    - wrong initial board
+    - student   solution() initial board =
+        4
+         1  2  3  4 
+         5  6  7  8 
+         9 10 11 12 
+        13 14 15  0 
+
+    - reference solution() initial board =
+        4
+         1  6  2  4 
+         5  0  3  8 
+         9 10  7 11 
+        13 14 15 12 
+
+  * puzzle4x4-07.txt
+    - wrong initial board
+    - student   solution() initial board =
+        4
+         1  2  3  4 
+         5  6  7  8 
+         9 10 11 12 
+        13 14 15  0 
+
+    - reference solution() initial board =
+        4
+         1  2  3  4 
+         6 10  7  8 
+         5  0 11 12 
+         9 13 14 15 
+
+  * puzzle4x4-08.txt
+    - wrong initial board
+    - student   solution() initial board =
+        4
+         1  2  3  4 
+         5  6  7  8 
+         9 10 11 12 
+        13 14 15  0 
+
+    - reference solution() initial board =
+        4
+         1  2  3  4 
+         5 10  6  8 
+        13  9  7 12 
+        14  0 11 15 
+
+  * puzzle4x4-09.txt
+    - wrong initial board
+    - student   solution() initial board =
+        4
+         1  2  3  4 
+         5  6  7  8 
+         9 10 11 12 
+        13 14 15  0 
+
+    - reference solution() initial board =
+        4
+         2  3  4  0 
+         1  6  7  8 
+         5 10 11 12 
+         9 13 14 15 
+
+  * puzzle4x4-10.txt
+    - wrong initial board
+    - student   solution() initial board =
+        4
+         1  2  3  4 
+         5  6  7  8 
+         9 10 11 12 
+        13 14 15  0 
+
+    - reference solution() initial board =
+        4
+         1  2  4 12 
+         5  6  3  0 
+         9 10  8  7 
+        13 14 11 15 
+
+  * puzzle4x4-11.txt
+    - wrong initial board
+    - student   solution() initial board =
+        4
+         1  2  3  4 
+         5  6  7  8 
+         9 10 11 12 
+        13 14 15  0 
+
+    - reference solution() initial board =
+        4
+         5  1  3  4 
+         9  2  7  8 
+        13  0 10 12 
+        14  6 11 15 
+
+  * puzzle4x4-12.txt
+    - wrong initial board
+    - student   solution() initial board =
+        4
+         1  2  3  4 
+         5  6  7  8 
+         9 10 11 12 
+        13 14 15  0 
+
+    - reference solution() initial board =
+        4
+         5  1  2  4 
+         9  6  3  7 
+        13 10  0  8 
+        14 15 11 12 
+
+  * puzzle4x4-13.txt
+    - wrong initial board
+    - student   solution() initial board =
+        4
+         1  2  3  4 
+         5  6  7  8 
+         9 10 11 12 
+        13 14 15  0 
+
+    - reference solution() initial board =
+        4
+         5  3  4  8 
+         2  1  0  7 
+         9  6 10 11 
+        13 14 15 12 
+
+  * puzzle4x4-14.txt
+    - wrong initial board
+    - student   solution() initial board =
+        4
+         1  2  3  4 
+         5  6  7  8 
+         9 10 11 12 
+        13 14 15  0 
+
+    - reference solution() initial board =
+        4
+         1  2  8  3 
+         5 11  6  4 
+         0 10  7 12 
+         9 13 14 15 
+
+  * puzzle4x4-15.txt
+    - wrong initial board
+    - student   solution() initial board =
+        4
+         1  2  3  4 
+         5  6  7  8 
+         9 10 11 12 
+        13 14 15  0 
+
+    - reference solution() initial board =
+        4
+         5  1  3  4 
+        13  2  7  8 
+         6 10 11 12 
+        14  9  0 15 
+
+  * puzzle4x4-16.txt
+    - wrong initial board
+    - student   solution() initial board =
+        4
+         1  2  3  4 
+         5  6  7  8 
+         9 10 11 12 
+        13 14 15  0 
+
+    - reference solution() initial board =
+        4
+         5  1  2  4 
+         6  0 10  7 
+        13 11  3  8 
+        14  9 15 12 
+
+  * puzzle4x4-17.txt
+    - wrong initial board
+    - student   solution() initial board =
+        4
+         1  2  3  4 
+         5  6  7  8 
+         9 10 11 12 
+        13 14 15  0 
+
+    - reference solution() initial board =
+        4
+         5  2  4  0 
+         6  1  3  8 
+        13 11  7 12 
+        10  9 14 15 
+
+  * puzzle4x4-18.txt
+    - wrong initial board
+    - student   solution() initial board =
+        4
+         1  2  3  4 
+         5  6  7  8 
+         9 10 11 12 
+        13 14 15  0 
+
+    - reference solution() initial board =
+        4
+         2  5  3  4 
+         1  7 11  8 
+         9  6  0 12 
+        13 14 15 10 
+
+  * puzzle4x4-19.txt
+    - wrong initial board
+    - student   solution() initial board =
+        4
+         1  2  3  4 
+         5  6  7  8 
+         9 10 11 12 
+        13 14 15  0 
+
+    - reference solution() initial board =
+        4
+         3  7  2  4 
+         1  5 10  8 
+         6  0 11 12 
+         9 13 14 15 
+
+  * puzzle4x4-20.txt
+    - wrong initial board
+    - student   solution() initial board =
+        4
+         1  2  3  4 
+         5  6  7  8 
+         9 10 11 12 
+        13 14 15  0 
+
+    - reference solution() initial board =
+        4
+         6  3  7  4 
+         2  9 10  8 
+         1  5 12 15 
+        13  0 14 11 
+
+  * puzzle4x4-21.txt
+    - wrong initial board
+    - student   solution() initial board =
+        4
+         1  2  3  4 
+         5  6  7  8 
+         9 10 11 12 
+        13 14 15  0 
+
+    - reference solution() initial board =
+        4
+         3  7  1  0 
+         6  2  8  4 
+         5 10 11 12 
+         9 13 14 15 
+
+  * puzzle4x4-22.txt
+    - wrong initial board
+    - student   solution() initial board =
+        4
+         1  2  3  4 
+         5  6  7  8 
+         9 10 11 12 
+        13 14 15  0 
+
+    - reference solution() initial board =
+        4
+         1  4  8  3 
+         7  2 10 11 
+         5  6  0 15 
+         9 13 14 12 
+
+  * puzzle4x4-23.txt
+    - wrong initial board
+    - student   solution() initial board =
+        4
+         1  2  3  4 
+         5  6  7  8 
+         9 10 11 12 
+        13 14 15  0 
+
+    - reference solution() initial board =
+        4
+         1  2  3  4 
+         5  6 14  8 
+        13  0  9 11 
+        10 12 15  7 
+
+  * puzzle4x4-24.txt
+    - wrong initial board
+    - student   solution() initial board =
+        4
+         1  2  3  4 
+         5  6  7  8 
+         9 10 11 12 
+        13 14 15  0 
+
+    - reference solution() initial board =
+        4
+         9  5  1  2 
+         6  4  8  3 
+        10 14  7 11 
+        13  0 15 12 
+
+  * puzzle4x4-25.txt
+    - wrong initial board
+    - student   solution() initial board =
+        4
+         1  2  3  4 
+         5  6  7  8 
+         9 10 11 12 
+        13 14 15  0 
+
+    - reference solution() initial board =
+        4
+         2  5  1  3 
+         9  6 12  4 
+        10 14  8  0 
+        13 11 15  7 
+
+  * puzzle4x4-26.txt
+    - wrong initial board
+    - student   solution() initial board =
+        4
+         1  2  3  4 
+         5  6  7  8 
+         9 10 11 12 
+        13 14 15  0 
+
+    - reference solution() initial board =
+        4
+         1 10  6  4 
+         5  9  2  8 
+        13 12  0  7 
+        14 11  3 15 
+
+  * puzzle4x4-27.txt
+    - wrong initial board
+    - student   solution() initial board =
+        4
+         1  2  3  4 
+         5  6  7  8 
+         9 10 11 12 
+        13 14 15  0 
+
+    - reference solution() initial board =
+        4
+         1  2  3  0 
+         5 12  7  4 
+        13  6 14  9 
+        10  8 11 15 
+
+  * puzzle4x4-28.txt
+    
+        ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+        OperationCountLimitExceededException
+        Number of calls to methods in Board exceeds limit: 100000000
+        ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+==> FAILED
+
+Test 14a: call moves() with random solvable n-by-n boards
+  * 100 random 2-by-2 boards that are <= 6 moves from goal
+  * 200 random 3-by-3 boards that are <= 20 moves from goal
+    
+        ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+        OperationCountLimitExceededException
+        Number of calls to methods in Board exceeds limit: 100000000
+        ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+    - failed on trial 163 of 200
+
+==> FAILED
+
+Test 14b: call solution() with random solvable n-by-n boards
+  * 100 random 2-by-2 boards that are <= 6 moves from goal
+    - wrong initial board
+    - student   solution() initial board =
+        2
+         1  2 
+         3  0 
+
+    - reference solution() initial board =
+        2
+         0  3 
+         2  1 
+
+    - failed on trial 1 of 100
+
+  * 200 random 3-by-3 boards that are <= 20 moves from goal
+    - wrong initial board
+    - student   solution() initial board =
+        3
+         1  2  3 
+         4  5  6 
+         7  8  0 
+
+    - reference solution() initial board =
+        3
+         1  0  5 
+         6  8  2 
+         4  7  3 
+
+    - failed on trial 1 of 200
+
+  * 200 random 4-by-4 boards that are <= 20 moves from goal
+    - wrong initial board
+    - student   solution() initial board =
+        4
+         1  2  3  4 
+         5  6  7  8 
+         9 10 11 12 
+        13 14 15  0 
+
+    - reference solution() initial board =
+        4
+         1  2  3  4 
+         5  6 12  7 
+         9 11 15  0 
+        13 10  8 14 
+
+    - failed on trial 1 of 200
+
+  * 200 random 5-by-5 boards that are <= 20 moves from goal
+    - wrong initial board
+    - student   solution() initial board =
+        5
+         1  2  3  4  5 
+         6  7  8  9 10 
+        11 12 13 14 15 
+        16 17 18 19 20 
+        21 22 23 24  0 
+
+    - reference solution() initial board =
+        5
+         1  2  3  4  5 
+         6  7  8  9 10 
+        11 12 13 14  0 
+        16 17 18 19 15 
+        21 22 23 24 20 
+
+    - failed on trial 1 of 200
+
+==> FAILED
+
+
+Total: 12/23 tests passed!
+
+
+================================================================
+********************************************************************************
+*  TESTING CORRECTNESS (substituting reference Board)
+********************************************************************************
+
+Computing memory of Solver
+*-----------------------------------------------------------
+Running 3 total tests.
+
+Test 1: memory with puzzle20.txt (must be <= 2.0x reference solution)
+  - memory of student   Solver = 8706264 bytes
+  - memory of reference Solver = 4896 bytes
+  - student / reference        = 1778.24
+==> FAILED
+
+Test 2: memory with puzzle25.txt (must be <= 2.0x reference solution)
+  - memory of student   Solver = 257149592 bytes
+  - memory of reference Solver = 6056 bytes
+  - student / reference        = 42461.95
+==> FAILED
+
+Test 3: memory with puzzle30.txt (must be <= 2.0x reference solution)
+    
+        ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+        OperationCountLimitExceededException
+        Number of calls to insert(), delMin(), and min() in MinPQ exceeds limit: 10000000
+        ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+==> FAILED
+
+
+Total: 0/3 tests passed!
+
+================================================================
+
+
+
+********************************************************************************
+*  TESTING CORRECTNESS (substituting reference Board)                                                                  
+********************************************************************************
+
+Timing Solver
+*-----------------------------------------------------------
+Maximum allowed time per puzzle is 10.0 seconds.
+
+
+    
+        ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+        OperationCountLimitExceededException
+        Number of calls to methods in Board exceeds limit: 500000000
+        ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Running 125 total tests.
+
+Test 1: measure CPU time and check for correctness
+
+               filename   moves    n  seconds
+---------------------------------------------
+=> passed  puzzle20.txt      20    3     0.11 
+=> passed  puzzle22.txt      22    3     0.42 
+=> passed  puzzle21.txt      21    3     0.75 
+=> passed  puzzle23.txt      23    3     0.55 
+=> passed  puzzle24.txt      24    3     0.12 
+=> passed  puzzle25.txt      25    3     1.08 
+=> passed  puzzle27.txt      27    3     0.98 
+=> passed  puzzle29.txt      29    3     0.26 
+=> passed  puzzle26.txt      26    3     0.28 
+=> passed  puzzle28.txt      28    3     1.80 
+==> 10/25 tests passed
+
+
+
+Test 2: count MinPQ operations
+
+               filename   insert()         delMin()      max PQ size
+--------------------------------------------------------------------
+=> FAILED  puzzle20.txt      56823  (26.3x)   21056  (16.5x)   35767  (40.6x)
+=> FAILED  puzzle22.txt     497796  (95.3x)  183778  (59.1x)  314018 (148.3x)
+=> FAILED  puzzle21.txt    1217092 (229.1x)  452366 (144.9x)  764726 (348.9x)
+=> FAILED  puzzle23.txt    1207271 (151.9x)  441686  (93.5x)  765585 (237.2x)
+=> FAILED  puzzle24.txt     271406  (33.3x)  104762  (21.4x)  166644  (51.2x)
+=> FAILED  puzzle25.txt    1673395 (108.1x)  620764  (67.8x) 1052631 (166.5x)
+=> FAILED  puzzle27.txt    1853498 (110.2x)  715136  (70.7x) 1138362 (169.8x)
+=> FAILED  puzzle29.txt     550867  (31.6x)  210116  (19.8x)  340751  (49.8x)
+=> FAILED  puzzle26.txt     572546  (32.1x)  219342  (20.6x)  353204  (49.1x)
+=> FAILED  puzzle28.txt    3543034  (87.6x) 1342836  (55.2x) 2200198 (136.5x)
+==> 0/25 tests passed
+
+
+
+Test 3: count Board operations (that should not get called)
+
+               filename    hamming()   toString()     tileAt()
+--------------------------------------------------------------
+=> passed  puzzle20.txt            0            0            0         
+=> passed  puzzle22.txt            0            0            0         
+=> passed  puzzle21.txt            0            0            0         
+=> passed  puzzle23.txt            0            0            0         
+=> passed  puzzle24.txt            0            0            0         
+=> passed  puzzle25.txt            0            0            0         
+=> passed  puzzle27.txt            0            0            0         
+=> passed  puzzle29.txt            0            0            0         
+=> passed  puzzle26.txt            0            0            0         
+=> passed  puzzle28.txt            0            0            0         
+==> 10/25 tests passed
+
+
+
+Test 4: count Board operations (that should get called)
+
+               filename    Board()         manhattan()
+------------------------------------------------------
+=> FAILED  puzzle20.txt      56823  (16.5x)    1752577  (55.6x)
+=> FAILED  puzzle22.txt     497796  (59.8x)   18460103 (209.7x)
+=> FAILED  puzzle21.txt    1217092 (144.4x)   47713577 (527.6x)
+=> FAILED  puzzle23.txt    1207271  (95.3x)   46681319 (345.1x)
+=> FAILED  puzzle24.txt     271406  (20.8x)   10047467  (70.0x)
+=> FAILED  puzzle25.txt    1673395  (68.0x)   69168437 (244.4x)
+=> FAILED  puzzle27.txt    1853498  (68.8x)   79149833 (253.8x)
+=> FAILED  puzzle29.txt     550867  (19.6x)   20316385  (59.6x)
+=> FAILED  puzzle26.txt     572546  (20.1x)   21908307  (64.0x)
+=> FAILED  puzzle28.txt    3543034  (54.7x)  154040369 (176.1x)
+==> 0/25 tests passed
+
+
+
+Test 5: count Board operations (that should get called),
+        rejecting if doesn't adhere to stricter caching limits
+
+               filename    Board()         manhattan()
+------------------------------------------------------
+=> FAILED  puzzle20.txt      56823  (16.5x)    1752577 (509.5x)
+=> FAILED  puzzle22.txt     497796  (59.8x)   18460103 (2e+03x)
+=> FAILED  puzzle21.txt    1217092 (144.4x)   47713577 (6e+03x)
+=> FAILED  puzzle23.txt    1207271  (95.3x)   46681319 (4e+03x)
+=> FAILED  puzzle24.txt     271406  (20.8x)   10047467 (771.0x)
+=> FAILED  puzzle25.txt    1673395  (68.0x)   69168437 (3e+03x)
+=> FAILED  puzzle27.txt    1853498  (68.8x)   79149833 (3e+03x)
+=> FAILED  puzzle29.txt     550867  (19.6x)   20316385 (723.7x)
+=> FAILED  puzzle26.txt     572546  (20.1x)   21908307 (769.0x)
+=> FAILED  puzzle28.txt    3543034  (54.7x)  154040369 (2e+03x)
+==> 0/25 tests passed
+
+
+Total: 20/125 tests passed!
+
+
+================================================================
