@@ -2,7 +2,7 @@ package leetcode;
 
 import java.util.*;
 
-public class LE322FindItinerary {
+public class LE332FindItinerary {
     public List<String> findItinerary(String[][] tickets) {
         Map<String, PriorityQueue<String>> graph = new HashMap<>();
         for (int i = 0; i < tickets.length; i++) {
