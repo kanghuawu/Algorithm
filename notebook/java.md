@@ -27,7 +27,7 @@
 #### Head vs Tail
 
 |       |Throws exception |Special value|Throws exception  |Special value |
-|-------|-------------------------------|---------------------------------|
+|-------|-----------------|-------------|------------------|--------------|
 |Insert |addFirst(e)      |offerFirst(e)|addLast(e)        |offerLast(e)  |
 |Remove |removeFirst()    |pollFirst()  |removeLast()      |pollLast()    |
 |Examine|getFirst()       |peekFirst()  |getLast()         |peekLast()    |
