@@ -24,13 +24,16 @@
 
 [doc](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html)
 
-|       |First Element (Head)           |Last Element (Tail)              |
-|-------|-------------------------------|---------------------------------|
+#### Head vs Tail
+
 |       |Throws exception |Special value|Throws exception  |Special value |
+|-------|-------------------------------|---------------------------------|
 |Insert |addFirst(e)      |offerFirst(e)|addLast(e)        |offerLast(e)  |
 |Remove |removeFirst()    |pollFirst()  |removeLast()      |pollLast()    |
 |Examine|getFirst()       |peekFirst()  |getLast()         |peekLast()    |
 
+
+#### Queue vs Deque
 
 |Queue Method |Deque Method |
 |-------------|-------------|
@@ -40,6 +43,8 @@
 |poll()       |pollFirst()  |
 |element()    |getFirst()   |
 |peek()       |peekFirst()  |
+
+#### Stack vs Deque
 
 |Stack Method  |Deque Method  |
 |--------------|--------------|
