@@ -1,4 +1,4 @@
-package other;
+package notebook;
 
 import java.util.Arrays;
 
