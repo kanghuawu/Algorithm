@@ -1,4 +1,4 @@
-package leetcode.LE207CanFinish;
+package leetcode._207canfinish;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,18 +36,17 @@ public class LE207CanFinishDFS {
         visited[currIdx] = true;
 
         List<Integer> nb = graph.get(currIdx);
-        if (nb == null) {
-            return true;
-        }
-
         onStack[currIdx] = true;
-        for (int nxt : nb) {
-            if (onStack[nxt]) {
-                return false;
-            }
-            if (!visited[nxt]) {
-                if (!dfs(nxt, visited, onStack, graph)) {
+
+        if (nb != null) {
+            for (int nxt : nb) {
+                if (onStack[nxt]) {
                     return false;
+                }
+                if (!visited[nxt]) {
+                    if (!dfs(nxt, visited, onStack, graph)) {
+                        return false;
+                    }
                 }
             }
         }

@@ -1,4 +1,4 @@
-package leetcode.LE200NumIslands;
+package leetcode._200numislands;
 
 public class LE200NumIslandsDFS {
     // MY

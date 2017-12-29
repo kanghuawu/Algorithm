@@ -1,4 +1,4 @@
-package leetcode.LE207CanFinish;
+package leetcode._207canfinish;
 
 import java.util.*;
 
