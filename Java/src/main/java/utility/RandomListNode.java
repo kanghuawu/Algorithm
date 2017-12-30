@@ -1,4 +1,4 @@
-package utility;
+package org.khwu.utility;
 
 public class RandomListNode {
 	public int label;

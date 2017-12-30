@@ -2,7 +2,7 @@ package leetcode;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import utility.TreeNode;
+import org.khwu.utility.TreeNode;
 
 public class LE101isSymmetric {
 //	public boolean isSymmetric(TreeNode root) {

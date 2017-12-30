@@ -1,5 +1,5 @@
 package leetcode;
-import utility.ListNode;
+import org.khwu.utility.ListNode;
 
 public class LE002AddTwoNumbers {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {

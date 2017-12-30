@@ -1,6 +1,6 @@
 package leetcode;
 
-import utility.TreeNode;
+import org.khwu.utility.TreeNode;
 
 public class LE110IsBalanced {
 	public boolean isBalanced(TreeNode root) {

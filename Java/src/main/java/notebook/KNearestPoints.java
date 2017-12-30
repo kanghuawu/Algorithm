@@ -1,4 +1,4 @@
-package notebook;
+package org.khwu.notebook;
 
 import java.util.Arrays;
 

@@ -1,6 +1,6 @@
 package leetcode;
 
-import utility.TreeNode;
+import org.khwu.utility.TreeNode;
 
 public class LE111MinDepth {
 	public int minDepth(TreeNode root) {

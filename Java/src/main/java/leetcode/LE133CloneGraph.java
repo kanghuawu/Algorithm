@@ -1,6 +1,6 @@
 package leetcode;
 
-import utility.UndirectedGraphNode;
+import org.khwu.utility.UndirectedGraphNode;
 
 import java.util.HashMap;
 import java.util.Stack;

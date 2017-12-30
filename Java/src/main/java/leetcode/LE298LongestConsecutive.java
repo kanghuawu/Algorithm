@@ -1,5 +1,5 @@
 package leetcode;
-import utility.TreeNode;
+import org.khwu.utility.TreeNode;
 
 public class LE298LongestConsecutive {
     // MY

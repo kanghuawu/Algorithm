@@ -1,6 +1,6 @@
 package leetcode;
 
-import utility.RandomListNode;
+import org.khwu.utility.RandomListNode;
 
 public class LE138CopyRandomList {
 	public RandomListNode copyRandomList(RandomListNode head) {
