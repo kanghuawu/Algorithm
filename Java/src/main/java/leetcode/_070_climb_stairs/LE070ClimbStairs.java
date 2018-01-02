@@ -1,4 +1,4 @@
-package leetcode._070climbstairs;
+package leetcode._070_climb_stairs;
 
 public class LE070ClimbStairs {
     public int climbStairs(int n) {

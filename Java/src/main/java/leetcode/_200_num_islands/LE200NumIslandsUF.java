@@ -1,4 +1,4 @@
-package leetcode._200numislands;
+package leetcode._200_num_islands;
 
 public class LE200NumIslandsUF {
     // MY 2017-12-27 UF

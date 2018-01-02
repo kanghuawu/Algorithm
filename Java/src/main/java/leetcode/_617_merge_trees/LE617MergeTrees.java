@@ -1,4 +1,4 @@
-package leetcode._617mergetrees;
+package leetcode._617_merge_trees;
 
 import utility.TreeNode;
 

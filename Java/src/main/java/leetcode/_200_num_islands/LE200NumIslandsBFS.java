@@ -1,4 +1,4 @@
-package leetcode._200numislands;
+package leetcode._200_num_islands;
 
 import java.util.LinkedList;
 import java.util.Queue;

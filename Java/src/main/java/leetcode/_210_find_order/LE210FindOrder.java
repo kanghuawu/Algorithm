@@ -1,4 +1,4 @@
-package leetcode._210findorder;
+package leetcode._210_find_order;
 
 import java.util.ArrayList;
 import java.util.HashMap;

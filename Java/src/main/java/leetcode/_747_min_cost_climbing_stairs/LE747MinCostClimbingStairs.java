@@ -1,4 +1,4 @@
-package leetcode._747mincostclimbingstairs;
+package leetcode._747_min_cost_climbing_stairs;
 
 public class LE747MinCostClimbingStairs {
     public int minCostClimbingStairs(int[] cost) {

@@ -1,4 +1,4 @@
-package leetcode._207canfinish;
+package leetcode._207_can_finish;
 
 public class LE207CanFinishBFS {
     // BFS ref: https://discuss.leetcode.com/topic/15762/java-dfs-and-bfs-solution
