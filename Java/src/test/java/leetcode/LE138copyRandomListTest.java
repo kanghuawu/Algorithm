@@ -4,6 +4,8 @@ import org.khwu.utility.RandomLinkedList;
 
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+
 public class LE138copyRandomListTest {
 	@Test
 	public void test() {

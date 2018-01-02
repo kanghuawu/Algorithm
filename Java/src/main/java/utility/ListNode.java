@@ -1,4 +1,4 @@
-package org.khwu.utility;
+package utility;
 
 public class ListNode {
 	public int val;
