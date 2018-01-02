@@ -1,6 +1,6 @@
 package leetcode;
-import org.khwu.utility.RandomListNode;
-import org.khwu.utility.RandomLinkedList;
+import utility.RandomListNode;
+import utility.RandomLinkedList;
 
 import org.junit.Test;
 
