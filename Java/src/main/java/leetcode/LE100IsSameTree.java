@@ -1,5 +1,5 @@
 package leetcode;
-import org.khwu.utility.TreeNode;
+import utility.TreeNode;
 
 public class LE100IsSameTree {
 	public boolean isSameTree(TreeNode p, TreeNode q) {

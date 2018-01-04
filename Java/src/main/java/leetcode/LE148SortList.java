@@ -1,6 +1,6 @@
 package leetcode;
 
-import org.khwu.utility.ListNode;
+import utility.ListNode;
 
 public class LE148SortList {
     public ListNode sortList(ListNode head) {

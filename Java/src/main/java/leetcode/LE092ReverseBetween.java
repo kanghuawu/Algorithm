@@ -1,6 +1,6 @@
 package leetcode;
 
-import org.khwu.utility.ListNode;
+import utility.ListNode;
 
 public class LE092ReverseBetween {
     public ListNode reverseBetween(ListNode head, int m, int n) {

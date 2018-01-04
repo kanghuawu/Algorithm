@@ -1,6 +1,6 @@
 package leetcode;
 
-import org.khwu.utility.TreeNode;
+import utility.TreeNode;
 
 public class LE104MaxDepth {
 	public int maxDepth(TreeNode root) {

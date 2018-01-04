@@ -1,5 +1,5 @@
 package leetcode;
-import org.khwu.utility.ListNode;
+import utility.ListNode;
 public class LE237DeleteNode {
     public void deleteNode(ListNode node) {
         node.val = node.next.val;

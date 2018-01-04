@@ -1,10 +1,6 @@
-package leetcode;
-
-import com.sun.org.apache.xpath.internal.SourceTree;
+package leetcode._046_permutations;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 
 public class LE046Permute {
@@ -30,26 +26,50 @@ public class LE046Permute {
 //	   }
 //	}
 
+    // MY 2017-1-3 
+    public List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> res = new ArrayList<>();
+        dfs(nums, new boolean[nums.length], new ArrayList<>(), res);
+        return res;
+    }
+
+    private void dfs(int[] nums, boolean[] used, List<Integer> per, List<List<Integer>> res) {
+        if (per.size() == nums.length) {
+            res.add(new ArrayList<>(per));
+            return;
+        }
+        for (int i = 0; i < nums.length; i++) {
+            if (used[i]) {
+                continue;
+            }
+            used[i] = true;
+            per.add(nums[i]);
+            dfs(nums, used, per, res);
+            used[i] = false;
+            per.remove(per.size() - 1);
+        }
+    }
+
 	// MY
-	private List<List<Integer>> res;
-	public List<List<Integer>> permute(int[] nums) {
-		res = new ArrayList<>();
-
-		permuteHelper(nums, new ArrayList<Integer>());
-
-		return res;
-	}
-	private void permuteHelper(int[] nums, List<Integer> arr) {
-		if (nums.length == arr.size())
-			res.add(new ArrayList<Integer>(arr));
-		for (int i = 0; i < nums.length; i++) {
-			if (!arr.contains(nums[i])) {
-				arr.add(nums[i]);
-				permuteHelper(nums, arr);
-				arr.remove(arr.size() - 1);
-			}
-		}
-	}
+//	private List<List<Integer>> res;
+//	public List<List<Integer>> permute(int[] nums) {
+//		res = new ArrayList<>();
+//
+//		permuteHelper(nums, new ArrayList<Integer>());
+//
+//		return res;
+//	}
+//	private void permuteHelper(int[] nums, List<Integer> arr) {
+//		if (nums.length == arr.size())
+//			res.add(new ArrayList<Integer>(arr));
+//		for (int i = 0; i < nums.length; i++) {
+//			if (!arr.contains(nums[i])) {
+//				arr.add(nums[i]);
+//				permuteHelper(nums, arr);
+//				arr.remove(arr.size() - 1);
+//			}
+//		}
+//	}
 
 	// ref: https://discuss.leetcode.com/topic/10812/share-my-short-iterative-java-solution
 //	public List<List<Integer>> permute(int[] num) {
