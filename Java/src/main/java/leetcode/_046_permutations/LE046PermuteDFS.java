@@ -3,7 +3,7 @@ package leetcode._046_permutations;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LE046Permute {
+public class LE046PermuteDFS {
 	// ref: https://discuss.leetcode.com/topic/46162/a-general-approach-to-backtracking-questions-in-java-subsets-permutations-combination-sum-palindrome-partioning
 //	public List<List<Integer>> permute(int[] nums) {
 //		   List<List<Integer>> list = new ArrayList<>();
@@ -26,7 +26,7 @@ public class LE046Permute {
 //	   }
 //	}
 
-    // MY 2017-1-3 
+    // MY 2017-1-3
     public List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
         dfs(nums, new boolean[nums.length], new ArrayList<>(), res);
@@ -90,8 +90,9 @@ public class LE046Permute {
 //	}
 
 	public static void main(String[] args){
-		int[] arr = {1, 2, 3};
-		LE046Permute test = new LE046Permute();
-		System.out.println(test.permute(arr));
+//		int[] arr = {1, 2, 3};
+//		LE046PermuteDFS test = new LE046PermuteDFS();
+//		System.out.println(test.permute(arr));
+        System.out.println(3%1);
 	}
 }
