@@ -1,7 +1,6 @@
 package p22_seam;
 
 import edu.princeton.cs.algs4.Picture;
-import edu.princeton.cs.algs4.StdOut;
 
 import java.util.Arrays;
 import java.util.Stack;
@@ -39,7 +38,7 @@ public class SeamCarver {
         Picture newPicture = new Picture(width, height);
         for (int row = 0; row < height; row++) {
             for (int col = 0; col < width; col++) {
-                newPicture.setRGB(col, row, this.picture[col][row]);
+                newPicture.setRGB(col, row, this.picture[row][col]);
             }
         }
         return newPicture;
@@ -75,7 +74,7 @@ public class SeamCarver {
         int top = picture[y - 1][x];
         int bottom = picture[y + 1][x];
         double deltaX = getDeltaSquare(left, right);
-        double deltaY = getDeltaSquare(top, bottom);;
+        double deltaY = getDeltaSquare(top, bottom);
         return Math.sqrt(deltaX + deltaY);
     }
 
@@ -102,7 +101,7 @@ public class SeamCarver {
         if (isVertical) {
             transpose();
         }
-        return findVerticalSeam();
+        return findSeam();
     }
 
     // sequence of indices for vertical seam
@@ -110,20 +109,26 @@ public class SeamCarver {
         if (!isVertical) {
             transpose();
         }
+        return findSeam();
+    }
+
+    private int[] findSeam() {
         int[][] edgeTo = new int[height][width];
         double[][] distTo = new double[height][width];
         for (int row = 0; row < height; row++) {
             for (int col = 0; col < width; col++) {
-                distTo[row][col] = Double.MAX_VALUE;
+                if (row == 0) distTo[row][col] = BORDER_ENERGY;
+                else distTo[row][col] = Double.POSITIVE_INFINITY;
             }
         }
 
-        Stack<Integer> reversePost = topologicalSort(this.picture);
-        for (int idx : reversePost) {
+        Stack<Integer> reversePost = topologicalSort();
+        while (!reversePost.isEmpty()) {
+            int idx = reversePost.pop();
             relax(idx, edgeTo, distTo);
         }
 
-        double min = Double.MIN_VALUE;
+        double min = Double.POSITIVE_INFINITY;
         int minCol = 0;
         for (int col = 0; col < width; col++) {
             if (min > distTo[height-1][col]) {
@@ -131,11 +136,12 @@ public class SeamCarver {
                 minCol = col;
             }
         }
-
+//        System.out.println(minCol);
+//        System.out.printf("%9.2f \n", min);
         int[] path = new int[height];
         for (int row = height-1; row >= 0; row--) {
             path[row] = minCol;
-            minCol = edgeTo[row][minCol] / width;
+            minCol = edgeTo[row][minCol];
         }
         return path;
     }
@@ -143,22 +149,20 @@ public class SeamCarver {
     private void relax(int idx, int[][] edgeTo, double[][] distTo) {
         int oriCol = idx % width;
         int oriRow = idx / width;
-        for (int nxtCol = oriCol - 1; nxtCol < 1; nxtCol++) {
+        for (int nxtCol = oriCol - 1; nxtCol <= oriCol + 1; nxtCol++) {
             int nxtRow = oriRow + 1;
-            if (nxtCol < 0 || nxtCol >=width || nxtRow < 0 || nxtRow >= height) continue;
-            if (distTo[nxtRow][nxtCol] > distTo[oriRow][oriCol] + energy(nxtCol, nxtRow)) {
+            if (nxtCol < 0 || nxtCol >= width || nxtRow < 0 || nxtRow >= height) continue;
+            if (distTo[nxtRow][nxtCol] >= distTo[oriRow][oriCol] + energy(nxtCol, nxtRow)) {
                 distTo[nxtRow][nxtCol] = distTo[oriRow][oriCol] + energy(nxtCol, nxtRow);
-                edgeTo[nxtCol][nxtRow] = oriCol + oriRow * width;
+                edgeTo[nxtRow][nxtCol] = oriCol;
             }
         }
     }
 
-    private Stack<Integer> topologicalSort(int[][] picture) {
-        int w = picture[0].length;
-        int h = picture.length;
+    private Stack<Integer> topologicalSort() {
         Stack<Integer> reversePost = new Stack<>();
-        boolean[] visited = new boolean[w*h];
-        for (int col = 0; col < h; col++) {
+        boolean[] visited = new boolean[width*height];
+        for (int col = 0; col < width; col++) {
             if (!visited[col]) {
                 dfs(visited, col, reversePost);
             }
@@ -167,44 +171,48 @@ public class SeamCarver {
     }
 
     private void dfs(boolean[] visited, int curr, Stack<Integer> reversePost) {
-//        if (visited[curr]) return;
-
         visited[curr] = true;
-        int x = curr % width;
-        int y = curr / width;
-        if (y + 1 < height) {
-            for (int col = x - 1; col <= x + 1; col++) {
-                if (col == -1 || col >= width) continue;
-                int next = col + (y + 1) * width;
-                if (!visited[next]) {
-                    dfs(visited, curr, reversePost);
+        int currCol = curr % width;
+        int currRow = curr / width;
+        int nxtRow = currRow + 1;
+        if (nxtRow < height) {
+            for (int col = currCol - 1; col <= currCol + 1; col++) {
+                if (col < 0 || col >= width) continue;
+                int nxtIdx = col + nxtRow * width;
+                if (!visited[nxtIdx]) {
+                    dfs(visited, nxtIdx, reversePost);
                 }
             }
         }
-        reversePost.push(curr);
+        reversePost.add(curr);
     }
 
 
     // remove horizontal seam from current picture
     public void removeHorizontalSeam(int[] seam) {
-        if (!isVertical) {
+        if (isVertical) {
             transpose();
         }
-        removeVerticalSeam(seam);
+        removeSeam(seam);
     }
 
     // remove vertical seam from current picture
     public void removeVerticalSeam(int[] seam) {
-        if (isVertical) {
+        if (!isVertical) {
             transpose();
         }
-        if (isValidSeam(seam, width, height)) {
+        removeSeam(seam);
+    }
+
+    private void removeSeam(int[] seam) {
+        if (!isValidSeam(seam)) {
             throw new IllegalArgumentException();
         }
         for (int row = 0; row < height; row++) {
             int col = seam[row];
-            System.arraycopy(picture[row], col+1, picture[row], col, width - col + 1);
+            System.arraycopy(picture[row], col+1, picture[row], col, width - col - 1);
         }
+        width--;
     }
 
     private void transpose() {
@@ -221,12 +229,12 @@ public class SeamCarver {
         isVertical = !isVertical;
     }
 
-    private boolean isValidSeam(int[] seam, int width, int height) {
+    private boolean isValidSeam(int[] seam) {
         if (seam == null || seam.length != height) {
             return false;
         }
-        for (int col : seam) {
-            if (col < 0 || col >= width) {
+        for (int col = 1; col < seam.length; col++) {
+            if (seam[col] < 0 || seam[col] >= width || Math.abs(seam[col] - seam[col-1]) > 1){
                 return false;
             }
         }
@@ -234,9 +242,12 @@ public class SeamCarver {
     }
 
     public static void main(String[] args) {
-        String filename = "/Users/khwu/Projects/Algorithm/AlgorithmsCoursera/src/main/java/p22_seam/test/chameleon.png";
+        String filename = "/Users/khwu/Projects/Algorithm/AlgorithmsCoursera/src/main/java/p22_seam/test/stripes.png";
         Picture picture = new Picture(filename);
-        picture.show();
-        StdOut.println(picture.getRGB(0, 0));
+        SeamCarver sc = new SeamCarver(picture);
+        int[] vSeam = sc.findVerticalSeam();
+        System.out.println(Arrays.toString(vSeam));
+        int[] hSeam = sc.findHorizontalSeam();
+        System.out.println(Arrays.toString(hSeam));
     }
 }
