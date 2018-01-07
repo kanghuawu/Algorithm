@@ -233,8 +233,8 @@ public class SeamCarver {
         if (seam == null || seam.length != height) {
             return false;
         }
-        for (int col = 1; col < seam.length; col++) {
-            if (seam[col] < 0 || seam[col] >= width || Math.abs(seam[col] - seam[col-1]) > 1){
+        for (int row = 0; row < seam.length; row++) {
+            if (seam[row] < 0 || seam[row] >= width || (row > 0 && Math.abs(seam[row] - seam[row-1]) > 1)){
                 return false;
             }
         }
