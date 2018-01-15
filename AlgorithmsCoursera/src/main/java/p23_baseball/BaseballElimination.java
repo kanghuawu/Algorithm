@@ -86,8 +86,8 @@ public class BaseballElimination {
 
     // is given team eliminated?
     public boolean isEliminated(String team) {
-        currTeam = team;
         if (!find.containsKey(team)) throw new IllegalArgumentException();
+        currTeam = team;
         int idx = find.get(team);
         int maxWin = win[idx] + remain[idx];
         eliminated = new ArrayList<>();
@@ -132,14 +132,12 @@ public class BaseballElimination {
     // subset R of teams that eliminates given team; null if not eliminated
     public Iterable<String> certificateOfElimination(String team) {
         if (!find.containsKey(team)) throw new IllegalArgumentException();
-        if (eliminated == null || eliminated.isEmpty()) return null;
         if (team.equals(currTeam) ) {
+            if (eliminated == null || eliminated.isEmpty()) return null;
             return eliminated;
-        } else {
-            isEliminated(team);
-            return certificateOfElimination(team);
         }
-
+        isEliminated(team);
+        return certificateOfElimination(team);
     }
 
     public static void main(String[] args) {
