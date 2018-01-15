@@ -1,10 +1,17 @@
 package p23_baseball;
 
-import edu.princeton.cs.algs4.*;
+import edu.princeton.cs.algs4.FlowEdge;
+import edu.princeton.cs.algs4.FlowNetwork;
+import edu.princeton.cs.algs4.FordFulkerson;
+import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.StdOut;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-import static java.util.stream.Collectors.toList;
 
 public class BaseballElimination {
     private final int numOfTeams;
@@ -15,6 +22,7 @@ public class BaseballElimination {
     private final int[][] graph;
     private final Map<String, Integer> find;
     private List<String> eliminated;
+    private String currTeam;
 
     // create a baseball division from given filename in format specified below
     public BaseballElimination(String filename) {
@@ -25,7 +33,7 @@ public class BaseballElimination {
         loss = new int[numOfTeams];
         remain = new int[numOfTeams];
         graph = new int[numOfTeams][numOfTeams];
-        find = new HashMap<>((int)(numOfTeams/0.75 + 1));
+        find = new HashMap<>((int) (numOfTeams/0.75 + 1));
 
         int counter = 0;
         while (in.hasNextLine()) {
@@ -49,8 +57,7 @@ public class BaseballElimination {
 
     // all teams
     public Iterable<String> teams() {
-        return Arrays.stream(teams)
-                .collect(toList());
+        return Arrays.asList(teams);
     }
 
     // number of wins for given team
@@ -79,9 +86,11 @@ public class BaseballElimination {
 
     // is given team eliminated?
     public boolean isEliminated(String team) {
+        currTeam = team;
         if (!find.containsKey(team)) throw new IllegalArgumentException();
         int idx = find.get(team);
         int maxWin = win[idx] + remain[idx];
+        eliminated = new ArrayList<>();
         for (int i = 0; i < numOfTeams; i++) {
             if (maxWin < win[i]) {
                 eliminated.add(teams[i]);
@@ -113,19 +122,24 @@ public class BaseballElimination {
         }
 
         FordFulkerson fordFulkerson = new FordFulkerson(flowNetwork, s, t);
-
-        eliminated = new ArrayList<>();
         for (int i = 0; i < numOfTeams; i++) {
             if (i == idx) continue;
             if (fordFulkerson.inCut(i)) eliminated.add(teams[i]);
         }
-        return eliminated.size() != 0;
+        return !eliminated.isEmpty();
     }
 
     // subset R of teams that eliminates given team; null if not eliminated
     public Iterable<String> certificateOfElimination(String team) {
-        if (eliminated == null || eliminated.size() == 0) return null;
-        return eliminated;
+        if (!find.containsKey(team)) throw new IllegalArgumentException();
+        if (eliminated == null || eliminated.isEmpty()) return null;
+        if (team.equals(currTeam) ) {
+            return eliminated;
+        } else {
+            isEliminated(team);
+            return certificateOfElimination(team);
+        }
+
     }
 
     public static void main(String[] args) {
