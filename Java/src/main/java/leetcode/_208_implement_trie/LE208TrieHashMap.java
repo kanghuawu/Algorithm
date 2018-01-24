@@ -1,9 +1,9 @@
-package leetcode._206_implement_trie;
+package leetcode._208_implement_trie;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class LE206TrieHashMap {
+public class LE208TrieHashMap {
     class Trie {
 
         private boolean isWord;

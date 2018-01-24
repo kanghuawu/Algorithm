@@ -1,6 +1,6 @@
-package leetcode._206_implement_trie;
+package leetcode._208_implement_trie;
 
-public class LE206TrieRWay {
+public class LE208TrieRWay {
     class Trie {
         private Trie[] next;
         private final int R = 26;
