@@ -9,11 +9,9 @@ public class LE208TrieTST {
         }
 
         private Node root;
-        /** Initialize your data structure here. */
-        public Trie() {
-        }
 
-        /** Inserts a word into the trie. */
+        public Trie() {}
+
         public void insert(String word) {
             root = insert(root, word, 0);
         }
@@ -33,7 +31,6 @@ public class LE208TrieTST {
             return node;
         }
 
-        /** Returns if the word is in the trie. */
         public boolean search(String word) {
             Node lastNode = find(root, word, 0);
             if (lastNode == null) return false;
@@ -41,15 +38,12 @@ public class LE208TrieTST {
             return lastNode.isWord;
         }
 
-        /** Returns if there is any word in the trie that starts with the given prefix. */
         public boolean startsWith(String prefix) {
             Node lastNode = find(root, prefix, 0);
             return lastNode != null;
         }
 
         private Node find(Node node, String word, int i) {
-            // System.out.println(i);
-            // System.out.println(node.ch);
             if (node == null) return null;
             char ch = word.charAt(i);
 
