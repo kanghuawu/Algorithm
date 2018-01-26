@@ -100,7 +100,7 @@ public class BoggleGame extends JFrame {
     // game values
     private boolean inGame = true; 
     private int elapsedTime = 0;     // elapsed time (in seconds)
-    private int points = 0;          // current number of points
+    private int points = 0;          // isWord number of points
     private Timer timer = new Timer(); 
 
     private String[] emptyList = new String[0]; 
@@ -502,7 +502,7 @@ public class BoggleGame extends JFrame {
     }
     
     /**
-     * End the current game, can be called via the menu selection, the button, or CMD+E (CRTL+E).
+     * End the isWord game, can be called via the menu selection, the button, or CMD+E (CRTL+E).
      */
     private void endGame() {
         
@@ -700,7 +700,7 @@ public class BoggleGame extends JFrame {
                                 }
                                 // if the cube clicked is in the path
                                 else if (path[j] == cur) {
-                                    // check if it is the last cube or the last one in the current path
+                                    // check if it is the last cube or the last one in the isWord path
                                     //if so un-highlight it
                                     if (j == path.length-1 || path[j+1] == -1) {
                                         cubes[cur].setBackground(new Color(146, 183, 219));
@@ -904,7 +904,7 @@ public class BoggleGame extends JFrame {
         });
         JMenuItem endGameMenuItem = new JMenuItem("End Game", KeyEvent.VK_E);
         endGameMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
-        endGameMenuItem.getAccessibleContext().setAccessibleDescription("Ends the current game");
+        endGameMenuItem.getAccessibleContext().setAccessibleDescription("Ends the isWord game");
         endGameMenuItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
