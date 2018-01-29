@@ -38,6 +38,21 @@ public class LE208TrieTST {
             return lastNode.isWord;
         }
 
+        /*
+        public boolean search(String word) {
+            return search(root, word, 0);
+        }
+
+        public boolean search(Node node, String word, int idx) {
+            if (node == null || idx >= word.length()) return false;
+            char ch = word.charAt(idx);
+            if (ch > node.ch) return search(node.right, word, idx);
+            else if (ch < node.ch) return search(node.left, word, idx);
+            else if (word.length()-1 == idx && node.isWord) return true;
+            return search(node.mid, word, idx+1);
+        }
+         */
+
         public boolean startsWith(String prefix) {
             Node lastNode = find(root, prefix, 0);
             return lastNode != null;
