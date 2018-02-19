@@ -4,11 +4,8 @@ import edu.princeton.cs.algs4.BinaryStdIn;
 import edu.princeton.cs.algs4.BinaryStdOut;
 
 
-import java.util.Arrays;
 import java.util.Deque;
-import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.Map;
 
 
 /*
@@ -17,6 +14,7 @@ https://www.youtube.com/watch?v=4n7NPk5lwbI
 https://www.youtube.com/watch?v=biFtVGrDJ4U
  */
 public class BurrowsWheeler {
+    private static final int R = 256;
     // apply Burrows-Wheeler transform, reading from standard input and writing to standard output
     public static void transform() {
         String text = BinaryStdIn.readString();
@@ -41,21 +39,27 @@ public class BurrowsWheeler {
         char[] t = BinaryStdIn.readString().toCharArray();
         int len = t.length;
 
-        Map<Character, Deque<Integer>> map = new HashMap<>();
+        Deque<Integer>[] order = new Deque[R];
+
         for (int i = 0; i < len; i++) {
-            map.computeIfAbsent(t[i], k -> new LinkedList<Integer>()).addLast(i);
+            if (order[t[i]] == null) {
+                order[t[i]] = new LinkedList<>();
+            }
+            order[t[i]].addLast(i);
         }
 
-        Arrays.sort(t);
         int[] next = new int[len];
-        for (int i = 0; i < len; i++) {
-            next[i] = map.get(t[i]).removeFirst();
+        for (int i = 0, j = 0; i < R; i++) {
+            if (order[(char) i] != null) {
+                Deque<Integer> tmp = order[(char) i];
+                while (tmp.size() > 0) {
+                    next[j++] = tmp.removeFirst();
+                }
+            }
         }
 
-        int cur = first;
-        for (int i = 0; i < len; i++) {
-            BinaryStdOut.write(t[cur]);
-            cur = next[cur];
+        for (int i = next[first], j = 0; j < len; i = next[i], j++) {
+            BinaryStdOut.write(t[i]);
         }
 
         BinaryStdOut.close();

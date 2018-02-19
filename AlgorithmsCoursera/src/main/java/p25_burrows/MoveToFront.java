@@ -9,7 +9,6 @@ public class MoveToFront {
     // apply move-to-front encoding, reading from standard input and writing to standard output
     public static void encode() {
         char[] seq = createSeq();
-
         String s = BinaryStdIn.readString();
         for (int i = 0; i < s.length(); i++) {
             char ch = s.charAt(i);
