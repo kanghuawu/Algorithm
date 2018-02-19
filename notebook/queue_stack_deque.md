@@ -1,8 +1,12 @@
 # Queue vs Stack vs Deque
 
-### Queue
+## Official Document
 
-[doc](https://docs.oracle.com/javase/8/docs/api/java/util/Queue.html)
+* [Queue](https://docs.oracle.com/javase/8/docs/api/java/util/Queue.html)
+* [Stack](https://docs.oracle.com/javase/8/docs/api/java/util/Stack.html)
+* [Deque](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html)
+
+## Queue
 
 |        |Throws exception  |Returns special value   |
 |--------|------------------|------------------------|
@@ -10,7 +14,7 @@
 |Remove  |remove()          |poll()                  |
 |Examine |element()         |peek()                  |
 
-#### Usage
+### Usage
 
 [source](https://www.geeksforgeeks.org/queue-interface-java/)
 
@@ -48,9 +52,7 @@ public class QueueExample
 
 ```
 
-### Stack
-
-[doc](https://docs.oracle.com/javase/8/docs/api/java/util/Stack.html)
+## Stack
 
 |        |Throws exception  |
 |--------|------------------|
@@ -58,7 +60,7 @@ public class QueueExample
 |Remove  |pop()             |
 |Examine |peek()            |
 
-#### Usage
+### Usage
 
 [source](https://www.tutorialspoint.com/java/java_stack_class.htm)
 
@@ -94,22 +96,18 @@ public class StackDemo {
    }
 }
 ```
+## Deque
 
-### Deque
+### Head vs Tail
 
-[doc](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html)
-
-#### Head vs Tail
-
-|       |Head             |Head         |Tail              |Tail          |
-|       |Throws exception |Special value|Throws exception  |Special value |
+||Head (Throws exception)|Head(Special value)|Tail (Throws exception)|Tail (Special value)|
 |-------|-----------------|-------------|------------------|--------------|
 |Insert |addFirst(e)      |offerFirst(e)|addLast(e)        |offerLast(e)  |
 |Remove |removeFirst()    |pollFirst()  |removeLast()      |pollLast()    |
 |Examine|getFirst()       |peekFirst()  |getLast()         |peekLast()    |
 
 
-#### Queue vs Deque
+### Queue vs Deque
 
 |Queue Method |Deque Method |
 |-------------|-------------|
@@ -120,7 +118,7 @@ public class StackDemo {
 |element()    |getFirst()   |
 |peek()       |peekFirst()  |
 
-#### Stack vs Deque
+### Stack vs Deque
 
 |Stack Method  |Deque Method  |
 |--------------|--------------|
@@ -128,7 +126,7 @@ public class StackDemo {
 |pop()         |removeFirst() |
 |peek()        |peekFirst()   |
 
-#### Usage
+### Usage
 
 ```java
 public class DequeAndArrayDeque {
