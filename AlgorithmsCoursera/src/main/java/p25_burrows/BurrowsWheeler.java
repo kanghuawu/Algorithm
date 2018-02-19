@@ -3,7 +3,13 @@ package p25_burrows;
 import edu.princeton.cs.algs4.BinaryStdIn;
 import edu.princeton.cs.algs4.BinaryStdOut;
 
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Deque;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
+
 
 /*
 Useful youtube videos for understanding Burrows Wheeler transformation.
@@ -37,7 +43,7 @@ public class BurrowsWheeler {
 
         Map<Character, Deque<Integer>> map = new HashMap<>();
         for (int i = 0; i < len; i++) {
-            map.computeIfAbsent(t[i], k -> new LinkedList<>()).addLast(i);
+            map.computeIfAbsent(t[i], k -> new LinkedList<Integer>()).addLast(i);
         }
 
         Arrays.sort(t);
