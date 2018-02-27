@@ -6,7 +6,7 @@ public class TreeNode {
 	public TreeNode right;
 	public TreeNode(int x) { val = x; }
 
-	public static TreeNode TreeNode1(){
+	public static TreeNode node1(){
 		TreeNode t1 = new TreeNode(1);
 		TreeNode t2 = new TreeNode(2);
 		TreeNode t3 = new TreeNode(3);
@@ -39,7 +39,7 @@ public class TreeNode {
 		return t1;
 	}
 	
-	public static TreeNode TreeNode2(){
+	public static TreeNode node2(){
 		TreeNode t1 = new TreeNode(1);
 		TreeNode t2 = new TreeNode(2);
 		TreeNode t3 = new TreeNode(3);
