@@ -1,27 +1,33 @@
 from utility.ListNode import ListNode
 
-class Solution(object):
+
+class Solution:
     def addTwoNumbers(self, l1, l2):
         """
         :type l1: ListNode
         :type l2: ListNode
         :rtype: ListNode
         """
+        inc = False
         dummy = ListNode(0)
         node = dummy
-        inc = False
-        newval = 0
-        while l1 != None or l2 != None or inc :
-            newval = 1 if inc else 0
-            if l1 != None:
-                newval += l1.val
+        while l1 or l2 or inc:
+            tmp = 0
+
+            if l1:
+                tmp += l1.val
                 l1 = l1.next
-            if l2 != None:
-                newval += l2.val
+            if l2:
+                tmp += l2.val
                 l2 = l2.next
-            inc = True if newval >= 10 else False
-            node.next = ListNode(newval % 10)
-            # print(str(node.val))
+
+            if inc:
+                tmp += 1
+                inc = False
+            if tmp >= 10:
+                tmp %= 10
+                inc = True
+            node.next = ListNode(tmp)
             node = node.next
         return dummy.next
 
