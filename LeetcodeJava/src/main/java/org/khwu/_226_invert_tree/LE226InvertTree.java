@@ -1,4 +1,4 @@
-package org.khwu;
+package org.khwu._226_invert_tree;
 
 import utility.TreeNode;
 
@@ -15,7 +15,7 @@ public class LE226InvertTree {
     }
     public static void main(String[] args){
     	LE226InvertTree test = new LE226InvertTree();
-    	TreeNode tree = TreeNode.TreeNode1();
+    	TreeNode tree = TreeNode.node1();
     	TreeNode intree = test.invertTree(tree);
     	System.out.println(intree.right.right.left.val);
     }
