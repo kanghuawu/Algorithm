@@ -1,8 +1,8 @@
-package org.khwu._274_word_ladder;
+package org.khwu._127_word_ladder;
 
 import java.util.*;
 
-public class LE274LadderLengthGraph {
+public class LE127LadderLengthGraph {
     // TLE
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
         int begin = -1;

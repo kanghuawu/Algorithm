@@ -1,10 +1,10 @@
-package org.khwu._274_word_ladder;
+package org.khwu._127_word_ladder;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class LE274LadderLengthTwoWayBFS {
+public class LE127LadderLengthTwoWayBFS {
     private int depth = 1;
 
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
