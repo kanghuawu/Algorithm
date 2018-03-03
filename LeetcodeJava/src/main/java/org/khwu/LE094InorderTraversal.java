@@ -1,6 +1,6 @@
 package org.khwu;
 
-import utility.TreeNode;
+import org.khwu.utility.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,6 @@
 package org.khwu._783_minimum_distance_between_bst_nodes;
 
-import utility.TreeNode;
+import org.khwu.utility.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;

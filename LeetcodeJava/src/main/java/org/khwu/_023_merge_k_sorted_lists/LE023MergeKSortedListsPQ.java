@@ -1,6 +1,6 @@
 package org.khwu._023_merge_k_sorted_lists;
 
-import utility.ListNode;
+import org.khwu.utility.ListNode;
 
 import java.util.PriorityQueue;
 

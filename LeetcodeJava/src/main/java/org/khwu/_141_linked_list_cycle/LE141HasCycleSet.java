@@ -1,6 +1,6 @@
 package org.khwu._141_linked_list_cycle;
 
-import utility.ListNode;
+import org.khwu.utility.ListNode;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -1,6 +1,6 @@
 package org.khwu;
 
-import utility.ListNode;
+import org.khwu.utility.ListNode;
 
 public class LE092ReverseBetween {
     public ListNode reverseBetween(ListNode head, int m, int n) {

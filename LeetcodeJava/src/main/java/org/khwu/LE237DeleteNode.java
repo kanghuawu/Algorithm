@@ -1,5 +1,5 @@
 package org.khwu;
-import utility.ListNode;
+import org.khwu.utility.ListNode;
 public class LE237DeleteNode {
     public void deleteNode(ListNode node) {
         node.val = node.next.val;

@@ -1,6 +1,6 @@
 package org.khwu._141_linked_list_cycle;
 
-import utility.ListNode;
+import org.khwu.utility.ListNode;
 
 public class LE141HasCycle {
     public boolean hasCycle(ListNode head) {

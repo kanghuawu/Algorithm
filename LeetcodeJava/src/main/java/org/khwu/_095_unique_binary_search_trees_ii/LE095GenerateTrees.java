@@ -1,6 +1,6 @@
 package org.khwu._095_unique_binary_search_trees_ii;
 
-import utility.TreeNode;
+import org.khwu.utility.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;

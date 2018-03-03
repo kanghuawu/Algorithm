@@ -1,6 +1,6 @@
 package org.khwu;
-import utility.RandomListNode;
-import utility.RandomLinkedList;
+import org.khwu.utility.RandomListNode;
+import org.khwu.utility.RandomLinkedList;
 
 import org.junit.Test;
 

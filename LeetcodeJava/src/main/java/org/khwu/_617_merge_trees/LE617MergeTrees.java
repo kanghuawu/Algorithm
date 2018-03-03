@@ -1,6 +1,6 @@
 package org.khwu._617_merge_trees;
 
-import utility.TreeNode;
+import org.khwu.utility.TreeNode;
 
 public class LE617MergeTrees {
     public TreeNode mergeTrees(TreeNode t1, TreeNode t2) {

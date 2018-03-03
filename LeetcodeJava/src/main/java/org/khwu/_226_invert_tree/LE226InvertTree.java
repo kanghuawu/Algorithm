@@ -1,6 +1,6 @@
 package org.khwu._226_invert_tree;
 
-import utility.TreeNode;
+import org.khwu.utility.TreeNode;
 
 public class LE226InvertTree {
     public TreeNode invertTree(TreeNode root) {

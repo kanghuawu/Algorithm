@@ -1,6 +1,6 @@
 package org.khwu._023_merge_k_sorted_lists;
 
-import utility.ListNode;
+import org.khwu.utility.ListNode;
 
 public class LE023MergeKSortedLists {
     public ListNode mergeKLists(ListNode[] lists) {

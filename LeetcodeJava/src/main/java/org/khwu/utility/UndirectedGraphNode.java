@@ -1,4 +1,4 @@
-package utility;
+package org.khwu.utility;
 
 import java.util.ArrayList;
 import java.util.List;

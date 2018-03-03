@@ -1,6 +1,6 @@
 package org.khwu._098_validate_binary_search_tree;
 
-import utility.TreeNode;
+import org.khwu.utility.TreeNode;
 
 import java.util.Stack;
 
