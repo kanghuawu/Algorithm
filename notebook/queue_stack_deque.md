@@ -1,12 +1,32 @@
 # Queue vs Stack vs Deque
 
-## Official Document
+## Table of Content
 
-* [Queue](https://docs.oracle.com/javase/8/docs/api/java/util/Queue.html)
-* [Stack](https://docs.oracle.com/javase/8/docs/api/java/util/Stack.html)
-* [Deque](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html)
+* [tldr](#tldr)
+* [Queue](#queue)
+* [Stack](#stack)
+* [Deque](#deque)
+
+## tldr
+
+### Queue vs Deque
+
+|Queue Method |Deque Method |
+|-------------|-------------|
+|offer(e)     |offerLast(e) |
+|poll()       |pollFirst()  |
+|peek()       |peekFirst()  |
+
+### Stack vs Deque
+
+|Stack Method  |Deque Method  |
+|--------------|--------------|
+|push(e)       |addFirst(e)   |
+|pop()         |removeFirst() |
+|peek()        |peekFirst()   |
 
 ## Queue
+* [Oracle doc](https://docs.oracle.com/javase/8/docs/api/java/util/Queue.html)
 
 |        |Throws exception  |Returns special value   |
 |--------|------------------|------------------------|
@@ -53,6 +73,7 @@ public class QueueExample
 ```
 
 ## Stack
+* [Oracle doc](https://docs.oracle.com/javase/8/docs/api/java/util/Stack.html)
 
 |        |Throws exception  |
 |--------|------------------|
@@ -97,61 +118,80 @@ public class StackDemo {
 }
 ```
 ## Deque
+* [Oracle doc](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html)
 
 ### Head vs Tail
 
-||Head (Throws exception)|Head(Special value)|Tail (Throws exception)|Tail (Special value)|
-|-------|-----------------|-------------|------------------|--------------|
-|Insert |addFirst(e)      |offerFirst(e)|addLast(e)        |offerLast(e)  |
-|Remove |removeFirst()    |pollFirst()  |removeLast()      |pollLast()    |
-|Examine|getFirst()       |peekFirst()  |getLast()         |peekLast()    |
+|Head   |Throws exception |Special value|
+|-------|-----------------|-------------|
+|Insert |addFirst(e)      |offerFirst(e)|
+|Remove |removeFirst()    |pollFirst()  |
+|Examine|getFirst()       |peekFirst()  |
 
-
-### Queue vs Deque
-
-|Queue Method |Deque Method |
-|-------------|-------------|
-|add(e)       |addLast(e)   |
-|offer(e)     |offerLast(e) |
-|remove()     |removeFirst()|
-|poll()       |pollFirst()  |
-|element()    |getFirst()   |
-|peek()       |peekFirst()  |
-
-### Stack vs Deque
-
-|Stack Method  |Deque Method  |
-|--------------|--------------|
-|push(e)       |addFirst(e)   |
-|pop()         |removeFirst() |
-|peek()        |peekFirst()   |
+|Tail   |Throws exception  |Special value |
+|-------|------------------|--------------|
+|Insert |addLast(e)        |offerLast(e)  |
+|Remove |removeLast()      |pollLast()    |
+|Examine|getLast()         |peekLast()    |
 
 ### Usage
 
+#### Code
 ```java
 public class DequeAndArrayDeque {
-    public static void main(String[] args){
-        Deque<Integer> stack = new ArrayDeque<Integer>();
-        
-        System.out.println("Stack: ");
-        stack.push(1);
-        stack.push(2);
-        stack.push(3);
-        System.out.println("peek: " + stack.peek());
-        System.out.println("pop: " + stack.pop());
-        System.out.println("pop: " + stack.pop());
-        System.out.println("pop: " + stack.pop());
-        
-        Deque<Integer> queue = new LinkedList<Integer>();
+  public static void main(String[] args) {
+        System.out.println("=== Stack ===");
+        Deque<Integer> stack = new ArrayDeque<>();
+        for (int i = 1; i <= 5; i++) {
+            stack.push(i);
+        }
+        System.out.printf("%s%d%n", StringUtils.rightPad("Peek: ", 15), stack.peek());
+        System.out.printf("%s%d%n", StringUtils.rightPad("PeekFirst: ", 15), stack.peekFirst());
+        System.out.printf("%s%d%n", StringUtils.rightPad("Poll: ", 15), stack.poll());
+        System.out.printf("%s%d%n", StringUtils.rightPad("PollFirst: ", 15), stack.pollFirst());
+        System.out.printf("%s%d%n", StringUtils.rightPad("Remove: ", 15), stack.removeFirst());
+        System.out.printf("%s%d%n", StringUtils.rightPad("Add:", 15), 6);
+        stack.addFirst(6);
+        System.out.printf("%s%d%n", StringUtils.rightPad("Remove: ", 15), stack.pop());
 
-        System.out.println("Queue: ");
-        queue.add(1);
-        queue.add(2);
-        queue.add(3);
-        System.out.println("peek: " + queue.peek());
-        System.out.println("remove: " + queue.remove());
-        System.out.println("remove: " + queue.remove());
-        System.out.println("remove: " + queue.remove());
+        System.out.println("=== Queue ===");
+        Deque<Integer> queue = new LinkedList<>();
+        for (int i = 1; i <= 5; i++) {
+            queue.addLast(i);
+        }
+        System.out.printf("%s%d%n", StringUtils.rightPad("Peek: ", 15), queue.peek());
+        System.out.printf("%s%d%n", StringUtils.rightPad("PeekFirst: ", 15), queue.peekFirst());
+        System.out.printf("%s%d%n", StringUtils.rightPad("PeekLast: ", 15), queue.peekLast());
+        System.out.printf("%s%d%n", StringUtils.rightPad("Poll: ", 15), queue.poll());
+        System.out.printf("%s%d%n", StringUtils.rightPad("PollFirst: ", 15), queue.pollFirst());
+        System.out.printf("%s%d%n", StringUtils.rightPad("PollLast: ", 15), queue.pollLast());
+        System.out.printf("%s%d%n", StringUtils.rightPad("Remove: ", 15), queue.remove());
+        System.out.printf("%s%d%n", StringUtils.rightPad("Add:", 15), 6);
+        queue.add(6);
+        System.out.printf("%s%d%n", StringUtils.rightPad("Remove: ", 15), queue.remove());
     }
 }
+```
+
+#### Result
+
+```shell
+=== Stack ===
+Peek:          5
+PeekFirst:     5
+Poll:          5
+PollFirst:     4
+Remove:        3
+Add:           6
+Remove:        6
+=== Queue ===
+Peek:          1
+PeekFirst:     1
+PeekLast:      5
+Poll:          1
+PollFirst:     2
+PollLast:      5
+Remove:        3
+Add:           6
+Remove:        4
 ```
