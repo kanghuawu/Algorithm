@@ -7,3 +7,11 @@
 3. Finally, if the choice is still ambiguous, the class inheriting from multiple inter- faces has to explicitly select which default method implementation to use by overriding it and calling the desired method explicitly.
 
 > from Java 8 In Action
+
+# Functional Interface
+
+* Any interface with a SAM(Single Abstract Method) is a functional interface, and its implementation may be treated as lambda expressions.
+
+* Note that Java 8’s default methods are not abstract and do not count: a functional interface may still have multiple default methods. 
+
+> from http://www.baeldung.com/java-8-functional-interfaces
