@@ -1,4 +1,4 @@
-package org.khwu._73_set_matrix_zeros;
+package org.khwu._073_set_matrix_zeros;
 
 public class LE073SetZeroes {
     public void setZeroes(int[][] matrix) {
