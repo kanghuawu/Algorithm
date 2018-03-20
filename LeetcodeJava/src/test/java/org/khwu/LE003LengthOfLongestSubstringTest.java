@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import org.junit.Before;
 import org.junit.After;
+import org.khwu._003_longest_substring_without_repeating_characters.LE003LengthOfLongestSubstring;
 
 public class LE003LengthOfLongestSubstringTest{
 

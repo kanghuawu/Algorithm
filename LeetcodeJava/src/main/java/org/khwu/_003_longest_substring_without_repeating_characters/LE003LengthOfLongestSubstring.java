@@ -1,4 +1,4 @@
-package org.khwu;
+package org.khwu._003_longest_substring_without_repeating_characters;
 
 import java.util.HashMap;
 

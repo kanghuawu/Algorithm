@@ -1,4 +1,4 @@
-package org.khwu;
+package org.khwu._002_add_two_numbers;
 import org.khwu.utility.ListNode;
 
 public class LE002AddTwoNumbers {
