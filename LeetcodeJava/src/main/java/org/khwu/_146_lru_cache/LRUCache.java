@@ -4,108 +4,69 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LRUCache {
-    private final int capacity;
-    private final DoubleLinkedList nodes;
-    private final Map<Integer, Node> map;
+    private Node head, tail;
+    private Map<Integer, Node> cache;
+    private int cap, size;
 
     public LRUCache(int capacity) {
-        this.capacity = capacity;
-        this.nodes = new DoubleLinkedList();
-        this.map = new HashMap<>();
+        cap = capacity;
+        size = 0;
+        cache = new HashMap<>();
+        head = new Node(0, 0);
+        tail = new Node(0, 0);
+        head.next = tail;
+        tail.prev = head;
     }
 
     public int get(int key) {
-        if (!map.containsKey(key)) return -1;
-        // System.out.print("bf: ");
-        // nodes.printAll();
-        Node node = map.get(key);
-        nodes.addFirst(nodes.remove(node));
-        // System.out.print("af: ");
-        // nodes.printAll();
-        return node.value;
+        Node node = cache.get(key);
+        if (node == null) return -1;
+        removeNode(node);
+        addNode(node);
+        return node.val;
     }
 
     public void put(int key, int value) {
-        if (map.containsKey(key)) {
-            nodes.remove(map.get(key));
+        Node node = cache.get(key);
+        if (node != null) {
+            node.val = value;
+            removeNode(node);
+            addNode(node);
+            return;
         }
-        Node node = new Node(key, value);
-        map.put(key, node);
-        nodes.addFirst(node);
-        if (nodes.size > capacity) {
-            Node last = nodes.removeLast();
-            // System.out.println(key + " " + last.key + " " + last.value);
-            map.remove(last.key);
-        }
-    }
-    static class DoubleLinkedList {
-        Node first;
-        Node last;
-        int size = 0;
-        public DoubleLinkedList() {}
-
-        public void addFirst(Node node) {
-            if (size == 0) {
-                last = node;
-            } else {
-                first.pre = node;
-                node.next = first;
-                node.pre = null;
-            }
-            first = node;
-            size++;
-        }
-
-        public Node remove(Node node) {
+        node = new Node(key, value);
+        cache.put(key, node);
+        addNode(node);
+        size++;
+        if (size > cap) {
+            cache.remove(tail.prev.key);
+            removeNode(tail.prev);
             size--;
-            if (size == 0) {
-                last = null;
-                first = null;
-                return node;
-            }
-            Node preNode = node.pre;
-            if (preNode == null) {
-                first = first.next;
-                first.pre = null;
-                return node;
-            }
-            Node nxtNode = node.next;
-            if (nxtNode == null) {
-                // System.out.println(node.value + " " + node.pre.value);
-                last = last.pre;
-                last.next = null;
-                return node;
-            }
-            nxtNode.pre = preNode;
-            preNode.next = nxtNode;
-            return node;
-        }
-
-        public Node removeLast() {
-            return remove(last);
-        }
-
-        public void printAll() {
-            Node tmp = first;
-            while (tmp != null) {
-                System.out.printf("%d ", tmp.key);
-                tmp = tmp.next;
-            }
-            System.out.println();
         }
     }
 
-    static class Node {
-        int key;
-        int value;
-        Node pre = null;
-        Node next = null;
+    private void addNode(Node node) {
+        Node next = head.next;
+        next.prev = node;
+        node.next = next;
+        head.next = node;
+        node.prev = head;
+    }
 
-        public Node(int key, int value) {
+    private void removeNode(Node node) {
+        Node prev = node.prev;
+        Node next = node.next;
+        prev.next = next;
+        next.prev = prev;
+    }
+
+    private class Node {
+        int key, val;
+        Node prev, next;
+
+        public Node(int key, int val) {
             this.key = key;
-            this.value = value;
-            pre = null;
-            next = null;
+            this.val = val;
         }
     }
 }
