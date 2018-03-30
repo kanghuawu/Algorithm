@@ -2,7 +2,7 @@ package org.khwu._218_skyline;
 
 import java.util.*;
 
-public class LE218GetSkyline {
+public class LE218GetSkylineEasy {
 
     public List<int[]> getSkyline(int[][] bds) {
         int n = bds.length;
