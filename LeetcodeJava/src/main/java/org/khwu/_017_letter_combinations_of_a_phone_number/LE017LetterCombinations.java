@@ -1,4 +1,4 @@
-package org.khwu;
+package org.khwu._017_letter_combinations_of_a_phone_number;
 
 import java.util.ArrayList;
 import java.util.List;
