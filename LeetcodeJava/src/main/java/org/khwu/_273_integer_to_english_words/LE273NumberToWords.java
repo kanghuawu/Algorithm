@@ -1,7 +1,7 @@
 package org.khwu._273_integer_to_english_words;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Deque;
+import java.util.LinkedList;
 
 public class LE273NumberToWords {
     private final String[] LESS_THAN_20 = {"", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"};
@@ -10,43 +10,42 @@ public class LE273NumberToWords {
 
     public String numberToWords(int num) {
         if (num == 0) return "Zero";
-        List<StringBuilder> res = new ArrayList<>();
-
+        Deque<StringBuilder> li = new LinkedList<>();
         int i = 0;
         while (num > 0) {
-            res.add(new StringBuilder());
+            StringBuilder sb = new StringBuilder();
             if (num % 1000 != 0) {
-                helper(res, i, num % 1000);
-                res.get(i).append(THOUSANDS[i]);
-                if (i != 0)
-                    res.get(i).append(" ");
+                build(sb, num % 1000);
+                sb.append(THOUSANDS[i]);
+                sb.append(" ");
             }
-            num /= 1000;
             i++;
+            num /= 1000;
+            li.addFirst(sb);
         }
 
-        StringBuilder sb = new StringBuilder();
-        for (int j = res.size() - 1; j >= 0; j--) {
-            sb.append(res.get(j));
+        StringBuilder res = new StringBuilder();
+        for (StringBuilder sb : li) {
+            res.append(sb);
         }
 
-        return sb.toString().trim();
+        return res.toString().trim();
     }
 
-    private void helper(List<StringBuilder> res, int i, int num) {
+    private void build(StringBuilder sb, int num) {
         if (num == 0) {
 
         } else if (num < 20) {
-            res.get(i).append(LESS_THAN_20[num]);
-            res.get(i).append(" ");
+            sb.append(LESS_THAN_20[num]);
+            sb.append(" ");
         } else if (num < 100) {
-            res.get(i).append(TENS[num / 10]);
-            res.get(i).append(" ");
-            helper(res, i, num % 10);
+            sb.append(TENS[num/10]);
+            sb.append(" ");
+            build(sb, num % 10);
         } else {
-            res.get(i).append(LESS_THAN_20[num / 100]);
-            res.get(i).append(" Hundred ");
-            helper(res, i, num % 100);
+            sb.append(LESS_THAN_20[num/100]);
+            sb.append(" Hundred ");
+            build(sb, num % 100);
         }
     }
 }

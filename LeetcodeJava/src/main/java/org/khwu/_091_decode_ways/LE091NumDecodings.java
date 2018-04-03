@@ -1,4 +1,4 @@
-package org.khwu;
+package org.khwu._091_decode_ways;
 
 import java.util.Arrays;
 
