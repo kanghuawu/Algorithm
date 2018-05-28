@@ -1,8 +1,8 @@
-package org.khwu;
+package org.khwu._279_perfect_squares;
 
 import java.util.Arrays;
 
-public class LE279NumSquares {
+public class LE279NumSquaresDP {
 
     // MY ref: https://discuss.leetcode.com/topic/26400/an-easy-understanding-dp-solution-in-java
     public int numSquares(int n) {
