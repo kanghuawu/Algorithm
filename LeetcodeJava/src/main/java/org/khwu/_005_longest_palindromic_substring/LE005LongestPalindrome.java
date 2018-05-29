@@ -1,4 +1,4 @@
-package org.khwu;
+package org.khwu._005_longest_palindromic_substring;
 
 public class LE005LongestPalindrome {
     // MY

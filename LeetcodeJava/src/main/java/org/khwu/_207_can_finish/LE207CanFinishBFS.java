@@ -1,6 +1,43 @@
 package org.khwu._207_can_finish;
 
+import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
+
 public class LE207CanFinishBFS {
+    // MY 2018-05-28
+    public boolean canFinish(int numCourses, int[][] prerequisites) {
+        int[] degree = new int[numCourses];
+        ArrayList[] graph = new ArrayList[numCourses];
+        for (int i = 0; i < numCourses; i++) {
+            graph[i] = new ArrayList<Integer>();
+        }
+        for (int[] pair : prerequisites) {
+            int toTake = pair[1];
+            int pre = pair[0];
+            degree[toTake]++;
+            graph[pre].add(toTake);
+        }
+
+        Deque<Integer> q = new LinkedList<>();
+        for (int i = 0; i < numCourses; i++) {
+            if (degree[i] == 0) q.addLast(i);
+        }
+
+        while (!q.isEmpty()) {
+            int v = q.removeFirst();
+            ArrayList<Integer> arr = graph[v];
+            for (int w : arr) {
+                degree[w]--;
+                if (degree[w] == 0) q.addLast(w);
+            }
+        }
+        for (int i = 0; i < numCourses; i++) {
+            if (degree[i] != 0) return false;
+        }
+        return true;
+    }
+
     // BFS ref: https://discuss.leetcode.com/topic/15762/java-dfs-and-bfs-solution
 //    public boolean canFinish(int numCourses, int[][] prerequisites) {
 //        ArrayList[] graph = new ArrayList[numCourses];
