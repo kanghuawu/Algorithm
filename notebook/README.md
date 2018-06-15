@@ -3,6 +3,12 @@
 ## Graph
 * Inbound and outbound
 
+## Shortest Paths
+* Undirected graphs:
+* Unweighted graphs: BFS
+* No directed cycles (DAG): topological sort
+* No negative weights: Dijkstra
+* No negative cycles: Bellman-Ford
 
 ## String
 
