@@ -2,7 +2,7 @@ package org.khwu._689_maximum_sum_of_3_non_overlapping_subarrays;
 
 import java.util.Arrays;
 
-public class LE689MaxSumOfThreeSubarrays {
+public class LE689MaxSumOfThreeSubarraysDP {
 
     // ref: https://leetcode.com/problems/maximum-sum-of-3-non-overlapping-subarrays/discuss/108231/C++Java-DP-with-explanation-O(n)
     public int[] maxSumOfThreeSubarrays(int[] nums, int k) {
