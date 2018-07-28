@@ -1,4 +1,4 @@
-package org.khwu;
+package org.khwu._151_reverse_words_in_a_string;
 
 public class LE151ReverseWords {
     public String reverseWords(String s) {

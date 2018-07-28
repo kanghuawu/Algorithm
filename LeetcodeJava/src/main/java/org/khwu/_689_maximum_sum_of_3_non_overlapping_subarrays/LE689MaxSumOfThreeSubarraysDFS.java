@@ -19,7 +19,7 @@ public class LE689MaxSumOfThreeSubarraysDFS {
         for (int i = 0; i < nums.length; i++) {
             accu[i+1] += accu[i] + nums[i];
         }
-        
+
         dfs(accu, 0, k, 3, 0, buffer);
 
         return res;
