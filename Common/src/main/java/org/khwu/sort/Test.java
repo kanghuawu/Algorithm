@@ -6,7 +6,7 @@ public class Test {
     private static void setUpArray(int[] arr) {
         Random random = new Random(1000);
         for (int i = 0; i < arr.length; i++) {
-            arr[i] = random.nextInt(100);
+            arr[i] = random.nextInt(arr.length);
         }
     }
 
@@ -34,8 +34,9 @@ public class Test {
     }
 
     public static void main(String[] args) {
-        int[] arr = new int[20];
-        setUpArray(arr);
+//        int[] arr = new int[20];
+//        setUpArray(arr);
+        int[] arr = new int[]{3,2,1,5,6,4};
         assert checkSorted(arr) == false;
         SortStrategy ss = new QuickSort();
         System.out.println("Before sort");

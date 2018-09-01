@@ -30,4 +30,8 @@ public class QuickSort implements SortStrategy {
         swap(arr, lo, j);
         return j;
     }
+
+//    private int partition1(int[] arr, int lo, int hi) {
+//        int pivot = arr[lo];
+//    }
 }
