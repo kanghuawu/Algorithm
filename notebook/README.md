@@ -9,6 +9,9 @@
     1. Undirected
         1. Connected component
         2. vs Union Find
+        3. Degree
+            1. Euler path: All vertices have even degree except two
+            2. Euler circuit: All vertices have even degree
     2. Directed
         1. Topological sort
 6. Minimum Spanning Tree
