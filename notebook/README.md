@@ -14,6 +14,8 @@
             2. Euler circuit: All vertices have even degree
     2. Directed
         1. Topological sort
+            1. DFS
+            2. BFS (Kahn's Algorithm): Enque vertex with inbound degree = 0
 6. Minimum Spanning Tree
     1. Kruskal
     2. Prim
