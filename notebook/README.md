@@ -20,7 +20,9 @@
     1. Kruskal
     2. Prim
 7. Shortest Path
-    1. Dijkastra
+    1. Dijkstra's algorithm (nonnegative weights)
+    2. Topological sort algorithm (no directed cycles)
+    3. Bellman-Ford algorithm (no negative cycles)
 8. Tries
 9. Substring Search
     1. KMP
