@@ -3,8 +3,11 @@
     1. Merge sort
     2. Quicksort
 3. Priority Queue
-4. Binary Search Tree
-    1. red-black tree
+4. Tree
+    1. Binary Search Tree
+        1. red-black tree
+    2. Segment tree, Interval tree, Range tree, Binary indexed tree
+        1. [compare!](https://stackoverflow.com/questions/17466218/what-are-the-differences-between-segment-trees-interval-trees-binary-indexed-t#_=_)
 5. Graph
     1. Undirected
         1. Connected component
