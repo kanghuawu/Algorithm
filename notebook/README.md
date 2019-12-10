@@ -32,4 +32,9 @@
 10. Regular Expression
 11. Data Compression
 12. Max Flow
-    1. Ford-Fulkerson
+    1. Min cut = Max flow
+        * Min cut: Find a cut of minimum capacity
+        * Max flow: Find a flow of maximum value
+    2. Ford-Fulkerson
+        * Queue + BFS (shortest path)
+        * Priority Queue (fattest path)

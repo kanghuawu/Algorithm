@@ -69,15 +69,6 @@ class RedBlackBST(BST):
 			return False
 		return node.color == RedBlackNode.RED
 
-	@staticmethod
-	def build_random_tree(n, lo=0, hi=100):
-		assert n > 0
-		redblack_tree = RedBlackBST()
-		for _ in range(n):
-			rand = random.randint(lo, hi)
-			redblack_tree.put(rand, rand)
-		return redblack_tree
-
 
 if __name__ == "__main__":
 	rb_bst = RedBlackBST.build_random_tree(30)

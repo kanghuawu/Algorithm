@@ -42,13 +42,6 @@ class Node(object):
 	def __repr__(self):
 		return "Node({},{})".format(self.key, self.val)
 
-	@staticmethod
-	def build_random_tree(n):
-		assert n > 0
-
-		def dfs():
-			if not node:
-				return			
 
 if __name__ == "__main__":
 	a = Key("a")
