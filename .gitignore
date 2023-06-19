@@ -25,4 +25,5 @@ buildNumber.properties
 .project
 .settings/
 
-*/venv*
+*venv*
+*vscode*

@@ -1,19 +1,39 @@
+# Useful Tips
 
+## Check If Two Intervals Overlap
+```python
+def overlap(first, second):
+    s1, e1 = first
+    s2, e2 = second
+    return s1 < e2 and s2 < e1
 
-### Union Find vs Connected Component
-
-tl;dr - Static graph? DFS! Dynamic graph? Union-find!
-
-[ref1](https://stackoverflow.com/questions/28398101/union-find-or-dfs-which-one-is-better-to-find-connected-component)
-[ref2](https://cs.stackexchange.com/questions/47596/dfs-vs-union-find-for-computing-connected-components-of-a-static-graph)
-
-### Cycle detection
-
-[ref1](https://stackoverflow.com/questions/261573/best-algorithm-for-detecting-cycles-in-a-directed-graph)
-
-[Tarjan's strongly connected components algorithm](https://en.wikipedia.org/wiki/Tarjan%27s_strongly_connected_components_algorithm)
-
-[Tarjan in java](https://github.com/t1/graph/blob/master/src/main/java/com/github/t1/graph/StronglyConnectedComponentsFinder.java)
-
+def overlap(first, second):
+    s1, e1 = first
+    s2, e2 = second
+    return max(s1, s2) < min(e1, e2)
 ```
+
+## Binary Search
+```python
+def search(self, nums: List[int], target: int) -> int:
+    le, ri = 0, len(nums)-1
+    while le < ri:
+        mid = (le+ri)//2
+        if nums[mid] < target:
+            le = mid + 1
+        else:
+            ri = mid
+    return le if nums[le] == target else -1
+```
+
+```python
+def search(self, nums: List[int], target: int) -> int:
+    le, ri = 0, len(nums)-1
+    while le < ri:
+        mid = (le+ri+1)//2
+        if nums[mid] <= target:
+            le = mid
+        else:
+            ri = mid - 1
+    return le if nums[le] == target else -1
 ```
